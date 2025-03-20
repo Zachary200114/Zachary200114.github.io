@@ -86,6 +86,7 @@
         text-decoration: none;
         border-radius: 5px;
         text-align: center;
+        transition: transform 0.3s ease;
       }
       .about-me-para {
         text-align: justify;
@@ -166,6 +167,10 @@
         list-style-type: disc;
         padding-left: 20px;
         line-height: 2;
+      }
+      /* Reduced pop effect for contact hyperlinks */
+      .pop-contact {
+        transform: scale(1.1);
       }
     </style>
   </head>
@@ -363,7 +368,7 @@
         </ul>
       </section>
 
-      <!-- CONTACT SECTION (2x2 GRID) -->
+      <!-- CONTACT SECTION (Grid Layout) -->
       <section id="contact" class="section">
         <h2>Contact Me</h2>
         <div class="projects">
@@ -372,7 +377,7 @@
             <p class="project-description">Connect with me professionally.</p>
             <a
               href="https://www.linkedin.com/in/zachary-ryan01/"
-              class="button"
+              class="button contact-pop"
               target="_blank"
               >View Profile</a
             >
@@ -382,7 +387,7 @@
             <p class="project-description">View my code and projects.</p>
             <a
               href="https://github.com/Zachary200114"
-              class="button"
+              class="button contact-pop"
               target="_blank"
               >View Profile</a
             >
@@ -390,12 +395,9 @@
           <div class="project-box">
             <h3>Email</h3>
             <p class="project-description">Drop me a message anytime.</p>
-            <a href="mailto:Zxrst175@mail.rmu.edu" class="button">Send Email</a>
-          </div>
-          <div class="project-box">
-            <h3>Phone</h3>
-            <p class="project-description">Call me for more info.</p>
-            <a href="tel:+17247770254" class="button">(724) 777-0254</a>
+            <a href="mailto:Zxrst175@mail.rmu.edu" class="button contact-pop"
+              >Send Email</a
+            >
           </div>
         </div>
       </section>
@@ -404,7 +406,7 @@
     <footer>&copy; 2025 Zachary Ryan. All rights reserved.</footer>
 
     <script>
-      // For a "sticky" pop effect, add a class when mouse enters and remove it after a short delay.
+      // For a "sticky" pop effect on skill icons
       const icons = document.querySelectorAll(".skill-logo");
       icons.forEach((icon) => {
         icon.addEventListener("mouseenter", () => {
@@ -412,6 +414,17 @@
           // Remove the pop effect after 500ms
           setTimeout(() => {
             icon.classList.remove("pop");
+          }, 500);
+        });
+      });
+
+      // Add reduced pop effect to contact hyperlinks only
+      const contactLinks = document.querySelectorAll(".contact-pop");
+      contactLinks.forEach((link) => {
+        link.addEventListener("mouseenter", () => {
+          link.classList.add("pop-contact");
+          setTimeout(() => {
+            link.classList.remove("pop-contact");
           }, 500);
         });
       });
