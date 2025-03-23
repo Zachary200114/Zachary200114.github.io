@@ -99,7 +99,7 @@
         margin-top: 3rem;
       }
 
-      /* Projects & Contact Card Grid Layout */
+      /* Projects Grid Layout */
       .projects {
         display: flex;
         flex-wrap: wrap;
@@ -115,14 +115,6 @@
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         text-align: center;
       }
-      .project-box h3 {
-        margin-top: 0;
-      }
-      .project-description {
-        margin-top: 0.5rem;
-        font-size: 0.9rem;
-        color: #555555;
-      }
       @media (max-width: 1024px) {
         .project-box {
           flex: 1 1 calc(45% - 1.5rem);
@@ -136,10 +128,11 @@
         }
       }
 
+      /* Skills & Contact Section Layout */
       .skills {
         display: flex;
         justify-content: center;
-        gap: 1.5rem;
+        gap: 2rem; /* Increased gap for better spacing with larger icons */
         flex-wrap: wrap;
         padding: 2rem 0;
       }
@@ -147,14 +140,11 @@
         text-align: center;
       }
       .skill-logo {
-        width: 43px;
-        height: 43px;
+        width: 52px; /* Increased by ~20% from 43px */
+        height: 52px; /* Increased by ~20% from 43px */
         transition: transform 0.3s ease;
       }
       .skill-logo:hover {
-        transform: scale(1.4);
-      }
-      .pop {
         transform: scale(1.4);
       }
       .skill-item small {
@@ -167,10 +157,6 @@
         list-style-type: disc;
         padding-left: 20px;
         line-height: 2;
-      }
-      /* Reduced pop effect for contact hyperlinks */
-      .pop-contact {
-        transform: scale(1.1);
       }
     </style>
   </head>
@@ -295,7 +281,7 @@
         <div class="projects">
           <div class="project-box">
             <h3>To-Do List Application</h3>
-            <p class="project-description">
+            <p>
               A task management app to efficiently organize your daily
               activities.
             </p>
@@ -308,7 +294,7 @@
           </div>
           <div class="project-box">
             <h3>Calculator</h3>
-            <p class="project-description">
+            <p>
               A simple and functional calculator for everyday arithmetic
               operations.
             </p>
@@ -321,7 +307,7 @@
           </div>
           <div class="project-box">
             <h3>Number Guessing Game</h3>
-            <p class="project-description">
+            <p>
               An interactive game that challenges you to guess the correct
               number.
             </p>
@@ -334,7 +320,7 @@
           </div>
           <div class="project-box">
             <h3>Port Scanner</h3>
-            <p class="project-description">
+            <p>
               A simple web-based port scanner using Flask and Python. Good for
               vulnerability assessment.
             </p>
@@ -368,36 +354,39 @@
         </ul>
       </section>
 
-      <!-- CONTACT SECTION (Grid Layout) -->
+      <!-- CONTACT SECTION (styled like Skills) -->
       <section id="contact" class="section">
         <h2>Contact Me</h2>
-        <div class="projects">
-          <div class="project-box">
-            <h3>LinkedIn</h3>
-            <p class="project-description">Connect with me professionally.</p>
+        <div class="skills">
+          <!-- LinkedIn -->
+          <div class="skill-item">
             <a
               href="https://www.linkedin.com/in/zachary-ryan01/"
-              class="button contact-pop"
               target="_blank"
-              >View Profile</a
             >
+              <img
+                src="assets/linkedin.png"
+                alt="LinkedIn"
+                class="skill-logo"
+              />
+            </a>
+            <small>LinkedIn</small>
           </div>
-          <div class="project-box">
-            <h3>GitHub</h3>
-            <p class="project-description">View my code and projects.</p>
-            <a
-              href="https://github.com/Zachary200114"
-              class="button contact-pop"
-              target="_blank"
-              >View Profile</a
-            >
+
+          <!-- GitHub -->
+          <div class="skill-item">
+            <a href="https://github.com/Zachary200114" target="_blank">
+              <img src="assets/github.png" alt="GitHub" class="skill-logo" />
+            </a>
+            <small>GitHub</small>
           </div>
-          <div class="project-box">
-            <h3>Email</h3>
-            <p class="project-description">Drop me a message anytime.</p>
-            <a href="mailto:Zxrst175@mail.rmu.edu" class="button contact-pop"
-              >Send Email</a
-            >
+
+          <!-- Email -->
+          <div class="skill-item">
+            <a href="mailto:Zxrst175@mail.rmu.edu">
+              <img src="assets/google.png" alt="Email" class="skill-logo" />
+            </a>
+            <small>Email</small>
           </div>
         </div>
       </section>
@@ -406,25 +395,13 @@
     <footer>&copy; 2025 Zachary Ryan. All rights reserved.</footer>
 
     <script>
-      // For a "sticky" pop effect on skill icons
+      // For the pop effect on skill logos
       const icons = document.querySelectorAll(".skill-logo");
       icons.forEach((icon) => {
         icon.addEventListener("mouseenter", () => {
           icon.classList.add("pop");
-          // Remove the pop effect after 500ms
           setTimeout(() => {
             icon.classList.remove("pop");
-          }, 500);
-        });
-      });
-
-      // Add reduced pop effect to contact hyperlinks only
-      const contactLinks = document.querySelectorAll(".contact-pop");
-      contactLinks.forEach((link) => {
-        link.addEventListener("mouseenter", () => {
-          link.classList.add("pop-contact");
-          setTimeout(() => {
-            link.classList.remove("pop-contact");
           }, 500);
         });
       });
