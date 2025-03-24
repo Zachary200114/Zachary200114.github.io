@@ -88,6 +88,10 @@
         text-align: center;
         transition: transform 0.3s ease;
       }
+      /* New pop effect for project buttons */
+      .button:hover {
+        transform: scale(1.1);
+      }
       .about-me-para {
         text-align: justify;
       }
@@ -132,7 +136,7 @@
       .skills {
         display: flex;
         justify-content: center;
-        gap: 2rem; /* Increased gap for better spacing with larger icons */
+        gap: 2rem;
         flex-wrap: wrap;
         padding: 2rem 0;
       }
@@ -140,8 +144,8 @@
         text-align: center;
       }
       .skill-logo {
-        width: 52px; /* Increased by ~20% from 43px */
-        height: 52px; /* Increased by ~20% from 43px */
+        width: 52px;
+        height: 52px;
         transition: transform 0.3s ease;
       }
       .skill-logo:hover {
@@ -279,14 +283,12 @@
       <section id="projects" class="section">
         <h2>Projects</h2>
         <div class="projects">
+          <!-- Swapped: Now first box is Port Scanner -->
           <div class="project-box">
-            <h3>To-Do List Application</h3>
-            <p>
-              A task management app to efficiently organize your daily
-              activities.
-            </p>
+            <h3>Port Scanner</h3>
+            <p>A web-based port scanner, ideal for vulnerability assessment.</p>
             <a
-              href="https://github.com/Zachary200114/To-Do-List-Application"
+              href="https://github.com/Zachary200114/Ports"
               class="button"
               target="_blank"
               >View Project</a
@@ -318,14 +320,15 @@
               >View Project</a
             >
           </div>
+          <!-- Swapped: Now last box is To-Do List Application -->
           <div class="project-box">
-            <h3>Port Scanner</h3>
+            <h3>To-Do List Application</h3>
             <p>
-              A web-based port scanner, that is good for vulnerablity
-              assessment.
+              A task management app to efficiently organize your daily
+              activities.
             </p>
             <a
-              href="https://github.com/Zachary200114/Ports"
+              href="https://github.com/Zachary200114/To-Do-List-Application"
               class="button"
               target="_blank"
               >View Project</a
@@ -372,7 +375,6 @@
             </a>
             <small>LinkedIn</small>
           </div>
-
           <!-- GitHub -->
           <div class="skill-item">
             <a href="https://github.com/Zachary200114" target="_blank">
@@ -380,7 +382,6 @@
             </a>
             <small>GitHub</small>
           </div>
-
           <!-- Email -->
           <div class="skill-item">
             <a href="mailto:Zxrst175@mail.rmu.edu">
