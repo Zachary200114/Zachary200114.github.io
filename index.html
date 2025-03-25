@@ -88,7 +88,6 @@
         text-align: center;
         transition: transform 0.3s ease;
       }
-      /* New pop effect for project buttons */
       .button:hover {
         transform: scale(1.1);
       }
@@ -136,9 +135,10 @@
       .skills {
         display: flex;
         justify-content: center;
-        gap: 2rem;
+        /* Reduced gap and padding */
+        gap: 1rem;
         flex-wrap: wrap;
-        padding: 2rem 0;
+        padding: 1.5rem 0;
       }
       .skill-item {
         text-align: center;
@@ -276,6 +276,15 @@
             />
             <small>Cyberlaw</small>
           </div>
+          <!-- New Skill Item for Computer Networking -->
+          <div class="skill-item">
+            <img
+              src="assets/computer-networking.png"
+              alt="Computer Networking"
+              class="skill-logo"
+            />
+            <small>Computer Networking</small>
+          </div>
         </div>
       </section>
 
@@ -283,7 +292,6 @@
       <section id="projects" class="section">
         <h2>Projects</h2>
         <div class="projects">
-          <!-- Swapped: Now first box is Port Scanner -->
           <div class="project-box">
             <h3>Port Scanner</h3>
             <p>A web-based port scanner, ideal for vulnerability assessment.</p>
@@ -320,7 +328,6 @@
               >View Project</a
             >
           </div>
-          <!-- Swapped: Now last box is To-Do List Application -->
           <div class="project-box">
             <h3>To-Do List Application</h3>
             <p>
@@ -399,16 +406,3 @@
     <footer>&copy; 2025 Zachary Ryan. All rights reserved.</footer>
 
     <script>
-      // For the pop effect on skill logos
-      const icons = document.querySelectorAll(".skill-logo");
-      icons.forEach((icon) => {
-        icon.addEventListener("mouseenter", () => {
-          icon.classList.add("pop");
-          setTimeout(() => {
-            icon.classList.remove("pop");
-          }, 500);
-        });
-      });
-    </script>
-  </body>
-</html>
