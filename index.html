@@ -160,6 +160,62 @@
         line-height: 2;
       }
 
+      /* Education section styling */
+      .education-card {
+        position: relative;
+        max-width: 750px;
+        margin: 1.5rem auto 0 auto;
+        padding: 1.5rem 2rem;
+        border-radius: 10px;
+        border: 1px solid #d6e2db;
+        background: radial-gradient(circle at top left, #ffffff, #f8f1e8);
+        box-shadow: 0 0 18px rgba(0, 0, 0, 0.08);
+        overflow: hidden;
+      }
+      .education-card::before {
+        content: "";
+        position: absolute;
+        top: -40%;
+        left: -20%;
+        width: 60%;
+        height: 140%;
+        background: linear-gradient(
+          120deg,
+          rgba(255, 255, 255, 0.55),
+          rgba(255, 255, 255, 0)
+        );
+        transform: rotate(18deg);
+        pointer-events: none;
+      }
+      .education-header {
+        position: relative;
+        z-index: 1;
+      }
+      .education-header h3 {
+        margin: 0;
+        font-size: 1.35rem;
+        color: #222222;
+      }
+      .education-degree {
+        margin: 0.25rem 0;
+        font-weight: 500;
+        color: #31675f;
+      }
+      .education-meta {
+        margin: 0;
+        font-style: italic;
+        color: #777777;
+        font-size: 0.9rem;
+      }
+      .education-highlights {
+        position: relative;
+        z-index: 1;
+        margin-top: 0.75rem;
+        padding-left: 1.2rem;
+        line-height: 1.8;
+        font-size: 0.96rem;
+      }
+
       /* Experience section styling */
       .experience-intro {
         text-align: center;
@@ -183,7 +239,7 @@
         border-radius: 6px;
         padding: 1.5rem 2rem;
         font-size: 0.96rem;
-        border-left: 4px solid #31675f; /* green outline on all cards */
+        border-left: 4px solid #31675f;
       }
       .experience-header h3 {
         margin: 0;
@@ -215,6 +271,7 @@
   <body>
     <nav>
       <a href="#about">About</a>
+      <a href="#education">Education</a>
       <a href="#skills">Skills</a>
       <a href="#experience">Experience</a>
       <a href="#projects">Projects</a>
@@ -250,6 +307,31 @@
           contribute to projects that protect and strengthen today’s digital
           infrastructure.
         </p>
+      </section>
+
+      <section id="education" class="section">
+        <h2>Education</h2>
+        <div class="education-card">
+          <div class="education-header">
+            <h3>Robert Morris University</h3>
+            <p class="education-degree">B.S. in Cybersecurity (In Progress)</p>
+            <p class="education-meta">
+              Moon Township, PA · Aug 2024 – Dec 2026
+            </p>
+          </div>
+          <ul class="education-highlights">
+            <li>
+              Focused coursework in cybersecurity risk, digital forensics, and
+              operating systems.
+            </li>
+            <li>
+              Consistent Dean’s List recognition for academic performance.
+            </li>
+            <li>
+              Active involvement in cybersecurity club and CTF activities.
+            </li>
+          </ul>
+        </div>
       </section>
 
       <section id="skills" class="section">
