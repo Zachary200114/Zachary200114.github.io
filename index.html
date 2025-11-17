@@ -116,6 +116,7 @@
         border: 1px solid #ddd;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         text-align: center;
+        border-radius: 6px;
       }
       @media (max-width: 1024px) {
         .project-box {
@@ -158,12 +159,64 @@
         padding-left: 20px;
         line-height: 2;
       }
+
+      /* Experience section styling */
+      .experience-intro {
+        text-align: center;
+        margin-top: 0.5rem;
+        color: #555555;
+        font-size: 0.98rem;
+      }
+      .experience-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1.75rem;
+        margin-top: 1.5rem;
+        max-width: 900px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .experience-card {
+        background-color: #ffffff;
+        border: 1px solid #dddddd;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+        border-radius: 6px;
+        padding: 1.5rem 2rem;
+        font-size: 0.96rem;
+        border-left: 4px solid #31675f; /* green outline on all cards */
+      }
+      .experience-header h3 {
+        margin: 0;
+        font-size: 1.25rem;
+        color: #222222;
+      }
+      .experience-role {
+        margin: 0.25rem 0;
+        font-weight: 500;
+        color: #31675f;
+        font-size: 1rem;
+      }
+      .experience-meta {
+        margin: 0;
+        font-style: italic;
+        color: #777777;
+        font-size: 0.9rem;
+      }
+      .experience-card ul {
+        margin-top: 0.75rem;
+        padding-left: 1.2rem;
+        line-height: 1.8;
+      }
+      .experience-card li {
+        margin-bottom: 0.4rem;
+      }
     </style>
   </head>
   <body>
     <nav>
       <a href="#about">About</a>
       <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
       <a href="#projects">Projects</a>
       <a href="#achievements">Achievements</a>
       <a href="#contact">Contact</a>
@@ -301,6 +354,68 @@
               class="skill-logo"
             />
             <small>TCP/IP</small>
+          </div>
+        </div>
+      </section>
+
+      <section id="experience" class="section">
+        <h2>Experience</h2>
+        <p class="experience-intro">
+          A snapshot of roles that shaped how I work under pressure, solve
+          problems, and communicate.
+        </p>
+        <div class="experience-list">
+          <div class="experience-card">
+            <div class="experience-header">
+              <h3>United States Navy</h3>
+              <p class="experience-role">
+                Machinist Mate, Nuclear Reactor Department
+              </p>
+              <p class="experience-meta">
+                Norfolk, VA · July 2020 – September 2023
+              </p>
+            </div>
+            <ul>
+              <li>
+                Operated and maintained primary and secondary nuclear propulsion
+                systems under strict technical and safety procedures.
+              </li>
+              <li>
+                Monitored system indicators and logs, responding to alarms and
+                abnormal conditions to maintain safe, continuous operations.
+              </li>
+              <li>
+                Troubleshot reactor support equipment and enforced layered
+                access controls, building disciplined, detail-oriented habits
+                directly applicable to cybersecurity operations.
+              </li>
+            </ul>
+          </div>
+
+          <div class="experience-card">
+            <div class="experience-header">
+              <h3>Sewickley BMW / Audi / Porsche</h3>
+              <p class="experience-role">Car Detailer &amp; Photographer</p>
+              <p class="experience-meta">
+                Sewickley, PA · September 2023 – August 2024
+              </p>
+            </div>
+            <ul>
+              <li>
+                Prepared luxury vehicles to showroom standards, ensuring a
+                consistent, high-quality presentation for Audi, BMW, and Porsche
+                brands.
+              </li>
+              <li>
+                Coordinated with sales and service teams to prioritize vehicles,
+                meet tight deadlines, and align work with customer expectations.
+              </li>
+              <li>
+                Used photography to highlight key design and performance
+                features, reinforcing attention to detail and clear visual
+                communication.
+              </li>
+            </ul>
           </div>
         </div>
       </section>
