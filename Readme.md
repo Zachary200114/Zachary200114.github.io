@@ -83,4 +83,3 @@ LinkedIn: Zachary Ryan
 GitHub: Zachary200114
 
 © 2025 Zachary Ryan. All rights reserved.
-::contentReference[oaicite:0]{index=0}
