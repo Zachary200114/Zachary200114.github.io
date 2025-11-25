@@ -1,76 +1,86 @@
-# Zachary Ryan - Portfolio Website
+# Zachary Ryan – Portfolio Website
 
-Welcome to my personal portfolio website! This site showcases my background, skills, projects, and achievements as I pursue a career in cybersecurity.
+This is my personal portfolio site, built to introduce who I am, what I’ve worked on, and where I’m headed in cybersecurity.
 
 ## About the Website
 
-This portfolio website highlights my journey from being a U.S. Navy veteran to becoming a cybersecurity student. It features the following sections:
+The site is a single-page portfolio with these sections:
 
-- **About Me:** An overview of my background, including my transition from the Navy to cybersecurity.
-- **Skills:** A display of technical and professional skills with interactive icons that pop out when hovered over—even if you quickly slide your cursor across multiple icons.
-- **Projects:** Personal projects that demonstrate my coding proficiency and problem-solving abilities.
-- **Achievements:** A summary of academic and extracurricular accomplishments, including certifications and club involvement.
-- **Contact:** Clickable links for connecting via LinkedIn, GitHub, email, and phone.
+- **About Me** – Brief background on my service in the U.S. Navy and my transition into cybersecurity at Robert Morris University.
+- **Education** – Highlight of my B.S. in Cybersecurity at RMU.
+- **Skills** – Technical and professional skills, each represented with an icon and label.
+- **Experience** – Navy reactor department role and work at Sewickley BMW / Audi / Porsche.
+- **Projects** – A few security-focused and programming projects with links to their GitHub repos.
+- **Achievements** – Academic honors, certifications, and club involvement.
+- **Contact** – Quick links to reach me via LinkedIn, GitHub, and email.
 
 ## Tech Stack
 
-This website was built using:
+The site is intentionally simple and lightweight:
 
-- **HTML:** For the site structure.
-- **CSS:** For styling, layout, and responsive design.
-- **JavaScript:** For interactive animations (e.g., the sticky pop effect on skill icons).
-- **Google Fonts:** For enhanced typography.
-- **Devicon CDN:** For the technology icons.
+- **HTML** – Structure and content.
+- **CSS** – Layout, colors, typography, responsive design, and hover effects.
+- **Google Fonts** – For headings and body text.
+- **Devicon + Custom Icons** – Technology and skill icons via CDN and assets in the project.
+
+There is currently **no JavaScript**; all interactivity (like the skill icon hover effect) is done with CSS.
 
 ## Features
 
-- **Responsive Design:** Optimized for both desktop and mobile devices.
-- **Smooth Scrolling Navigation:** Easy access to each section.
-- **Interactive Skill Icons:** When you hover over a skill icon, it scales up by 40% (to 140% of its original size). JavaScript adds a temporary pop effect, so multiple icons can pop out briefly if you slide your mouse quickly.
-- **Project Cards:** Each project includes a description and a link to its GitHub repository.
-- **Clickable Contact Information:** Easily accessible links for connecting via LinkedIn, GitHub, email, and phone.
+- **Responsive layout** that works on desktop and mobile.
+- **Fixed navigation bar** with smooth scrolling to each section.
+- **Hover effects on skill icons** using CSS transforms.
+- **Project cards** with consistent layout and GitHub links:
+  - Port Scanner
+  - Password Cracker
+  - Personal Portfolio Website (this site)
+- **Education and Experience highlights** that connect my Navy background to cybersecurity.
+- **Contact section** with clickable icons for LinkedIn, GitHub, and email.
 
 ## File Structure
 
-├── assets/ # Contains images, icons, and the resume file ├── index.html # Main HTML file with embedded CSS and JavaScript └── README.md # Project documentation (this file)
+```text
+.
+├── assets/
+│   ├── *.png / *.svg         # Skill icons, profile image, logos
+│   ├── Zachary-Ryan-Resume.pdf
+│   └── ...                   # Other static assets
+├── index.html                # Main page (HTML + embedded CSS)
+└── README.md                 # Project documentation
 
-bash
-Copy
 
-## How to Use
+```
 
-1. **Clone the repository:**
+How to View
 
-   ```bash
-   git clone https://github.com/Zachary200114/portfolio-website.git
-   Open index.html in your browser to view the website.
-   JavaScript Functionality
-   The website uses JavaScript to create a "sticky pop" effect on the skill icons. When your cursor enters a skill icon, the icon temporarily scales up by 40%, even if you quickly slide your mouse across several icons. Here's the key JavaScript snippet used:
-   ```
+You can view the live site at:
 
-javascript
-Copy
-const icons = document.querySelectorAll('.skill-logo');
-icons.forEach(icon => {
-icon.addEventListener('mouseenter', () => {
-icon.classList.add('pop');
-// Remove the pop effect after 500ms (adjustable)
-setTimeout(() => {
-icon.classList.remove('pop');
-}, 500);
-});
-});
-This code allows multiple icons to remain popped out briefly, enhancing the interactive experience.
+GitHub Pages: https://zachary200114.github.io/
 
+Or run it locally:
+git clone https://github.com/Zachary200114/Zachary200114.github.io.git
+cd Zachary200114.github.io
 Future Improvements
-Enhance animations and other interactive elements.
-Implement a dynamic contact form.
-Optimize performance further for faster load times.
-Improve accessibility for a wider range of users.
+
+Some ideas I may add later:
+
+Subtle animations (e.g., section fade-ins or button transitions).
+
+A simple contact form.
+
+Additional security labs or write-ups in the Projects section.
+
+Accessibility improvements and further performance tuning.
+
 Contact
-Feel free to reach out if you'd like to collaborate, discuss cybersecurity topics, or just connect:
+
+If you’d like to connect or talk cybersecurity:
 
 Email: Zxrst175@mail.rmu.edu
+
 LinkedIn: Zachary Ryan
+
 GitHub: Zachary200114
+
 © 2025 Zachary Ryan. All rights reserved.
+::contentReference[oaicite:0]{index=0}
