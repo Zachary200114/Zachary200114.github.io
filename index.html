@@ -8,6 +8,7 @@
       href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;700&display=swap"
       rel="stylesheet"
     />
+
     <style>
       html {
         scroll-behavior: smooth;
@@ -49,17 +50,20 @@
         font-size: 1.3rem;
         padding: 0 1rem;
       }
+
       .profile-bio {
         color: #0b3d0b;
         font-size: 22px;
         font-family: "Playfair Display", serif;
       }
+
       .container {
         width: 80%;
         max-width: 1100px;
         margin: 0 auto;
         padding: 2rem 0;
       }
+
       .section {
         margin: 3rem 0;
         padding: 2rem;
@@ -67,17 +71,25 @@
         border: 1px solid #eaeaea;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       }
+
       .section h2 {
         color: #0b3d0b;
         font-size: 38px;
         text-align: center;
       }
+
+      /* ABOUT */
       .profile img {
         width: 200px;
         border-radius: 50%;
         display: block;
         margin: 0 auto;
       }
+      .about-me-para {
+        text-align: justify;
+      }
+
+      /* BUTTONS */
       .button {
         display: inline-block;
         padding: 0.6rem 1.2rem;
@@ -91,18 +103,8 @@
       .button:hover {
         transform: scale(1.1);
       }
-      .about-me-para {
-        text-align: justify;
-      }
-      footer {
-        text-align: center;
-        padding: 2rem 0;
-        background-color: #f8f1e8;
-        color: #555555;
-        margin-top: 3rem;
-      }
 
-      /* Projects */
+      /* PROJECTS */
       .projects {
         display: flex;
         flex-wrap: wrap;
@@ -110,9 +112,11 @@
         align-items: stretch;
         gap: 1.5rem;
       }
+
       .project-box {
         flex: 1 1 calc(33.33% - 1.5rem);
         max-width: calc(33.33% - 1.5rem);
+        min-height: 330px;
         padding: 1.5rem;
         background-color: #fff;
         border: 1px solid #ddd;
@@ -120,15 +124,17 @@
         border-radius: 6px;
         display: flex;
         flex-direction: column;
-        align-items: center;
+        justify-content: space-between;
         text-align: center;
       }
+
       .project-box p {
         margin-top: 0.75rem;
         margin-bottom: 1rem;
       }
+
       .project-box .button {
-        margin-top: auto; /* push button to bottom */
+        margin-top: auto;
       }
 
       @media (max-width: 1024px) {
@@ -144,7 +150,7 @@
         }
       }
 
-      /* Skills */
+      /* SKILLS */
       .skills {
         display: flex;
         justify-content: center;
@@ -163,19 +169,15 @@
       .skill-logo:hover {
         transform: scale(1.4);
       }
+
       .skill-item small {
         display: block;
         margin-top: 0.5rem;
         font-size: 1rem;
         color: #333;
       }
-      .achievements ul {
-        list-style-type: disc;
-        padding-left: 20px;
-        line-height: 2;
-      }
 
-      /* Education section styling */
+      /* EDUCATION */
       .education-card {
         position: relative;
         max-width: 750px;
@@ -187,6 +189,7 @@
         box-shadow: 0 0 18px rgba(0, 0, 0, 0.08);
         overflow: hidden;
       }
+
       .education-card::before {
         content: "";
         position: absolute;
@@ -200,44 +203,42 @@
           rgba(255, 255, 255, 0)
         );
         transform: rotate(18deg);
-        pointer-events: none;
       }
-      .education-header {
-        position: relative;
-        z-index: 1;
-      }
+
       .education-header h3 {
         margin: 0;
         font-size: 1.35rem;
         color: #222222;
       }
+
       .education-degree {
         margin: 0.25rem 0;
         font-weight: 500;
         color: #31675f;
       }
+
       .education-meta {
         margin: 0;
         font-style: italic;
         color: #777777;
         font-size: 0.9rem;
       }
+
       .education-highlights {
-        position: relative;
-        z-index: 1;
         margin-top: 0.75rem;
         padding-left: 1.2rem;
         line-height: 1.8;
         font-size: 0.96rem;
       }
 
-      /* Experience section styling */
+      /* EXPERIENCE */
       .experience-intro {
         text-align: center;
         margin-top: 0.5rem;
         color: #555555;
         font-size: 0.98rem;
       }
+
       .experience-list {
         display: flex;
         flex-direction: column;
@@ -247,42 +248,52 @@
         margin-left: auto;
         margin-right: auto;
       }
+
       .experience-card {
         background-color: #ffffff;
         border: 1px solid #dddddd;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
         border-radius: 6px;
         padding: 1.5rem 2rem;
-        font-size: 0.96rem;
         border-left: 4px solid #31675f;
       }
+
       .experience-header h3 {
         margin: 0;
         font-size: 1.25rem;
         color: #222222;
       }
+
       .experience-role {
         margin: 0.25rem 0;
         font-weight: 500;
         color: #31675f;
         font-size: 1rem;
       }
+
       .experience-meta {
         margin: 0;
         font-style: italic;
         color: #777777;
         font-size: 0.9rem;
       }
+
       .experience-card ul {
         margin-top: 0.75rem;
         padding-left: 1.2rem;
         line-height: 1.8;
       }
-      .experience-card li {
-        margin-bottom: 0.4rem;
+
+      footer {
+        text-align: center;
+        padding: 2rem 0;
+        background-color: #f8f1e8;
+        color: #555555;
+        margin-top: 3rem;
       }
     </style>
   </head>
+
   <body>
     <nav>
       <a href="#about">About</a>
@@ -301,17 +312,20 @@
     </header>
 
     <div class="container">
+      <!-- ABOUT -->
       <section id="about" class="section">
         <div class="profile">
           <img src="assets/final-profile-picture.png" alt="Zachary Ryan" />
         </div>
         <h2>About Me</h2>
+
         <p class="about-me-para">
           I’m a U.S. Navy veteran with a background in operating and maintaining
           primary and secondary nuclear propulsion systems. Working in
           high-stakes environments taught me to stay calm under pressure, lead
           teams effectively, and troubleshoot complex problems with precision.
         </p>
+
         <p class="about-me-para">
           I’m now transitioning into cybersecurity and pursuing a B.S. in
           Cybersecurity at Robert Morris University. I’m focused on applying my
@@ -322,8 +336,10 @@
         </p>
       </section>
 
+      <!-- EDUCATION -->
       <section id="education" class="section">
         <h2>Education</h2>
+
         <div class="education-card">
           <div class="education-header">
             <h3>Robert Morris University</h3>
@@ -332,14 +348,17 @@
               Moon Township, PA · Aug 2024 – Dec 2026
             </p>
           </div>
+
           <ul class="education-highlights">
             <li>
               Focused coursework in cybersecurity risk management, digital
               forensics, and operating system security.
             </li>
+
             <li>
               Consistent Dean’s List recognition for academic performance.
             </li>
+
             <li>
               Active involvement in cybersecurity club and CTF activities.
             </li>
@@ -347,118 +366,135 @@
         </div>
       </section>
 
+      <!-- SKILLS -->
       <section id="skills" class="section">
         <h2>Skills</h2>
+
         <div class="skills">
           <div class="skill-item">
             <img
               src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg"
-              alt="SQL"
               class="skill-logo"
+              alt="SQL"
             />
             <small>SQL</small>
           </div>
+
           <div class="skill-item">
             <img
               src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg"
-              alt="Python"
               class="skill-logo"
+              alt="Python"
             />
             <small>Python</small>
           </div>
+
           <div class="skill-item">
             <img
               src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg"
-              alt="Java"
               class="skill-logo"
+              alt="Java"
             />
             <small>Java</small>
           </div>
+
           <div class="skill-item">
             <img
               src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/windows8/windows8-original.svg"
-              alt="Windows"
               class="skill-logo"
+              alt="Windows"
             />
             <small>Windows</small>
           </div>
+
           <div class="skill-item">
             <img
               src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg"
-              alt="Linux"
               class="skill-logo"
+              alt="Linux"
             />
             <small>Linux</small>
           </div>
+
           <div class="skill-item">
             <img
               src="assets/cyber-security.png"
-              alt="Cybersecurity"
               class="skill-logo"
+              alt="Cybersecurity"
             />
             <small>Cybersecurity</small>
           </div>
+
           <div class="skill-item">
             <img
               src="assets/forensics.png"
-              alt="Digital Forensics"
               class="skill-logo"
+              alt="Digital Forensics"
             />
             <small>Digital Forensics</small>
           </div>
+
           <div class="skill-item">
             <img
               src="assets/wireshark.png"
-              alt="Wireshark"
               class="skill-logo"
+              alt="Wireshark"
             />
             <small>Wireshark</small>
           </div>
+
           <div class="skill-item">
-            <img src="assets/nmap.svg" alt="Nmap" class="skill-logo" />
+            <img src="assets/nmap.svg" class="skill-logo" alt="Nmap" />
             <small>Nmap</small>
           </div>
+
           <div class="skill-item">
             <img
               src="assets/communication.png"
-              alt="Communication Skills"
               class="skill-logo"
+              alt="Communication"
             />
             <small>Communication</small>
           </div>
+
           <div class="skill-item">
             <img
               src="assets/team-leadership.png"
-              alt="Team Leadership"
               class="skill-logo"
+              alt="Team Leadership"
             />
             <small>Team Leadership</small>
           </div>
+
           <div class="skill-item">
             <img
               src="assets/cyber-crime.png"
-              alt="Cyberlaw"
               class="skill-logo"
+              alt="Cyberlaw"
             />
             <small>Cyberlaw</small>
           </div>
+
           <div class="skill-item">
             <img
               src="assets/computer-networking.png"
-              alt="TCP/IP"
               class="skill-logo"
+              alt="TCP/IP"
             />
             <small>TCP/IP</small>
           </div>
         </div>
       </section>
 
+      <!-- EXPERIENCE -->
       <section id="experience" class="section">
         <h2>Experience</h2>
+
         <p class="experience-intro">
           A snapshot of roles that shaped how I work under pressure, solve
           problems, and communicate.
         </p>
+
         <div class="experience-list">
           <div class="experience-card">
             <div class="experience-header">
@@ -470,15 +506,18 @@
                 Norfolk, VA · July 2020 – September 2023
               </p>
             </div>
+
             <ul>
               <li>
                 Operated and maintained primary and secondary nuclear propulsion
                 systems under strict technical and safety procedures.
               </li>
+
               <li>
                 Monitored system indicators and logs, responding to alarms and
                 abnormal conditions to maintain safe, continuous operations.
               </li>
+
               <li>
                 Troubleshot reactor support equipment and enforced layered
                 access controls, building disciplined, detail-oriented habits
@@ -490,21 +529,24 @@
           <div class="experience-card">
             <div class="experience-header">
               <h3>Sewickley BMW / Audi / Porsche</h3>
-              <p class="experience-role">Car Detailer &amp; Photographer</p>
+              <p class="experience-role">Car Detailer & Photographer</p>
               <p class="experience-meta">
                 Sewickley, PA · September 2023 – August 2024
               </p>
             </div>
+
             <ul>
               <li>
                 Prepared luxury vehicles to showroom standards, ensuring a
                 consistent, high-quality presentation for Audi, BMW, and Porsche
                 brands.
               </li>
+
               <li>
                 Coordinated with sales and service teams to prioritize vehicles,
                 meet tight deadlines, and align work with customer expectations.
               </li>
+
               <li>
                 Used photography to highlight key design and performance
                 features, reinforcing attention to detail and clear visual
@@ -515,9 +557,12 @@
         </div>
       </section>
 
+      <!-- PROJECTS -->
       <section id="projects" class="section">
         <h2>Projects</h2>
+
         <div class="projects">
+          <!-- PORT SCANNER -->
           <div class="project-box">
             <h3>Port Scanner</h3>
             <p>
@@ -528,88 +573,126 @@
               href="https://github.com/Zachary200114/Ports"
               class="button"
               target="_blank"
-              rel="noopener noreferrer"
-              >View Project</a
             >
+              View Project
+            </a>
           </div>
+
+          <!-- PASSWORD CRACKER -->
           <div class="project-box">
             <h3>Password Cracker</h3>
             <p>
-              Built to simulate brute-force cracking and for generating secure
-              random passwords.
+              Built to simulate brute-force cracking and generate secure random
+              passwords.
             </p>
             <a
               href="https://github.com/Zachary200114/PasswordCracker"
               class="button"
               target="_blank"
-              rel="noopener noreferrer"
-              >View Project</a
             >
+              View Project
+            </a>
           </div>
+
+          <!-- DOCKER NETWORK LAB -->
+          <div class="project-box">
+            <h3>Docker Network Segmentation & Attack Simulation Lab</h3>
+            <p>
+              Simulated a segmented Docker network using iptables and a custom
+              security dashboard.
+            </p>
+            <a
+              href="https://github.com/Zachary200114/container-network-seg-lab"
+              class="button"
+              target="_blank"
+            >
+              View Project
+            </a>
+          </div>
+
+          <!-- PORTFOLIO WEBSITE (UPDATED TEXT) -->
           <div class="project-box">
             <h3>Personal Portfolio Website</h3>
             <p>
-              Portfolio website highlighting cybersecurity experience and
-              projects.
+              Portfolio website showcasing cybersecurity projects, experience,
+              and ongoing technical development.
             </p>
             <a
               href="https://github.com/Zachary200114/Zachary200114.github.io"
               class="button"
               target="_blank"
-              rel="noopener noreferrer"
-              >View Project</a
             >
+              View Project
+            </a>
           </div>
         </div>
       </section>
 
+      <!-- ACHIEVEMENTS -->
       <section id="achievements" class="section achievements">
         <h2>Achievements & Co-Curricular Activities</h2>
+
         <ul>
           <li>Earned the Google Cybersecurity Specialization Certificate</li>
+
           <li>
             Active member of RMU's cybersecurity club, Top Secret Colonials
           </li>
+
           <li>Participant in RMU's Capture The Flag (CTF) team</li>
+
           <li>
             Awarded the President's List honor for academic excellence at CCBC
           </li>
+
           <li>
             Recognized on RMU's Dean's List for outstanding academic achievement
           </li>
+
           <li>Recipient of the RMU Merit Scholarship</li>
+
           <li>
-            Served as a US Navy Machinist Mate, demonstrating strong leadership
-            in high-pressure environments
+            Served as a US Navy Machinist Mate, demonstrating leadership and
+            performance under pressure
           </li>
         </ul>
       </section>
 
+      <!-- CONTACT -->
       <section id="contact" class="section">
         <h2>Contact Me</h2>
+
         <div class="skills">
           <div class="skill-item">
             <a
               href="https://www.linkedin.com/in/zachary-ryan01/"
               target="_blank"
               rel="noopener noreferrer"
-              ><img src="assets/linkedin.png" alt="LinkedIn" class="skill-logo"
-            /></a>
+            >
+              <img
+                src="assets/linkedin.png"
+                alt="LinkedIn"
+                class="skill-logo"
+              />
+            </a>
             <small>LinkedIn</small>
           </div>
+
           <div class="skill-item">
             <a
               href="https://github.com/Zachary200114"
               target="_blank"
               rel="noopener noreferrer"
-              ><img src="assets/github.png" alt="GitHub" class="skill-logo"
-            /></a>
+            >
+              <img src="assets/github.png" alt="GitHub" class="skill-logo" />
+            </a>
             <small>GitHub</small>
           </div>
+
           <div class="skill-item">
-            <a href="mailto:Zxrst175@mail.rmu.edu"
-              ><img src="assets/google.png" alt="Email" class="skill-logo"
-            /></a>
+            <a href="mailto:Zxrst175@mail.rmu.edu">
+              <img src="assets/google.png" alt="Email" class="skill-logo" />
+            </a>
             <small>Email</small>
           </div>
         </div>
