@@ -43,6 +43,7 @@
       html {
         scroll-behavior: smooth;
       }
+
       body {
         font-family: "Roboto", sans-serif;
         margin: 0;
@@ -53,6 +54,7 @@
         font-size: 18px;
         transition: background-color 0.25s ease, color 0.25s ease;
       }
+
       h1 {
         font-size: 60px;
         color: var(--accent-color);
@@ -91,6 +93,7 @@
         flex-wrap: wrap;
         box-sizing: border-box;
       }
+
       nav a {
         color: #ffffff;
         text-decoration: none;
@@ -99,6 +102,7 @@
         border-radius: 999px;
         transition: background-color 0.2s ease, transform 0.2s ease;
       }
+
       nav a:hover {
         background-color: rgba(255, 255, 255, 0.12);
         transform: translateY(-1px);
@@ -109,6 +113,7 @@
         display: flex;
         align-items: center;
         gap: 0.45rem;
+
         margin-left: 0.75rem;
         color: #ffffff;
         font-size: 0.95rem;
@@ -119,7 +124,7 @@
         opacity: 0.9;
       }
 
-      /* iOS-style toggle switch */
+      /* iOS-style toggle */
       .toggle-switch {
         position: relative;
         display: inline-block;
@@ -135,14 +140,13 @@
       }
 
       .toggle-track {
-        position: relative;
-        display: block;
-        width: 100%;
-        height: 100%;
         background-color: #e5e7eb;
         border-radius: 999px;
+        width: 100%;
+        height: 100%;
+        display: block;
+        transition: 0.25s ease;
         box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
-        transition: background-color 0.22s ease, box-shadow 0.22s ease;
       }
 
       .toggle-thumb {
@@ -151,29 +155,19 @@
         left: 3px;
         width: 20px;
         height: 20px;
+        background: white;
         border-radius: 50%;
-        background-color: #ffffff;
+        transition: 0.25s ease;
         box-shadow: 0 2px 4px rgba(15, 23, 42, 0.35);
-        transition: transform 0.22s ease, box-shadow 0.22s ease;
       }
 
       .toggle-switch input:checked + .toggle-track {
         background-color: #22c55e;
-        box-shadow: 0 0 0 1px rgba(22, 163, 74, 0.6);
       }
 
       .toggle-switch input:checked + .toggle-track .toggle-thumb {
         transform: translateX(20px);
         box-shadow: 0 3px 8px rgba(22, 163, 74, 0.6);
-      }
-
-      body.dark .toggle-track {
-        background-color: #4b5563;
-        box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.7);
-      }
-
-      body.dark .toggle-switch input:checked + .toggle-track {
-        background-color: #22c55e;
       }
 
       .profile-bio {
@@ -198,6 +192,11 @@
         border-radius: 6px;
       }
 
+      /* only skills gets scroll offset so icons never cut off */
+      #skills {
+        scroll-margin-top: 170px;
+      }
+
       .section h2 {
         color: var(--accent-color);
         font-size: 38px;
@@ -218,21 +217,23 @@
       /* BUTTONS */
       .button {
         display: inline-block;
-        padding: 0.6rem 1.2rem;
+        padding: 0.8rem 1.6rem; /* bigger */
         color: var(--accent-text-on);
         background-color: var(--accent-color);
         text-decoration: none;
         border-radius: 5px;
         text-align: center;
+        font-size: 1rem; /* slightly larger text */
         transition: transform 0.3s ease, box-shadow 0.3s ease,
           background-color 0.3s ease;
       }
+
       .button:hover {
         transform: translateY(-2px) scale(1.04);
         box-shadow: 0 10px 22px rgba(0, 0, 0, 0.22);
       }
 
-      /* PROJECTS (CONDENSED) */
+      /* PROJECTS */
       .projects {
         display: flex;
         flex-wrap: wrap;
@@ -271,7 +272,7 @@
 
       .project-box .button {
         margin-top: auto;
-        align-self: flex-start;
+        align-self: center; /* center horizontally in card */
       }
 
       @media (max-width: 1024px) {
@@ -292,19 +293,21 @@
       .skills {
         display: flex;
         justify-content: center;
-        gap: 1rem;
+        gap: 1.5rem;
         flex-wrap: wrap;
-        padding: 1.5rem 0;
+        padding: 2.5rem 0;
       }
+
       .skill-item {
         text-align: center;
       }
+
       .skill-logo {
         width: 52px;
         height: 52px;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
-        border-radius: 999px;
       }
+
       .skill-logo:hover {
         transform: scale(1.15) translateY(-2px);
         box-shadow: 0 10px 18px rgba(0, 0, 0, 0.25);
@@ -348,12 +351,6 @@
         );
         transform: rotate(18deg);
         pointer-events: none;
-      }
-
-      .education-header h3 {
-        margin: 0;
-        font-size: 1.35rem;
-        color: var(--text-color);
       }
 
       .education-degree {
@@ -401,12 +398,6 @@
         border-radius: 6px;
         padding: 1.5rem 2rem;
         border-left: 4px solid var(--accent-color);
-      }
-
-      .experience-header h3 {
-        margin: 0;
-        font-size: 1.25rem;
-        color: var(--text-color);
       }
 
       .experience-role {
@@ -474,11 +465,7 @@
       <div class="toggle-wrapper">
         <span class="toggle-text">Dark Mode</span>
         <label class="toggle-switch" for="theme-toggle">
-          <input
-            type="checkbox"
-            id="theme-toggle"
-            aria-label="Toggle dark mode"
-          />
+          <input type="checkbox" id="theme-toggle" />
           <span class="toggle-track">
             <span class="toggle-thumb"></span>
           </span>
@@ -498,42 +485,31 @@
           <img src="assets/final-profile-picture.png" alt="Zachary Ryan" />
         </div>
         <h2>About Me</h2>
-
         <p class="about-me-para">
           I’m a U.S. Navy veteran with experience working on nuclear propulsion
           systems, where I developed strong attention to detail, problem-solving
           ability, and the ability to stay calm in high-pressure environments.
         </p>
-
         <p class="about-me-para">
-          I am now pursuing a B.S. in Cybersecurity at Robert Morris University,
-          building hands-on experience in operating systems, networking, digital
-          forensics, and threat detection. My goal is to secure and defend
-          critical infrastructure by combining military discipline with
-          cybersecurity engineering.
+          I’m now pursuing my B.S. in Cybersecurity at Robert Morris University,
+          focusing on digital forensics, system security, network engineering,
+          and threat detection.
         </p>
       </section>
 
       <!-- EDUCATION -->
       <section id="education" class="section">
         <h2>Education</h2>
-
         <div class="education-card">
-          <div class="education-header">
-            <h3>Robert Morris University</h3>
-            <p class="education-degree">B.S. in Cybersecurity (In Progress)</p>
-            <p class="education-meta">
-              Moon Township, PA · Aug 2024 – Dec 2026
-            </p>
-          </div>
-
+          <h3>Robert Morris University</h3>
+          <p class="education-degree">B.S. in Cybersecurity (In Progress)</p>
+          <p class="education-meta">Aug 2024 – Dec 2026 · Moon Township, PA</p>
           <ul class="education-highlights">
             <li>
-              Coursework in risk management, forensics, operating systems, and
-              network security.
+              Coursework in risk management, digital forensics, OS security
             </li>
-            <li>Dean’s List recognition for academic excellence.</li>
-            <li>Active member of cybersecurity club and CTF team.</li>
+            <li>Dean’s List</li>
+            <li>Active in cybersecurity club &amp; CTF competitions</li>
           </ul>
         </div>
       </section>
@@ -588,7 +564,6 @@
             <small>Linux</small>
           </div>
 
-          <!-- PowerShell -->
           <div class="skill-item">
             <img
               src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/powershell/powershell-original.svg"
@@ -598,7 +573,6 @@
             <small>PowerShell</small>
           </div>
 
-          <!-- Git & GitHub -->
           <div class="skill-item">
             <img
               src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg"
@@ -681,58 +655,31 @@
       <!-- EXPERIENCE -->
       <section id="experience" class="section">
         <h2>Experience</h2>
-
         <p class="experience-intro">
-          Where I learned to thrive under pressure, solve complex problems, and
-          communicate clearly.
+          Experience gained in high-pressure, technically demanding
+          environments.
         </p>
 
         <div class="experience-list">
           <div class="experience-card">
-            <div class="experience-header">
-              <h3>United States Navy</h3>
-              <p class="experience-role">
-                Machinist Mate, Nuclear Reactor Department
-              </p>
-              <p class="experience-meta">
-                Norfolk, VA · July 2020 – September 2023
-              </p>
-            </div>
+            <h3>United States Navy</h3>
+            <p class="experience-role">Machinist Mate, Nuclear Reactor Dept.</p>
+            <p class="experience-meta">July 2020 – Sept 2023 · Norfolk, VA</p>
             <ul>
-              <li>
-                Operated and maintained nuclear propulsion systems under strict
-                safety controls.
-              </li>
-              <li>
-                Monitored indicators and logs to ensure safe system operation.
-              </li>
-              <li>
-                Troubleshot equipment and enforced access controls with
-                discipline and precision.
-              </li>
+              <li>Operated &amp; maintained nuclear propulsion systems.</li>
+              <li>Monitored critical indicators &amp; logs.</li>
+              <li>Enforced strict safety and access control standards.</li>
             </ul>
           </div>
 
           <div class="experience-card">
-            <div class="experience-header">
-              <h3>Sewickley BMW / Audi / Porsche</h3>
-              <p class="experience-role">Car Detailer &amp; Photographer</p>
-              <p class="experience-meta">
-                Sewickley, PA · September 2023 – August 2024
-              </p>
-            </div>
+            <h3>Sewickley BMW / Audi / Porsche</h3>
+            <p class="experience-role">Detailer &amp; Photographer</p>
+            <p class="experience-meta">Sept 2023 – Aug 2024 · Sewickley, PA</p>
             <ul>
-              <li>
-                Prepared luxury vehicles to showroom standards for Audi, BMW,
-                and Porsche.
-              </li>
-              <li>
-                Coordinated with sales and service teams to meet strict
-                deadlines.
-              </li>
-              <li>
-                Captured high-quality photos to showcase design and performance.
-              </li>
+              <li>Prepared luxury cars to showroom standards.</li>
+              <li>Worked directly with sales &amp; service teams.</li>
+              <li>Captured high-quality automotive photography.</li>
             </ul>
           </div>
         </div>
@@ -743,7 +690,6 @@
         <h2>Projects</h2>
 
         <div class="projects">
-          <!-- AI NETWORK ANOMALY LAB -->
           <div class="project-box">
             <h3>AI Network Anomaly Lab</h3>
             <p>
@@ -755,12 +701,10 @@
               href="https://github.com/Zachary200114/ai-network-anomaly-lab"
               class="button"
               target="_blank"
+              >View Project</a
             >
-              View Project
-            </a>
           </div>
 
-          <!-- AI PHISHING DETECTOR -->
           <div class="project-box">
             <h3>AI-Powered Phishing Email Detector</h3>
             <p>
@@ -772,12 +716,10 @@
               href="https://github.com/Zachary200114/ai-phishing-detector"
               class="button"
               target="_blank"
+              >View Project</a
             >
-              View Project
-            </a>
           </div>
 
-          <!-- DOCKER NETWORK LAB -->
           <div class="project-box">
             <h3>Docker Network Segmentation &amp; Attack Lab</h3>
             <p>
@@ -789,12 +731,10 @@
               href="https://github.com/Zachary200114/container-network-seg-lab"
               class="button"
               target="_blank"
+              >View Project</a
             >
-              View Project
-            </a>
           </div>
 
-          <!-- PORT SCANNER -->
           <div class="project-box">
             <h3>Port Scanner</h3>
             <p>
@@ -805,12 +745,10 @@
               href="https://github.com/Zachary200114/Ports"
               class="button"
               target="_blank"
+              >View Project</a
             >
-              View Project
-            </a>
           </div>
 
-          <!-- PASSWORD CRACKER -->
           <div class="project-box">
             <h3>Password Cracker</h3>
             <p>
@@ -821,12 +759,10 @@
               href="https://github.com/Zachary200114/PasswordCracker"
               class="button"
               target="_blank"
+              >View Project</a
             >
-              View Project
-            </a>
           </div>
 
-          <!-- PORTFOLIO WEBSITE -->
           <div class="project-box">
             <h3>Personal Portfolio Website</h3>
             <p>
@@ -837,25 +773,21 @@
               href="https://github.com/Zachary200114/Zachary200114.github.io"
               class="button"
               target="_blank"
+              >View Project</a
             >
-              View Project
-            </a>
           </div>
         </div>
       </section>
 
       <!-- ACHIEVEMENTS -->
-      <section id="achievements" class="section achievements">
-        <h2>Achievements &amp; Co-Curricular Activities</h2>
-
+      <section id="achievements" class="section">
+        <h2>Achievements &amp; Activities</h2>
         <ul>
-          <li>Google Cybersecurity Professional Certificate</li>
-          <li>Member of RMU Top Secret Colonials cybersecurity club</li>
-          <li>CTF Participant at RMU</li>
-          <li>President’s List (CCBC)</li>
-          <li>RMU Dean’s List</li>
-          <li>Recipient of RMU Merit Scholarship</li>
-          <li>Served as a US Navy Machinist Mate</li>
+          <li>Google Cybersecurity Professional Certification</li>
+          <li>Member of RMU Top Secret Colonials</li>
+          <li>Participant in RMU CTF competitions</li>
+          <li>Dean’s List (RMU) &amp; President’s List (CCBC)</li>
+          <li>RMU Merit Scholarship Recipient</li>
         </ul>
       </section>
 
@@ -904,38 +836,34 @@
 
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-        const themeToggle = document.getElementById("theme-toggle");
-        const storedTheme = localStorage.getItem("theme");
-        const prefersDark =
-          window.matchMedia &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches;
+        const toggle = document.getElementById("theme-toggle");
+        const stored = localStorage.getItem("theme");
 
-        function setTheme(theme) {
+        function apply(theme) {
           if (theme === "dark") {
             document.body.classList.add("dark");
+            toggle.checked = true;
             localStorage.setItem("theme", "dark");
-            themeToggle.checked = true;
           } else {
             document.body.classList.remove("dark");
+            toggle.checked = false;
             localStorage.setItem("theme", "light");
-            themeToggle.checked = false;
           }
         }
 
-        if (storedTheme) {
-          setTheme(storedTheme);
-        } else if (prefersDark) {
-          setTheme("dark");
+        if (stored) {
+          apply(stored);
+        } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+          apply("dark");
         } else {
-          setTheme("light");
+          apply("light");
         }
 
-        themeToggle.addEventListener("change", function () {
-          const makeDark = themeToggle.checked;
-          setTheme(makeDark ? "dark" : "light");
+        toggle.addEventListener("change", function () {
+          apply(toggle.checked ? "dark" : "light");
         });
 
-        // Fade-in animation setup
+        // fade-in on scroll
         const fadeEls = document.querySelectorAll(
           ".section, .project-box, .experience-card, .education-card"
         );
