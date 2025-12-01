@@ -4,6 +4,37 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Zachary Ryan - Portfolio</title>
+
+    <!-- OpenGraph / Social Preview -->
+    <meta
+      property="og:title"
+      content="Zachary Ryan – Cybersecurity Student & Navy Veteran"
+    />
+    <meta
+      property="og:description"
+      content="Cybersecurity student and U.S. Navy veteran focusing on AI-powered detection, digital forensics, and secure systems engineering."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://zachary200114.github.io/" />
+    <meta
+      property="og:image"
+      content="https://zachary200114.github.io/assets/final-profile-picture.png"
+    />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Zachary Ryan – Cybersecurity Portfolio"
+    />
+    <meta
+      name="twitter:description"
+      content="Showcasing projects in AI network anomaly detection, phishing email defense, Docker segmentation labs, and more."
+    />
+    <meta
+      name="twitter:image"
+      content="https://zachary200114.github.io/assets/final-profile-picture.png"
+    />
+
     <link
       href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;700&display=swap"
       rel="stylesheet"
@@ -113,7 +144,6 @@
         display: flex;
         align-items: center;
         gap: 0.45rem;
-
         margin-left: 0.75rem;
         color: #ffffff;
         font-size: 0.95rem;
@@ -214,16 +244,111 @@
         text-align: justify;
       }
 
+      /* TERMINAL COMPONENT */
+      .terminal-card {
+        margin: 2rem auto 0 auto;
+        max-width: 650px;
+        border-radius: 10px;
+        background-color: #020617;
+        color: #e5e7eb;
+        box-shadow: 0 18px 40px rgba(15, 23, 42, 0.55);
+        border: 1px solid #111827;
+        font-family: "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono",
+          "Courier New", monospace;
+        overflow: hidden;
+      }
+
+      body.dark .terminal-card {
+        border-color: #1f2937;
+      }
+
+      .terminal-header {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.35rem 0.8rem;
+        background: #020617;
+        border-bottom: 1px solid #111827;
+      }
+
+      .term-dot {
+        width: 9px;
+        height: 9px;
+        border-radius: 999px;
+      }
+
+      .term-dot.red {
+        background-color: #f97373;
+      }
+      .term-dot.yellow {
+        background-color: #facc15;
+      }
+      .term-dot.green {
+        background-color: #4ade80;
+      }
+
+      .terminal-title {
+        margin-left: 0.5rem;
+        font-size: 0.7rem;
+        color: #9ca3af;
+      }
+
+      .terminal-body {
+        padding: 0.75rem 0.9rem 0.4rem 0.9rem;
+        max-height: 220px;
+        overflow-y: auto;
+        font-size: 0.9rem;
+      }
+
+      .terminal-line {
+        white-space: pre-wrap;
+        margin-bottom: 0.15rem;
+      }
+
+      .terminal-line.command {
+        color: #a5b4fc;
+      }
+
+      .terminal-line.output {
+        color: #e5e7eb;
+      }
+
+      .terminal-input-row {
+        display: flex;
+        align-items: center;
+        padding: 0.4rem 0.9rem 0.7rem 0.9rem;
+        border-top: 1px solid #111827;
+        font-size: 0.9rem;
+      }
+
+      .terminal-prompt {
+        color: #22c55e;
+        margin-right: 0.35rem;
+      }
+
+      #terminal-input {
+        flex: 1;
+        background: transparent;
+        border: none;
+        outline: none;
+        color: #e5e7eb;
+        font: inherit;
+      }
+
+      #terminal-input::placeholder {
+        color: #4b5563;
+      }
+
       /* BUTTONS */
       .button {
         display: inline-block;
-        padding: 0.8rem 1.6rem; /* bigger */
+        padding: 0.8rem 1.6rem;
         color: var(--accent-text-on);
         background-color: var(--accent-color);
         text-decoration: none;
         border-radius: 5px;
         text-align: center;
-        font-size: 1rem; /* slightly larger text */
+        font-size: 1rem;
         transition: transform 0.3s ease, box-shadow 0.3s ease,
           background-color 0.3s ease;
       }
@@ -272,7 +397,7 @@
 
       .project-box .button {
         margin-top: auto;
-        align-self: center; /* center horizontally in card */
+        align-self: center; /* centered button in card */
       }
 
       @media (max-width: 1024px) {
@@ -428,25 +553,63 @@
         margin-top: 3rem;
       }
 
-      /* Fade-in animation */
-      .fade-in {
+      /* Scroll-reveal animations */
+      .reveal {
         opacity: 0;
         transform: translateY(16px);
       }
 
-      .fade-in.visible {
-        animation: fadeInUp 0.7s ease-out forwards;
+      .reveal-up {
+        transform: translateY(20px);
       }
 
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(16px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
+      .reveal-left {
+        transform: translateX(-24px);
+      }
+
+      .reveal-scale {
+        transform: scale(0.96);
+      }
+
+      .reveal.visible {
+        opacity: 1;
+        transform: none;
+        transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+      }
+
+      /* Back-to-top button */
+      .back-to-top {
+        position: fixed;
+        right: 1.5rem;
+        bottom: 1.5rem;
+        width: 44px;
+        height: 44px;
+        border-radius: 999px;
+        border: none;
+        background-color: var(--accent-color);
+        color: var(--accent-text-on);
+        font-size: 1.4rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.28);
+        cursor: pointer;
+        opacity: 0;
+        transform: translateY(10px) scale(0.9);
+        pointer-events: none;
+        transition: opacity 0.25s ease, transform 0.25s ease,
+          background-color 0.25s ease;
+        z-index: 900;
+      }
+
+      .back-to-top.show {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        pointer-events: auto;
+      }
+
+      .back-to-top:hover {
+        transform: translateY(-2px) scale(1.05);
       }
     </style>
   </head>
@@ -480,7 +643,7 @@
 
     <div class="container">
       <!-- ABOUT -->
-      <section id="about" class="section">
+      <section id="about" class="section reveal reveal-up">
         <div class="profile">
           <img src="assets/final-profile-picture.png" alt="Zachary Ryan" />
         </div>
@@ -495,12 +658,51 @@
           focusing on digital forensics, system security, network engineering,
           and threat detection.
         </p>
+
+        <!-- Faux Terminal -->
+        <div class="terminal-card reveal reveal-scale">
+          <div class="terminal-header">
+            <span class="term-dot red"></span>
+            <span class="term-dot yellow"></span>
+            <span class="term-dot green"></span>
+            <span class="terminal-title">zach@portfolio: ~/cyber</span>
+          </div>
+          <div class="terminal-body" id="terminal-output">
+            <div class="terminal-line command">$ whoami</div>
+            <div class="terminal-line output">
+              Zachary Ryan – Cybersecurity Student &amp; Navy Veteran
+            </div>
+            <div class="terminal-line command">$ skills --top</div>
+            <div class="terminal-line output">
+              Python, Linux, Networking, FastAPI, Digital Forensics
+            </div>
+            <div class="terminal-line command">$ scan portfolio.com</div>
+            <div class="terminal-line output">
+              No critical vulnerabilities found. ✅
+            </div>
+            <div class="terminal-line command">$ help</div>
+            <div class="terminal-line output">
+              Available commands: whoami, skills --top, scan &lt;target&gt;,
+              clear, help
+            </div>
+          </div>
+          <div class="terminal-input-row">
+            <span class="terminal-prompt">$</span>
+            <input
+              id="terminal-input"
+              type="text"
+              autocomplete="off"
+              spellcheck="false"
+              placeholder="type a command (try: whoami, skills --top, scan portfolio.com)"
+            />
+          </div>
+        </div>
       </section>
 
       <!-- EDUCATION -->
-      <section id="education" class="section">
+      <section id="education" class="section reveal reveal-left">
         <h2>Education</h2>
-        <div class="education-card">
+        <div class="education-card reveal reveal-scale">
           <h3>Robert Morris University</h3>
           <p class="education-degree">B.S. in Cybersecurity (In Progress)</p>
           <p class="education-meta">Aug 2024 – Dec 2026 · Moon Township, PA</p>
@@ -515,11 +717,11 @@
       </section>
 
       <!-- SKILLS -->
-      <section id="skills" class="section">
+      <section id="skills" class="section reveal reveal-scale">
         <h2>Skills</h2>
 
         <div class="skills">
-          <div class="skill-item">
+          <div class="skill-item reveal reveal-up">
             <img
               src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg"
               class="skill-logo"
@@ -528,7 +730,7 @@
             <small>SQL</small>
           </div>
 
-          <div class="skill-item">
+          <div class="skill-item reveal reveal-up">
             <img
               src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg"
               class="skill-logo"
@@ -537,7 +739,7 @@
             <small>Python</small>
           </div>
 
-          <div class="skill-item">
+          <div class="skill-item reveal reveal-up">
             <img
               src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg"
               class="skill-logo"
@@ -546,7 +748,7 @@
             <small>Java</small>
           </div>
 
-          <div class="skill-item">
+          <div class="skill-item reveal reveal-up">
             <img
               src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/windows8/windows8-original.svg"
               class="skill-logo"
@@ -555,7 +757,7 @@
             <small>Windows</small>
           </div>
 
-          <div class="skill-item">
+          <div class="skill-item reveal reveal-up">
             <img
               src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg"
               class="skill-logo"
@@ -564,7 +766,7 @@
             <small>Linux</small>
           </div>
 
-          <div class="skill-item">
+          <div class="skill-item reveal reveal-up">
             <img
               src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/powershell/powershell-original.svg"
               class="skill-logo"
@@ -573,7 +775,7 @@
             <small>PowerShell</small>
           </div>
 
-          <div class="skill-item">
+          <div class="skill-item reveal reveal-up">
             <img
               src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg"
               class="skill-logo"
@@ -582,7 +784,7 @@
             <small>Git / GitHub</small>
           </div>
 
-          <div class="skill-item">
+          <div class="skill-item reveal reveal-up">
             <img
               src="assets/cyber-security.png"
               class="skill-logo"
@@ -591,7 +793,7 @@
             <small>Cybersecurity</small>
           </div>
 
-          <div class="skill-item">
+          <div class="skill-item reveal reveal-up">
             <img
               src="assets/forensics.png"
               class="skill-logo"
@@ -600,7 +802,7 @@
             <small>Digital Forensics</small>
           </div>
 
-          <div class="skill-item">
+          <div class="skill-item reveal reveal-up">
             <img
               src="assets/wireshark.png"
               class="skill-logo"
@@ -609,12 +811,12 @@
             <small>Wireshark</small>
           </div>
 
-          <div class="skill-item">
+          <div class="skill-item reveal reveal-up">
             <img src="assets/nmap.svg" class="skill-logo" alt="Nmap" />
             <small>Nmap</small>
           </div>
 
-          <div class="skill-item">
+          <div class="skill-item reveal reveal-up">
             <img
               src="assets/communication.png"
               class="skill-logo"
@@ -623,7 +825,7 @@
             <small>Communication</small>
           </div>
 
-          <div class="skill-item">
+          <div class="skill-item reveal reveal-up">
             <img
               src="assets/team-leadership.png"
               class="skill-logo"
@@ -632,7 +834,7 @@
             <small>Team Leadership</small>
           </div>
 
-          <div class="skill-item">
+          <div class="skill-item reveal reveal-up">
             <img
               src="assets/cyber-crime.png"
               class="skill-logo"
@@ -641,7 +843,7 @@
             <small>Cyberlaw</small>
           </div>
 
-          <div class="skill-item">
+          <div class="skill-item reveal reveal-up">
             <img
               src="assets/computer-networking.png"
               class="skill-logo"
@@ -653,7 +855,7 @@
       </section>
 
       <!-- EXPERIENCE -->
-      <section id="experience" class="section">
+      <section id="experience" class="section reveal reveal-up">
         <h2>Experience</h2>
         <p class="experience-intro">
           Experience gained in high-pressure, technically demanding
@@ -661,7 +863,7 @@
         </p>
 
         <div class="experience-list">
-          <div class="experience-card">
+          <div class="experience-card reveal reveal-left">
             <h3>United States Navy</h3>
             <p class="experience-role">Machinist Mate, Nuclear Reactor Dept.</p>
             <p class="experience-meta">July 2020 – Sept 2023 · Norfolk, VA</p>
@@ -672,7 +874,7 @@
             </ul>
           </div>
 
-          <div class="experience-card">
+          <div class="experience-card reveal reveal-left">
             <h3>Sewickley BMW / Audi / Porsche</h3>
             <p class="experience-role">Detailer &amp; Photographer</p>
             <p class="experience-meta">Sept 2023 – Aug 2024 · Sewickley, PA</p>
@@ -686,11 +888,11 @@
       </section>
 
       <!-- PROJECTS -->
-      <section id="projects" class="section">
+      <section id="projects" class="section reveal reveal-left">
         <h2>Projects</h2>
 
         <div class="projects">
-          <div class="project-box">
+          <div class="project-box reveal reveal-scale">
             <h3>AI Network Anomaly Lab</h3>
             <p>
               Full-stack SOC-style lab simulating network flows, scoring them
@@ -705,7 +907,7 @@
             >
           </div>
 
-          <div class="project-box">
+          <div class="project-box reveal reveal-scale">
             <h3>AI-Powered Phishing Email Detector</h3>
             <p>
               Full-stack phishing detection system using FastAPI + React that
@@ -720,7 +922,7 @@
             >
           </div>
 
-          <div class="project-box">
+          <div class="project-box reveal reveal-scale">
             <h3>Docker Network Segmentation &amp; Attack Lab</h3>
             <p>
               Simulated a segmented Docker network using iptables and an
@@ -735,7 +937,7 @@
             >
           </div>
 
-          <div class="project-box">
+          <div class="project-box reveal reveal-scale">
             <h3>Port Scanner</h3>
             <p>
               Web-based port scanner built to quickly enumerate open ports for
@@ -749,7 +951,7 @@
             >
           </div>
 
-          <div class="project-box">
+          <div class="project-box reveal reveal-scale">
             <h3>Password Cracker</h3>
             <p>
               Java program simulating brute-force password cracking while also
@@ -763,7 +965,7 @@
             >
           </div>
 
-          <div class="project-box">
+          <div class="project-box reveal reveal-scale">
             <h3>Personal Portfolio Website</h3>
             <p>
               Clean, responsive HTML/CSS portfolio website showcasing
@@ -780,7 +982,7 @@
       </section>
 
       <!-- ACHIEVEMENTS -->
-      <section id="achievements" class="section">
+      <section id="achievements" class="section reveal reveal-scale">
         <h2>Achievements &amp; Activities</h2>
         <ul>
           <li>Google Cybersecurity Professional Certification</li>
@@ -792,11 +994,11 @@
       </section>
 
       <!-- CONTACT -->
-      <section id="contact" class="section">
+      <section id="contact" class="section reveal reveal-up">
         <h2>Contact Me</h2>
 
         <div class="skills">
-          <div class="skill-item">
+          <div class="skill-item reveal reveal-up">
             <a
               href="https://www.linkedin.com/in/zachary-ryan01/"
               target="_blank"
@@ -811,7 +1013,7 @@
             <small>LinkedIn</small>
           </div>
 
-          <div class="skill-item">
+          <div class="skill-item reveal reveal-up">
             <a
               href="https://github.com/Zachary200114"
               target="_blank"
@@ -822,7 +1024,7 @@
             <small>GitHub</small>
           </div>
 
-          <div class="skill-item">
+          <div class="skill-item reveal reveal-up">
             <a href="mailto:Zxrst175@mail.rmu.edu">
               <img src="assets/google.png" class="skill-logo" alt="Email" />
             </a>
@@ -833,6 +1035,11 @@
     </div>
 
     <footer>&copy; 2025 Zachary Ryan. All rights reserved.</footer>
+
+    <!-- Back to top button -->
+    <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+      ↑
+    </button>
 
     <script>
       document.addEventListener("DOMContentLoaded", function () {
@@ -863,14 +1070,8 @@
           apply(toggle.checked ? "dark" : "light");
         });
 
-        // fade-in on scroll
-        const fadeEls = document.querySelectorAll(
-          ".section, .project-box, .experience-card, .education-card"
-        );
-
-        fadeEls.forEach(function (el) {
-          el.classList.add("fade-in");
-        });
+        /* Scroll reveal */
+        const revealEls = document.querySelectorAll(".reveal");
 
         const observer = new IntersectionObserver(
           (entries) => {
@@ -884,7 +1085,76 @@
           { threshold: 0.15 }
         );
 
-        fadeEls.forEach((el) => observer.observe(el));
+        revealEls.forEach((el) => observer.observe(el));
+
+        /* Back-to-top */
+        const backToTop = document.getElementById("back-to-top");
+        window.addEventListener("scroll", () => {
+          if (window.scrollY > 400) {
+            backToTop.classList.add("show");
+          } else {
+            backToTop.classList.remove("show");
+          }
+        });
+
+        backToTop.addEventListener("click", () => {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+
+        /* Terminal mini-shell */
+        const termOutput = document.getElementById("terminal-output");
+        const termInput = document.getElementById("terminal-input");
+
+        function appendLine(text, type) {
+          const div = document.createElement("div");
+          div.className = "terminal-line " + (type || "output");
+          div.textContent = text;
+          termOutput.appendChild(div);
+          termOutput.scrollTop = termOutput.scrollHeight;
+        }
+
+        function handleCommand(raw) {
+          const input = raw.trim();
+          if (!input) return;
+
+          appendLine("$ " + input, "command");
+
+          if (input === "whoami") {
+            appendLine(
+              "Zachary Ryan – Cybersecurity Student & Navy Veteran",
+              "output"
+            );
+          } else if (input === "skills --top") {
+            appendLine(
+              "Python, Linux, Networking, FastAPI, Digital Forensics",
+              "output"
+            );
+          } else if (input.startsWith("scan ")) {
+            const target = input.slice(5).trim() || "target";
+            appendLine("Scanning " + target + "...", "output");
+            appendLine("No critical vulnerabilities found. ✅", "output");
+          } else if (input === "clear") {
+            termOutput.innerHTML = "";
+          } else if (input === "help") {
+            appendLine(
+              "Available commands: whoami, skills --top, scan <target>, clear, help",
+              "output"
+            );
+          } else {
+            appendLine(
+              "Command not found. Type 'help' for available commands.",
+              "output"
+            );
+          }
+        }
+
+        termInput.addEventListener("keydown", function (e) {
+          if (e.key === "Enter") {
+            e.preventDefault();
+            handleCommand(termInput.value);
+            termInput.value = "";
+          }
+        });
       });
     </script>
   </body>
