@@ -553,6 +553,59 @@
         margin-top: 3rem;
       }
 
+      /* BROWSER FINGERPRINT SECTION */
+      .fingerprint-intro {
+        text-align: center;
+        margin-top: 0.5rem;
+        color: var(--muted-text);
+        font-size: 0.98rem;
+      }
+
+      .fingerprint-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.2rem;
+        margin-top: 1.75rem;
+      }
+
+      @media (max-width: 900px) {
+        .fingerprint-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 600px) {
+        .fingerprint-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .fingerprint-item {
+        background: var(--card-bg);
+        border-radius: 8px;
+        border: 1px solid var(--card-border);
+        padding: 0.9rem 1.1rem;
+        box-shadow: var(--shadow-soft);
+      }
+
+      .fingerprint-item h3 {
+        margin: 0 0 0.35rem 0;
+        font-size: 1rem;
+        color: var(--accent-color);
+      }
+
+      .fingerprint-value {
+        font-size: 0.95rem;
+        word-break: break-word;
+      }
+
+      .fingerprint-note {
+        margin-top: 1.5rem;
+        text-align: center;
+        font-size: 0.9rem;
+        color: var(--muted-text);
+      }
+
       /* Scroll-reveal animations */
       .reveal {
         opacity: 0;
@@ -619,6 +672,7 @@
       <a href="#about">About</a>
       <a href="#education">Education</a>
       <a href="#skills">Skills</a>
+      <a href="#fingerprint">Browser Info</a>
       <a href="#experience">Experience</a>
       <a href="#projects">Projects</a>
       <a href="#achievements">Achievements</a>
@@ -852,6 +906,48 @@
             <small>TCP/IP</small>
           </div>
         </div>
+      </section>
+
+      <!-- BROWSER FINGERPRINT -->
+      <section id="fingerprint" class="section reveal reveal-scale">
+        <h2>What Your Browser Reveals</h2>
+        <p class="fingerprint-intro">
+          When you visit a website, your browser automatically shares metadata
+          that can be used to identify your device and environment.
+        </p>
+
+        <div class="fingerprint-grid">
+          <div class="fingerprint-item">
+            <h3>Browser</h3>
+            <p id="fp-browser" class="fingerprint-value">Detecting…</p>
+          </div>
+          <div class="fingerprint-item">
+            <h3>User Agent</h3>
+            <p id="fp-ua" class="fingerprint-value">Detecting…</p>
+          </div>
+          <div class="fingerprint-item">
+            <h3>Screen Resolution</h3>
+            <p id="fp-screen" class="fingerprint-value">Detecting…</p>
+          </div>
+          <div class="fingerprint-item">
+            <h3>Time Zone</h3>
+            <p id="fp-timezone" class="fingerprint-value">Detecting…</p>
+          </div>
+          <div class="fingerprint-item">
+            <h3>Device Type</h3>
+            <p id="fp-device" class="fingerprint-value">Detecting…</p>
+          </div>
+          <div class="fingerprint-item">
+            <h3>Public IP (Masked)</h3>
+            <p id="fp-ip" class="fingerprint-value">Detecting…</p>
+          </div>
+        </div>
+
+        <p class="fingerprint-note">
+          This demo runs entirely in your browser. In a real SOC or web
+          application, your true public IP is visible at the server or network
+          edge and can be logged, geolocated, or correlated with other activity.
+        </p>
       </section>
 
       <!-- EXPERIENCE -->
@@ -1155,6 +1251,63 @@
             termInput.value = "";
           }
         });
+
+        /* Browser fingerprint demo */
+        const fpBrowser = document.getElementById("fp-browser");
+        const fpUA = document.getElementById("fp-ua");
+        const fpScreen = document.getElementById("fp-screen");
+        const fpTZ = document.getElementById("fp-timezone");
+        const fpDevice = document.getElementById("fp-device");
+        const fpIP = document.getElementById("fp-ip");
+
+        if (fpBrowser) {
+          const ua = navigator.userAgent || "";
+          let browserName = "Unknown";
+
+          if (ua.indexOf("Firefox") !== -1) {
+            browserName = "Mozilla Firefox";
+          } else if (ua.indexOf("Edg") !== -1) {
+            browserName = "Microsoft Edge";
+          } else if (
+            ua.indexOf("Chrome") !== -1 &&
+            ua.indexOf("Chromium") === -1
+          ) {
+            browserName = "Google Chrome";
+          } else if (
+            ua.indexOf("Safari") !== -1 &&
+            ua.indexOf("Chrome") === -1
+          ) {
+            browserName = "Apple Safari";
+          }
+
+          fpBrowser.textContent = browserName;
+          fpUA.textContent = ua || "N/A";
+
+          const sw = window.screen.width;
+          const sh = window.screen.height;
+          fpScreen.textContent = sw && sh ? sw + " x " + sh : "N/A";
+
+          try {
+            const tz =
+              Intl.DateTimeFormat().resolvedOptions().timeZone || "Unknown";
+            fpTZ.textContent = tz;
+          } catch (e) {
+            fpTZ.textContent = "Unknown";
+          }
+
+          let deviceType = "Desktop";
+          if (/Mobi|Android/i.test(ua)) {
+            deviceType = "Mobile";
+          } else if (/Tablet|iPad/i.test(ua)) {
+            deviceType = "Tablet";
+          }
+          fpDevice.textContent = deviceType;
+
+          // Cannot get real public IP without a backend or third-party API.
+          // Explain that clearly and show an example of how it might look when visible to a server.
+          fpIP.textContent =
+            "Example: 203.0.113.xxx (real public IP is visible to servers, not directly to this client-side demo)";
+        }
       });
     </script>
   </body>
