@@ -35,8 +35,9 @@
       content="https://zachary200114.github.io/assets/final-profile-picture.png"
     />
 
+    <!-- Fonts -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;700&family=Share+Tech+Mono&display=swap"
       rel="stylesheet"
     />
 
@@ -244,86 +245,83 @@
         text-align: justify;
       }
 
-      /* TERMINAL COMPONENT */
+      /* ===== FALLOUT-STYLE TERMINAL ===== */
       .terminal-card {
         margin: 2rem auto 0 auto;
         max-width: 650px;
-        border-radius: 10px;
-        background-color: #020617;
-        color: #e5e7eb;
-        box-shadow: 0 18px 40px rgba(15, 23, 42, 0.55);
-        border: 1px solid #111827;
-        font-family: "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono",
-          "Courier New", monospace;
+        border-radius: 8px;
+        background-color: #020b02;
+        background-image: repeating-linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0.4) 0px,
+          rgba(0, 0, 0, 0.4) 1px,
+          transparent 1px,
+          transparent 3px
+        );
+        color: #7cfc00;
+        box-shadow: 0 0 18px rgba(0, 255, 128, 0.25);
+        border: 2px solid #1eff6b;
+        font-family: "Share Tech Mono", monospace;
         overflow: hidden;
+        letter-spacing: 0.03em;
       }
 
       body.dark .terminal-card {
-        border-color: #1f2937;
+        box-shadow: 0 0 26px rgba(0, 255, 128, 0.45);
       }
 
       .terminal-header {
-        display: flex;
-        align-items: center;
-        gap: 0.4rem;
-        padding: 0.35rem 0.8rem;
-        background: #020617;
-        border-bottom: 1px solid #111827;
+        padding: 0.6rem 0.9rem 0.3rem 0.9rem;
+        border-bottom: 1px solid #046204;
+        background: transparent;
+        color: #7cfc00;
+        text-shadow: 0 0 4px rgba(0, 255, 128, 0.7);
       }
 
       .term-dot {
-        width: 9px;
-        height: 9px;
-        border-radius: 999px;
-      }
-
-      .term-dot.red {
-        background-color: #f97373;
-      }
-      .term-dot.yellow {
-        background-color: #facc15;
-      }
-      .term-dot.green {
-        background-color: #4ade80;
+        display: none; /* no mac-style dots in Fallout UI */
       }
 
       .terminal-title {
-        margin-left: 0.5rem;
-        font-size: 0.7rem;
-        color: #9ca3af;
+        font-size: 0.85rem;
+        text-transform: uppercase;
       }
 
       .terminal-body {
-        padding: 0.75rem 0.9rem 0.4rem 0.9rem;
-        max-height: 220px;
+        padding: 0.6rem 0.9rem 0.3rem 0.9rem;
+        max-height: 230px;
         overflow-y: auto;
         font-size: 0.9rem;
+        text-shadow: 0 0 4px rgba(0, 255, 128, 0.7);
       }
 
       .terminal-line {
         white-space: pre-wrap;
-        margin-bottom: 0.15rem;
+        margin-bottom: 0.2rem;
       }
 
       .terminal-line.command {
-        color: #a5b4fc;
+        color: #7cfc00;
+        font-weight: 600;
       }
 
       .terminal-line.output {
-        color: #e5e7eb;
+        color: #7cfc00;
       }
 
       .terminal-input-row {
         display: flex;
         align-items: center;
-        padding: 0.4rem 0.9rem 0.7rem 0.9rem;
-        border-top: 1px solid #111827;
+        padding: 0.45rem 0.9rem 0.7rem 0.9rem;
+        border-top: 1px solid #046204;
         font-size: 0.9rem;
+        background: rgba(0, 0, 0, 0.45);
       }
 
       .terminal-prompt {
-        color: #22c55e;
+        color: #7cfc00;
         margin-right: 0.35rem;
+        text-shadow: 0 0 4px rgba(0, 255, 128, 0.7);
       }
 
       #terminal-input {
@@ -331,12 +329,13 @@
         background: transparent;
         border: none;
         outline: none;
-        color: #e5e7eb;
+        color: #7cfc00;
         font: inherit;
+        text-shadow: 0 0 4px rgba(0, 255, 128, 0.7);
       }
 
       #terminal-input::placeholder {
-        color: #4b5563;
+        color: #046b04;
       }
 
       /* BUTTONS */
@@ -659,41 +658,31 @@
           and threat detection.
         </p>
 
-        <!-- Faux Terminal -->
+        <!-- Fallout-style Terminal -->
         <div class="terminal-card reveal reveal-scale">
           <div class="terminal-header">
-            <span class="term-dot red"></span>
-            <span class="term-dot yellow"></span>
-            <span class="term-dot green"></span>
-            <span class="terminal-title">zach@portfolio: ~/cyber</span>
+            <span class="terminal-title">
+              WELCOME TO ROBCO INDUSTRIES (TM) TERMLINK<br />
+              CLEARANCE: VAULT-TEC SECURITY
+            </span>
           </div>
           <div class="terminal-body" id="terminal-output">
-            <div class="terminal-line command">$ whoami</div>
+            <div class="terminal-line output">[Profile]</div>
+            <div class="terminal-line output">[Skills]</div>
+            <div class="terminal-line output">[Projects]</div>
+            <div class="terminal-line output"></div>
             <div class="terminal-line output">
-              Zachary Ryan – Cybersecurity Student &amp; Navy Veteran
-            </div>
-            <div class="terminal-line command">$ skills --top</div>
-            <div class="terminal-line output">
-              Python, Linux, Networking, FastAPI, Digital Forensics
-            </div>
-            <div class="terminal-line command">$ scan portfolio.com</div>
-            <div class="terminal-line output">
-              No critical vulnerabilities found. ✅
-            </div>
-            <div class="terminal-line command">$ help</div>
-            <div class="terminal-line output">
-              Available commands: whoami, skills --top, scan &lt;target&gt;,
-              clear, help
+              Type "help" to view available commands.
             </div>
           </div>
           <div class="terminal-input-row">
-            <span class="terminal-prompt">$</span>
+            <span class="terminal-prompt">&gt;</span>
             <input
               id="terminal-input"
               type="text"
               autocomplete="off"
               spellcheck="false"
-              placeholder="type a command (try: whoami, skills --top, scan portfolio.com)"
+              placeholder="try: whoami, skills --top, scan portfolio.com"
             />
           </div>
         </div>
@@ -1117,7 +1106,7 @@
           const input = raw.trim();
           if (!input) return;
 
-          appendLine("$ " + input, "command");
+          appendLine("> " + input, "command");
 
           if (input === "whoami") {
             appendLine(
