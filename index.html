@@ -10,6 +10,36 @@
     />
 
     <style>
+      :root {
+        --bg-color: #ffffff;
+        --text-color: #333333;
+        --accent-color: #31675f;
+        --accent-text-on: #ffffff;
+        --header-bg: #f8f1e8;
+        --section-bg: #fdfdfd;
+        --card-bg: #ffffff;
+        --card-border: #eaeaea;
+        --nav-bg: #31675f;
+        --footer-bg: #f8f1e8;
+        --muted-text: #555555;
+        --shadow-soft: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      body.dark {
+        --bg-color: #020617;
+        --text-color: #e5e7eb;
+        --accent-color: #22c55e;
+        --accent-text-on: #020617;
+        --header-bg: #020617;
+        --section-bg: #020617;
+        --card-bg: #020617;
+        --card-border: #1f2937;
+        --nav-bg: #0f172a;
+        --footer-bg: #020617;
+        --muted-text: #9ca3af;
+        --shadow-soft: 0 0 18px rgba(0, 0, 0, 0.6);
+      }
+
       html {
         scroll-behavior: smooth;
       }
@@ -17,42 +47,137 @@
         font-family: "Roboto", sans-serif;
         margin: 0;
         padding: 0;
-        background-color: #ffffff;
-        color: #333333;
+        background-color: var(--bg-color);
+        color: var(--text-color);
         line-height: 1.6;
         font-size: 18px;
+        transition: background-color 0.25s ease, color 0.25s ease;
       }
       h1 {
         font-size: 60px;
-        color: #0b3d0b;
+        color: var(--accent-color);
         font-family: "Playfair Display", serif;
       }
+
+      header,
+      nav,
+      .section,
+      .experience-card,
+      .education-card,
+      .project-box,
+      footer {
+        transition: background-color 0.25s ease, color 0.25s ease,
+          border-color 0.25s ease, box-shadow 0.25s ease;
+      }
+
       header {
-        background-color: #f8f1e8;
+        background-color: var(--header-bg);
         padding: 3rem 0;
         text-align: center;
         margin-top: 3.5rem;
       }
+
       nav {
-        background-color: #31675f;
-        padding: 1rem 0;
+        background-color: var(--nav-bg);
+        padding: 0.75rem 1.5rem;
         position: fixed;
         width: 100%;
         top: 0;
         z-index: 1000;
         display: flex;
         justify-content: center;
+        align-items: center;
         gap: 1.5rem;
+        flex-wrap: wrap;
+        box-sizing: border-box;
       }
       nav a {
-        color: white;
+        color: #ffffff;
         text-decoration: none;
-        font-size: 1.3rem;
-        padding: 0 1rem;
+        font-size: 1.1rem;
+        padding: 0.25rem 0.75rem;
+        border-radius: 999px;
+        transition: background-color 0.2s ease, transform 0.2s ease;
+      }
+      nav a:hover {
+        background-color: rgba(255, 255, 255, 0.12);
+        transform: translateY(-1px);
+      }
+
+      /* Toggle switch wrapper */
+      .toggle-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 0.45rem;
+        margin-left: 0.75rem;
+        color: #ffffff;
+        font-size: 0.95rem;
+        white-space: nowrap;
+      }
+
+      .toggle-text {
+        opacity: 0.9;
+      }
+
+      /* iOS-style toggle switch */
+      .toggle-switch {
+        position: relative;
+        display: inline-block;
+        width: 46px;
+        height: 26px;
+      }
+
+      .toggle-switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+        position: absolute;
+      }
+
+      .toggle-track {
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 100%;
+        background-color: #e5e7eb;
+        border-radius: 999px;
+        box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+        transition: background-color 0.22s ease, box-shadow 0.22s ease;
+      }
+
+      .toggle-thumb {
+        position: absolute;
+        top: 3px;
+        left: 3px;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background-color: #ffffff;
+        box-shadow: 0 2px 4px rgba(15, 23, 42, 0.35);
+        transition: transform 0.22s ease, box-shadow 0.22s ease;
+      }
+
+      .toggle-switch input:checked + .toggle-track {
+        background-color: #22c55e;
+        box-shadow: 0 0 0 1px rgba(22, 163, 74, 0.6);
+      }
+
+      .toggle-switch input:checked + .toggle-track .toggle-thumb {
+        transform: translateX(20px);
+        box-shadow: 0 3px 8px rgba(22, 163, 74, 0.6);
+      }
+
+      body.dark .toggle-track {
+        background-color: #4b5563;
+        box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.7);
+      }
+
+      body.dark .toggle-switch input:checked + .toggle-track {
+        background-color: #22c55e;
       }
 
       .profile-bio {
-        color: #0b3d0b;
+        color: var(--accent-color);
         font-size: 22px;
         font-family: "Playfair Display", serif;
       }
@@ -67,13 +192,14 @@
       .section {
         margin: 3rem 0;
         padding: 2rem;
-        background-color: #fdfdfd;
-        border: 1px solid #eaeaea;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        background-color: var(--section-bg);
+        border: 1px solid var(--card-border);
+        box-shadow: var(--shadow-soft);
+        border-radius: 6px;
       }
 
       .section h2 {
-        color: #0b3d0b;
+        color: var(--accent-color);
         font-size: 38px;
         text-align: center;
       }
@@ -93,56 +219,68 @@
       .button {
         display: inline-block;
         padding: 0.6rem 1.2rem;
-        color: white;
-        background-color: #31675f;
+        color: var(--accent-text-on);
+        background-color: var(--accent-color);
         text-decoration: none;
         border-radius: 5px;
         text-align: center;
-        transition: transform 0.3s ease;
+        transition: transform 0.3s ease, box-shadow 0.3s ease,
+          background-color 0.3s ease;
       }
       .button:hover {
-        transform: scale(1.1);
+        transform: translateY(-2px) scale(1.04);
+        box-shadow: 0 10px 22px rgba(0, 0, 0, 0.22);
       }
 
-      /* PROJECTS */
+      /* PROJECTS (CONDENSED) */
       .projects {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         align-items: stretch;
-        gap: 1.5rem;
+        gap: 1rem;
       }
 
       .project-box {
-        flex: 1 1 calc(33.33% - 1.5rem);
-        max-width: calc(33.33% - 1.5rem);
-        min-height: 330px;
-        padding: 1.5rem;
-        background-color: #fff;
-        border: 1px solid #ddd;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        flex: 1 1 calc(33.33% - 1rem);
+        max-width: calc(33.33% - 1rem);
+        min-height: 230px;
+        padding: 1rem;
+        background-color: var(--card-bg);
+        border: 1px solid var(--card-border);
+        box-shadow: var(--shadow-soft);
         border-radius: 6px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        text-align: center;
+        text-align: left;
+        font-size: 0.95rem;
+      }
+
+      .project-box h3 {
+        margin-top: 0;
+        margin-bottom: 0.4rem;
+        font-size: 1.1rem;
+        color: var(--accent-color);
       }
 
       .project-box p {
-        margin-top: 0.75rem;
-        margin-bottom: 1rem;
+        margin-top: 0.2rem;
+        margin-bottom: 0.8rem;
       }
 
       .project-box .button {
         margin-top: auto;
+        align-self: flex-start;
       }
 
       @media (max-width: 1024px) {
         .project-box {
-          flex: 1 1 calc(45% - 1.5rem);
-          max-width: calc(45% - 1.5rem);
+          flex: 1 1 calc(50% - 1rem);
+          max-width: calc(50% - 1rem);
         }
       }
+
       @media (max-width: 768px) {
         .project-box {
           flex: 1 1 100%;
@@ -164,17 +302,19 @@
       .skill-logo {
         width: 52px;
         height: 52px;
-        transition: transform 0.3s ease;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border-radius: 999px;
       }
       .skill-logo:hover {
-        transform: scale(1.4);
+        transform: scale(1.15) translateY(-2px);
+        box-shadow: 0 10px 18px rgba(0, 0, 0, 0.25);
       }
 
       .skill-item small {
         display: block;
         margin-top: 0.5rem;
         font-size: 1rem;
-        color: #333;
+        color: var(--text-color);
       }
 
       /* EDUCATION */
@@ -184,9 +324,13 @@
         margin: 1.5rem auto 0 auto;
         padding: 1.5rem 2rem;
         border-radius: 10px;
-        border: 1px solid #d6e2db;
-        background: radial-gradient(circle at top left, #ffffff, #f8f1e8);
-        box-shadow: 0 0 18px rgba(0, 0, 0, 0.08);
+        border: 1px solid var(--card-border);
+        background: radial-gradient(
+          circle at top left,
+          var(--card-bg),
+          var(--section-bg)
+        );
+        box-shadow: var(--shadow-soft);
         overflow: hidden;
       }
 
@@ -199,28 +343,29 @@
         height: 140%;
         background: linear-gradient(
           120deg,
-          rgba(255, 255, 255, 0.55),
+          rgba(255, 255, 255, 0.35),
           rgba(255, 255, 255, 0)
         );
         transform: rotate(18deg);
+        pointer-events: none;
       }
 
       .education-header h3 {
         margin: 0;
         font-size: 1.35rem;
-        color: #222222;
+        color: var(--text-color);
       }
 
       .education-degree {
         margin: 0.25rem 0;
         font-weight: 500;
-        color: #31675f;
+        color: var(--accent-color);
       }
 
       .education-meta {
         margin: 0;
         font-style: italic;
-        color: #777777;
+        color: var(--muted-text);
         font-size: 0.9rem;
       }
 
@@ -235,7 +380,7 @@
       .experience-intro {
         text-align: center;
         margin-top: 0.5rem;
-        color: #555555;
+        color: var(--muted-text);
         font-size: 0.98rem;
       }
 
@@ -250,31 +395,31 @@
       }
 
       .experience-card {
-        background-color: #ffffff;
-        border: 1px solid #dddddd;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+        background-color: var(--card-bg);
+        border: 1px solid var(--card-border);
+        box-shadow: var(--shadow-soft);
         border-radius: 6px;
         padding: 1.5rem 2rem;
-        border-left: 4px solid #31675f;
+        border-left: 4px solid var(--accent-color);
       }
 
       .experience-header h3 {
         margin: 0;
         font-size: 1.25rem;
-        color: #222222;
+        color: var(--text-color);
       }
 
       .experience-role {
         margin: 0.25rem 0;
         font-weight: 500;
-        color: #31675f;
+        color: var(--accent-color);
         font-size: 1rem;
       }
 
       .experience-meta {
         margin: 0;
         font-style: italic;
-        color: #777777;
+        color: var(--muted-text);
         font-size: 0.9rem;
       }
 
@@ -287,9 +432,30 @@
       footer {
         text-align: center;
         padding: 2rem 0;
-        background-color: #f8f1e8;
-        color: #555555;
+        background-color: var(--footer-bg);
+        color: var(--muted-text);
         margin-top: 3rem;
+      }
+
+      /* Fade-in animation */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+
+      .fade-in.visible {
+        animation: fadeInUp 0.7s ease-out forwards;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(16px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
     </style>
   </head>
@@ -304,6 +470,20 @@
       <a href="#achievements">Achievements</a>
       <a href="#contact">Contact</a>
       <a href="assets/Zachary-Ryan-Resume.pdf" target="_blank">Resume</a>
+
+      <div class="toggle-wrapper">
+        <span class="toggle-text">Dark Mode</span>
+        <label class="toggle-switch" for="theme-toggle">
+          <input
+            type="checkbox"
+            id="theme-toggle"
+            aria-label="Toggle dark mode"
+          />
+          <span class="toggle-track">
+            <span class="toggle-thumb"></span>
+          </span>
+        </label>
+      </div>
     </nav>
 
     <header>
@@ -320,19 +500,17 @@
         <h2>About Me</h2>
 
         <p class="about-me-para">
-          I’m a U.S. Navy veteran with a background in operating and maintaining
-          primary and secondary nuclear propulsion systems. Working in
-          high-stakes environments taught me to stay calm under pressure, lead
-          teams effectively, and troubleshoot complex problems with precision.
+          I’m a U.S. Navy veteran with experience working on nuclear propulsion
+          systems, where I developed strong attention to detail, problem-solving
+          ability, and the ability to stay calm in high-pressure environments.
         </p>
 
         <p class="about-me-para">
-          I’m now transitioning into cybersecurity and pursuing a B.S. in
-          Cybersecurity at Robert Morris University. I’m focused on applying my
-          operational experience to digital security, with hands-on work in
-          operating systems, firewalls, and network security tools. My goal is
-          to help design, secure, and maintain systems that protect today’s
-          critical digital infrastructure.
+          I am now pursuing a B.S. in Cybersecurity at Robert Morris University,
+          building hands-on experience in operating systems, networking, digital
+          forensics, and threat detection. My goal is to secure and defend
+          critical infrastructure by combining military discipline with
+          cybersecurity engineering.
         </p>
       </section>
 
@@ -351,17 +529,11 @@
 
           <ul class="education-highlights">
             <li>
-              Focused coursework in cybersecurity risk management, digital
-              forensics, and operating system security.
+              Coursework in risk management, forensics, operating systems, and
+              network security.
             </li>
-
-            <li>
-              Consistent Dean’s List recognition for academic performance.
-            </li>
-
-            <li>
-              Active involvement in cybersecurity club and CTF activities.
-            </li>
+            <li>Dean’s List recognition for academic excellence.</li>
+            <li>Active member of cybersecurity club and CTF team.</li>
           </ul>
         </div>
       </section>
@@ -414,6 +586,26 @@
               alt="Linux"
             />
             <small>Linux</small>
+          </div>
+
+          <!-- PowerShell -->
+          <div class="skill-item">
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/powershell/powershell-original.svg"
+              class="skill-logo"
+              alt="PowerShell"
+            />
+            <small>PowerShell</small>
+          </div>
+
+          <!-- Git & GitHub -->
+          <div class="skill-item">
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg"
+              class="skill-logo"
+              alt="Git"
+            />
+            <small>Git / GitHub</small>
           </div>
 
           <div class="skill-item">
@@ -491,8 +683,8 @@
         <h2>Experience</h2>
 
         <p class="experience-intro">
-          A snapshot of roles that shaped how I work under pressure, solve
-          problems, and communicate.
+          Where I learned to thrive under pressure, solve complex problems, and
+          communicate clearly.
         </p>
 
         <div class="experience-list">
@@ -506,22 +698,17 @@
                 Norfolk, VA · July 2020 – September 2023
               </p>
             </div>
-
             <ul>
               <li>
-                Operated and maintained primary and secondary nuclear propulsion
-                systems under strict technical and safety procedures.
+                Operated and maintained nuclear propulsion systems under strict
+                safety controls.
               </li>
-
               <li>
-                Monitored system indicators and logs, responding to alarms and
-                abnormal conditions to maintain safe, continuous operations.
+                Monitored indicators and logs to ensure safe system operation.
               </li>
-
               <li>
-                Troubleshot reactor support equipment and enforced layered
-                access controls, building disciplined, detail-oriented habits
-                directly applicable to cybersecurity operations.
+                Troubleshot equipment and enforced access controls with
+                discipline and precision.
               </li>
             </ul>
           </div>
@@ -529,28 +716,22 @@
           <div class="experience-card">
             <div class="experience-header">
               <h3>Sewickley BMW / Audi / Porsche</h3>
-              <p class="experience-role">Car Detailer & Photographer</p>
+              <p class="experience-role">Car Detailer &amp; Photographer</p>
               <p class="experience-meta">
                 Sewickley, PA · September 2023 – August 2024
               </p>
             </div>
-
             <ul>
               <li>
-                Prepared luxury vehicles to showroom standards, ensuring a
-                consistent, high-quality presentation for Audi, BMW, and Porsche
-                brands.
+                Prepared luxury vehicles to showroom standards for Audi, BMW,
+                and Porsche.
               </li>
-
               <li>
-                Coordinated with sales and service teams to prioritize vehicles,
-                meet tight deadlines, and align work with customer expectations.
+                Coordinated with sales and service teams to meet strict
+                deadlines.
               </li>
-
               <li>
-                Used photography to highlight key design and performance
-                features, reinforcing attention to detail and clear visual
-                communication.
+                Captured high-quality photos to showcase design and performance.
               </li>
             </ul>
           </div>
@@ -562,12 +743,63 @@
         <h2>Projects</h2>
 
         <div class="projects">
+          <!-- AI NETWORK ANOMALY LAB -->
+          <div class="project-box">
+            <h3>AI Network Anomaly Lab</h3>
+            <p>
+              Full-stack SOC-style lab simulating network flows, scoring them
+              with Isolation Forest ML models in FastAPI, and visualizing
+              anomalies in a React dashboard with SQLite storage.
+            </p>
+            <a
+              href="https://github.com/Zachary200114/ai-network-anomaly-lab"
+              class="button"
+              target="_blank"
+            >
+              View Project
+            </a>
+          </div>
+
+          <!-- AI PHISHING DETECTOR -->
+          <div class="project-box">
+            <h3>AI-Powered Phishing Email Detector</h3>
+            <p>
+              Full-stack phishing detection system using FastAPI + React that
+              analyzes email content, evaluates headers, rewrites phishing
+              emails safely, and stores all results in SQLite.
+            </p>
+            <a
+              href="https://github.com/Zachary200114/ai-phishing-detector"
+              class="button"
+              target="_blank"
+            >
+              View Project
+            </a>
+          </div>
+
+          <!-- DOCKER NETWORK LAB -->
+          <div class="project-box">
+            <h3>Docker Network Segmentation &amp; Attack Lab</h3>
+            <p>
+              Simulated a segmented Docker network using iptables and an
+              attacker container to demonstrate lateral movement and firewall
+              rule effectiveness.
+            </p>
+            <a
+              href="https://github.com/Zachary200114/container-network-seg-lab"
+              class="button"
+              target="_blank"
+            >
+              View Project
+            </a>
+          </div>
+
           <!-- PORT SCANNER -->
           <div class="project-box">
             <h3>Port Scanner</h3>
             <p>
-              Built a web-based port scanner, ideal for vulnerability
-              assessment.
+              Web-based port scanner built to quickly enumerate open ports for
+              reconnaissance and vulnerability assessments.
             </p>
             <a
               href="https://github.com/Zachary200114/Ports"
@@ -582,8 +814,8 @@
           <div class="project-box">
             <h3>Password Cracker</h3>
             <p>
-              Built to simulate brute-force cracking and generate secure random
-              passwords.
+              Java program simulating brute-force password cracking while also
+              generating secure random passwords.
             </p>
             <a
               href="https://github.com/Zachary200114/PasswordCracker"
@@ -594,28 +826,12 @@
             </a>
           </div>
 
-          <!-- DOCKER NETWORK LAB -->
-          <div class="project-box">
-            <h3>Docker Network Segmentation & Attack Simulation Lab</h3>
-            <p>
-              Simulated a segmented Docker network using iptables and a custom
-              security dashboard.
-            </p>
-            <a
-              href="https://github.com/Zachary200114/container-network-seg-lab"
-              class="button"
-              target="_blank"
-            >
-              View Project
-            </a>
-          </div>
-
-          <!-- PORTFOLIO WEBSITE (UPDATED TEXT) -->
+          <!-- PORTFOLIO WEBSITE -->
           <div class="project-box">
             <h3>Personal Portfolio Website</h3>
             <p>
-              Portfolio website showcasing cybersecurity projects, experience,
-              and ongoing technical development.
+              Clean, responsive HTML/CSS portfolio website showcasing
+              cybersecurity work, labs, and technical experience.
             </p>
             <a
               href="https://github.com/Zachary200114/Zachary200114.github.io"
@@ -630,31 +846,16 @@
 
       <!-- ACHIEVEMENTS -->
       <section id="achievements" class="section achievements">
-        <h2>Achievements & Co-Curricular Activities</h2>
+        <h2>Achievements &amp; Co-Curricular Activities</h2>
 
         <ul>
-          <li>Earned the Google Cybersecurity Specialization Certificate</li>
-
-          <li>
-            Active member of RMU's cybersecurity club, Top Secret Colonials
-          </li>
-
-          <li>Participant in RMU's Capture The Flag (CTF) team</li>
-
-          <li>
-            Awarded the President's List honor for academic excellence at CCBC
-          </li>
-
-          <li>
-            Recognized on RMU's Dean's List for outstanding academic achievement
-          </li>
-
-          <li>Recipient of the RMU Merit Scholarship</li>
-
-          <li>
-            Served as a US Navy Machinist Mate, demonstrating leadership and
-            performance under pressure
-          </li>
+          <li>Google Cybersecurity Professional Certificate</li>
+          <li>Member of RMU Top Secret Colonials cybersecurity club</li>
+          <li>CTF Participant at RMU</li>
+          <li>President’s List (CCBC)</li>
+          <li>RMU Dean’s List</li>
+          <li>Recipient of RMU Merit Scholarship</li>
+          <li>Served as a US Navy Machinist Mate</li>
         </ul>
       </section>
 
@@ -671,8 +872,8 @@
             >
               <img
                 src="assets/linkedin.png"
-                alt="LinkedIn"
                 class="skill-logo"
+                alt="LinkedIn"
               />
             </a>
             <small>LinkedIn</small>
@@ -684,14 +885,14 @@
               target="_blank"
               rel="noopener noreferrer"
             >
-              <img src="assets/github.png" alt="GitHub" class="skill-logo" />
+              <img src="assets/github.png" class="skill-logo" alt="GitHub" />
             </a>
             <small>GitHub</small>
           </div>
 
           <div class="skill-item">
             <a href="mailto:Zxrst175@mail.rmu.edu">
-              <img src="assets/google.png" alt="Email" class="skill-logo" />
+              <img src="assets/google.png" class="skill-logo" alt="Email" />
             </a>
             <small>Email</small>
           </div>
@@ -700,5 +901,63 @@
     </div>
 
     <footer>&copy; 2025 Zachary Ryan. All rights reserved.</footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const themeToggle = document.getElementById("theme-toggle");
+        const storedTheme = localStorage.getItem("theme");
+        const prefersDark =
+          window.matchMedia &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+        function setTheme(theme) {
+          if (theme === "dark") {
+            document.body.classList.add("dark");
+            localStorage.setItem("theme", "dark");
+            themeToggle.checked = true;
+          } else {
+            document.body.classList.remove("dark");
+            localStorage.setItem("theme", "light");
+            themeToggle.checked = false;
+          }
+        }
+
+        if (storedTheme) {
+          setTheme(storedTheme);
+        } else if (prefersDark) {
+          setTheme("dark");
+        } else {
+          setTheme("light");
+        }
+
+        themeToggle.addEventListener("change", function () {
+          const makeDark = themeToggle.checked;
+          setTheme(makeDark ? "dark" : "light");
+        });
+
+        // Fade-in animation setup
+        const fadeEls = document.querySelectorAll(
+          ".section, .project-box, .experience-card, .education-card"
+        );
+
+        fadeEls.forEach(function (el) {
+          el.classList.add("fade-in");
+        });
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.15 }
+        );
+
+        fadeEls.forEach((el) => observer.observe(el));
+      });
+    </script>
   </body>
 </html>
