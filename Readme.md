@@ -34,6 +34,9 @@ There is currently **no JavaScript**; all interactivity (like the skill icon hov
   - Port Scanner
   - Password Cracker
   - Personal Portfolio Website (this site)
+  - AI Powered Phishing Email Detection & Safe Rewrite System
+  - Docker-Based Segmented Network Environment
+  - AI Powered Network Anomaly Lab
 - **Education and Experience highlights** that connect my Navy background to cybersecurity.
 - **Contact section** with clickable icons for LinkedIn, GitHub, and email.
 
