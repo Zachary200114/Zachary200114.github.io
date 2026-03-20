@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -84,7 +84,9 @@
         color: var(--text-color);
         line-height: 1.6;
         font-size: 18px;
-        transition: background-color 0.25s ease, color 0.25s ease;
+        transition:
+          background-color 0.25s ease,
+          color 0.25s ease;
       }
 
       h1 {
@@ -100,8 +102,11 @@
       .education-card,
       .project-box,
       footer {
-        transition: background-color 0.25s ease, color 0.25s ease,
-          border-color 0.25s ease, box-shadow 0.25s ease;
+        transition:
+          background-color 0.25s ease,
+          color 0.25s ease,
+          border-color 0.25s ease,
+          box-shadow 0.25s ease;
       }
 
       header {
@@ -132,7 +137,9 @@
         font-size: 1.1rem;
         padding: 0.25rem 0.75rem;
         border-radius: 999px;
-        transition: background-color 0.2s ease, transform 0.2s ease;
+        transition:
+          background-color 0.2s ease,
+          transform 0.2s ease;
       }
 
       nav a:hover {
@@ -348,7 +355,9 @@
         border-radius: 5px;
         text-align: center;
         font-size: 1rem;
-        transition: transform 0.3s ease, box-shadow 0.3s ease,
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease,
           background-color 0.3s ease;
       }
 
@@ -429,7 +438,9 @@
       .skill-logo {
         width: 52px;
         height: 52px;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
       }
 
       .skill-logo:hover {
@@ -573,7 +584,9 @@
       .reveal.visible {
         opacity: 1;
         transform: none;
-        transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        transition:
+          opacity 0.7s ease-out,
+          transform 0.7s ease-out;
       }
 
       /* Back-to-top button */
@@ -596,7 +609,9 @@
         opacity: 0;
         transform: translateY(10px) scale(0.9);
         pointer-events: none;
-        transition: opacity 0.25s ease, transform 0.25s ease,
+        transition:
+          opacity 0.25s ease,
+          transform 0.25s ease,
           background-color 0.25s ease;
         z-index: 900;
       }
@@ -847,10 +862,6 @@
       <!-- EXPERIENCE -->
       <section id="experience" class="section reveal reveal-up">
         <h2>Experience</h2>
-        <p class="experience-intro">
-          Experience gained in high-pressure, technically demanding
-          environments.
-        </p>
 
         <div class="experience-list">
           <div class="experience-card reveal reveal-left">
@@ -1072,7 +1083,7 @@
               }
             });
           },
-          { threshold: 0.15 }
+          { threshold: 0.15 },
         );
 
         revealEls.forEach((el) => observer.observe(el));
@@ -1112,12 +1123,12 @@
           if (input === "whoami") {
             appendLine(
               "Zachary Ryan – Cybersecurity Student & Navy Veteran",
-              "output"
+              "output",
             );
           } else if (input === "skills --top") {
             appendLine(
               "Python, Linux, Networking, FastAPI, Digital Forensics",
-              "output"
+              "output",
             );
           } else if (input.startsWith("scan ")) {
             const target = input.slice(5).trim() || "target";
@@ -1128,12 +1139,12 @@
           } else if (input === "help") {
             appendLine(
               "Available commands: whoami, skills --top, scan <target>, clear, help",
-              "output"
+              "output",
             );
           } else {
             appendLine(
               "Command not found. Type 'help' for available commands.",
-              "output"
+              "output",
             );
           }
         }
