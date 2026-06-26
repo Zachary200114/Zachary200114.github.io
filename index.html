@@ -554,7 +554,75 @@
         padding-left: 1.2rem;
         line-height: 1.8;
       }
+      /* PUBLICATIONS */
+      .publication-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1.75rem;
+        margin-top: 1.5rem;
+        max-width: 900px;
+        margin-left: auto;
+        margin-right: auto;
+      }
 
+      .publication-card {
+        background-color: var(--card-bg);
+        border: 1px solid var(--card-border);
+        box-shadow: var(--shadow-soft);
+        border-radius: 10px;
+        padding: 2rem 2.25rem;
+        border-left: 4px solid var(--accent-color);
+      }
+
+      .publication-card h3 {
+        margin: 0 0 0.75rem 0;
+        font-size: 1.35rem;
+        color: var(--text-color);
+        line-height: 1.4;
+      }
+
+      .publication-venue {
+        margin: 0.25rem 0;
+        color: var(--accent-color);
+        font-weight: 600;
+        font-size: 1rem;
+      }
+
+      .publication-meta {
+        margin: 0;
+        font-style: italic;
+        color: var(--muted-text);
+        font-size: 0.95rem;
+      }
+
+      .publication-card ul {
+        margin-top: 1rem;
+        padding-left: 1.2rem;
+        line-height: 1.8;
+      }
+
+      .publication-footer {
+        margin-top: 1.5rem;
+        padding-top: 1rem;
+        border-top: 1px solid var(--card-border);
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        font-size: 0.95rem;
+        color: var(--muted-text);
+      }
+
+      .publication-link {
+        color: var(--accent-color);
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .publication-link:hover {
+        text-decoration: underline;
+      }
       footer {
         text-align: center;
         padding: 2rem 0;
@@ -913,7 +981,81 @@
           </div>
         </div>
       </section>
+      <!-- PUBLICATIONS -->
+      <section id="publications" class="section reveal reveal-up">
+        <h2>Publications</h2>
 
+        <div class="publication-list">
+          <div class="publication-card reveal reveal-left">
+            <h3>
+              Auditable Evidence in AI Cybersecurity Compliance: A
+              Cross-Framework Analysis
+            </h3>
+            <p class="publication-venue">Computers &amp; Security</p>
+            <p class="publication-meta">Submitted June 2026</p>
+
+            <ul>
+              <li>
+                Conducted a cross-framework analysis of NIST AI RMF, ISO/IEC
+                42001, the EU AI Act, CSA AICM, AWS, and Google Cloud AI
+                security guidance.
+              </li>
+              <li>
+                Evaluated how governance, regulatory, and vendor frameworks
+                define, require, or imply auditable cybersecurity evidence.
+              </li>
+              <li>
+                Identified gaps between AI cybersecurity requirements and the
+                evidence needed to support assurance, compliance, and
+                independent audits.
+              </li>
+            </ul>
+
+            <div class="publication-footer">
+              <span>Submitted</span>
+              <span>Authors: Zachary Ryan, Sushma Mishra</span>
+            </div>
+          </div>
+
+          <div class="publication-card reveal reveal-left">
+            <h3>
+              Evaluating AI vs Human Phishing Evasion Across Emulated Email
+              Filters and SpamAssassin
+            </h3>
+            <p class="publication-venue">NEDSI Annual Conference Proceedings</p>
+            <p class="publication-meta">Published 2026</p>
+
+            <ul>
+              <li>
+                Developed a Python-based framework to emulate Gmail, Outlook,
+                Yahoo, and SpamAssassin email filtering behavior for phishing
+                evaluation.
+              </li>
+              <li>
+                Built and analyzed a 1,260-email dataset comparing AI-generated
+                and human-written phishing campaigns using statistical testing.
+              </li>
+              <li>
+                Presented findings demonstrating that AI-generated phishing
+                emails bypassed selected emulated email filters more frequently
+                than human-authored emails.
+              </li>
+            </ul>
+
+            <div class="publication-footer">
+              <span>Pages 189–202</span>
+              <span>Authors: Zachary Ryan, Sushma Mishra</span>
+              <a
+                href="https://nedsi.decisionsciences.org/wp-content/uploads/sites/5/2026/06/NEDSI-2026-Proceedings.pdf"
+                class="publication-link"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Read Publication ↗</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
       <!-- PROJECTS -->
       <section id="projects" class="section reveal reveal-left">
         <h2>Projects</h2>
