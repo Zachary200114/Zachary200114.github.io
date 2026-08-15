@@ -4,15 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Zachary Ryan - Portfolio</title>
+    <meta
+      name="description"
+      content="Cybersecurity Student at RMU | U.S. Navy Veteran focused on security operations, AI security, research, governance, risk, and compliance."
+    />
+    <link rel="icon" href="assets/final-profile-picture.png" type="image/png" />
 
     <!-- OpenGraph / Social Preview -->
     <meta
       property="og:title"
-      content="Zachary Ryan – Cybersecurity Student & Navy Veteran"
+      content="Zachary Ryan – Cybersecurity Student at RMU | U.S. Navy Veteran"
     />
     <meta
       property="og:description"
-      content="Cybersecurity student and U.S. Navy veteran focusing on AI-powered detection, digital forensics, and secure systems engineering."
+      content="Cybersecurity Student at RMU | U.S. Navy Veteran focused on security operations, AI security, research, governance, risk, and compliance."
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://zachary200114.github.io/" />
@@ -28,7 +33,7 @@
     />
     <meta
       name="twitter:description"
-      content="Showcasing projects in AI network anomaly detection, phishing email defense, Docker segmentation labs, and more."
+      content="Cybersecurity Student at RMU | U.S. Navy Veteran with projects and experience in security operations, AI security, governance, risk, and compliance."
     />
     <meta
       name="twitter:image"
@@ -37,7 +42,7 @@
 
     <!-- Fonts -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;700&family=Share+Tech+Mono&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&amp;family=Roboto:wght@400;700&amp;family=Share+Tech+Mono&amp;display=swap"
       rel="stylesheet"
     />
 
@@ -74,6 +79,23 @@
 
       html {
         scroll-behavior: smooth;
+      }
+
+      .skip-link {
+        position: fixed;
+        top: 0.75rem;
+        left: 0.75rem;
+        z-index: 1100;
+        padding: 0.6rem 0.9rem;
+        background: var(--accent-color);
+        color: var(--accent-text-on);
+        border-radius: 4px;
+        transform: translateY(-200%);
+        transition: transform 0.2s ease;
+      }
+
+      .skip-link:focus {
+        transform: translateY(0);
       }
 
       body {
@@ -131,6 +153,10 @@
         box-sizing: border-box;
       }
 
+      section {
+        scroll-margin-top: 5rem;
+      }
+
       nav a {
         color: #ffffff;
         text-decoration: none;
@@ -145,6 +171,24 @@
       nav a:hover {
         background-color: rgba(255, 255, 255, 0.12);
         transform: translateY(-1px);
+      }
+
+      .resume-actions {
+        display: flex;
+        flex: 0 0 auto;
+        align-items: center;
+        gap: 0.25rem;
+        white-space: nowrap;
+      }
+
+      :focus-visible {
+        outline: 3px solid var(--accent-color);
+        outline-offset: 3px;
+      }
+
+      nav :focus-visible,
+      .terminal-card :focus-visible {
+        outline-color: #ffffff;
       }
 
       /* Toggle switch wrapper */
@@ -175,6 +219,11 @@
         width: 0;
         height: 0;
         position: absolute;
+      }
+
+      .toggle-switch input:focus-visible + .toggle-track {
+        outline: 3px solid #ffffff;
+        outline-offset: 3px;
       }
 
       .toggle-track {
@@ -230,11 +279,6 @@
         border-radius: 6px;
       }
 
-      /* only skills gets scroll offset so icons never cut off */
-      #skills {
-        scroll-margin-top: 170px;
-      }
-
       .section h2 {
         color: var(--accent-color);
         font-size: 38px;
@@ -255,7 +299,7 @@
       /* ===== FALLOUT-STYLE TERMINAL ===== */
       .terminal-card {
         margin: 2rem auto 0 auto;
-        max-width: 650px;
+        max-width: 760px;
         border-radius: 8px;
         background-color: #020b02;
         background-image: repeating-linear-gradient(
@@ -271,10 +315,18 @@
         font-family: "Share Tech Mono", monospace;
         overflow: hidden;
         letter-spacing: 0.03em;
+        transition:
+          border-color 0.2s ease,
+          box-shadow 0.2s ease;
       }
 
       body.dark .terminal-card {
         box-shadow: 0 0 26px rgba(0, 255, 128, 0.45);
+      }
+
+      .terminal-card:focus-within {
+        border-color: #8aff49;
+        box-shadow: 0 0 28px rgba(0, 255, 128, 0.38);
       }
 
       .terminal-header {
@@ -295,20 +347,40 @@
       }
 
       .terminal-body {
-        padding: 0.6rem 0.9rem 0.3rem 0.9rem;
-        max-height: 230px;
+        height: 320px;
+        max-height: 48vh;
+        min-height: 240px;
+        padding: 0.7rem 0.9rem 0.45rem 0.9rem;
         overflow-y: auto;
         font-size: 0.9rem;
+        line-height: 1.45;
+        scrollbar-color: #1b8f39 #020b02;
+        scrollbar-width: thin;
         text-shadow: 0 0 4px rgba(0, 255, 128, 0.7);
+      }
+
+      .terminal-body::-webkit-scrollbar {
+        width: 9px;
+      }
+
+      .terminal-body::-webkit-scrollbar-track {
+        background: #020b02;
+      }
+
+      .terminal-body::-webkit-scrollbar-thumb {
+        background: #1b8f39;
+        border: 2px solid #020b02;
+        border-radius: 999px;
       }
 
       .terminal-line {
         white-space: pre-wrap;
-        margin-bottom: 0.2rem;
+        overflow-wrap: anywhere;
+        margin-bottom: 0.28rem;
       }
 
       .terminal-line.command {
-        color: #7cfc00;
+        color: #b6ff7d;
         font-weight: 600;
       }
 
@@ -316,9 +388,46 @@
         color: #7cfc00;
       }
 
+      .terminal-line.heading {
+        color: #d4ffb3;
+        font-weight: 700;
+        margin-top: 0.35rem;
+        text-transform: uppercase;
+      }
+
+      .terminal-line.muted {
+        color: #67bd62;
+      }
+
+      .terminal-line.success {
+        color: #adff8a;
+      }
+
+      .terminal-line.warning,
+      .terminal-line.simulation {
+        color: #d9ef7a;
+      }
+
+      .terminal-line.error {
+        color: #ff9d8f;
+        text-shadow: 0 0 4px rgba(255, 100, 80, 0.45);
+      }
+
+      .terminal-link {
+        color: #b6ff7d;
+        font-weight: 700;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 0.2em;
+        overflow-wrap: anywhere;
+      }
+
+      .terminal-link:hover {
+        color: #ffffff;
+      }
+
       .terminal-input-row {
         display: flex;
-        align-items: center;
+        align-items: baseline;
         padding: 0.45rem 0.9rem 0.7rem 0.9rem;
         border-top: 1px solid #046204;
         font-size: 0.9rem;
@@ -328,6 +437,8 @@
       .terminal-prompt {
         color: #7cfc00;
         margin-right: 0.35rem;
+        flex: 0 0 auto;
+        white-space: nowrap;
         text-shadow: 0 0 4px rgba(0, 255, 128, 0.7);
       }
 
@@ -338,11 +449,30 @@
         outline: none;
         color: #7cfc00;
         font: inherit;
+        caret-color: #d4ffb3;
         text-shadow: 0 0 4px rgba(0, 255, 128, 0.7);
       }
 
+      #terminal-input:disabled {
+        cursor: wait;
+        opacity: 0.62;
+      }
+
       #terminal-input::placeholder {
-        color: #046b04;
+        color: #3e8d42;
+        opacity: 1;
+      }
+
+      .terminal-sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
       }
 
       /* BUTTONS */
@@ -375,10 +505,15 @@
         gap: 1rem;
       }
 
+      .projects.has-open-project-details {
+        align-items: flex-start;
+      }
+
       .project-box {
         flex: 1 1 calc(33.33% - 1rem);
         max-width: calc(33.33% - 1rem);
-        min-height: 230px;
+        box-sizing: border-box;
+        min-height: 305px;
         padding: 1rem;
         background-color: var(--card-bg);
         border: 1px solid var(--card-border);
@@ -403,9 +538,124 @@
         margin-bottom: 0.8rem;
       }
 
-      .project-box .button {
+      .project-heading {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 0.6rem;
+      }
+
+      .featured-badge {
+        flex: 0 0 auto;
+        padding: 0.15rem 0.5rem;
+        border: 1px solid var(--accent-color);
+        border-radius: 999px;
+        color: var(--accent-color);
+        font-size: 0.75rem;
+        font-weight: 700;
+        line-height: 1.2;
+      }
+
+      .project-details {
+        margin: 0.15rem 0 0.9rem;
+      }
+
+      .project-details summary {
+        width: fit-content;
+        cursor: pointer;
+        color: var(--accent-color);
+        font-weight: 700;
+      }
+
+      .project-details ul {
+        margin: 0.75rem 0;
+        padding-left: 1.2rem;
+      }
+
+      .project-tech-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.35rem;
+        margin: 0.8rem 0 0;
+      }
+
+      .project-tech-tags span {
+        padding: 0.18rem 0.5rem;
+        border: 1px solid var(--card-border);
+        border-radius: 999px;
+        color: var(--muted-text);
+        font-size: 0.8rem;
+        line-height: 1.35;
+      }
+
+      .project-preview {
+        margin: 1rem 0 0;
+      }
+
+      .project-preview a {
+        display: block;
+        border-radius: 5px;
+        overflow: hidden;
+      }
+
+      .project-preview img {
+        display: block;
+        width: 100%;
+        height: auto;
+        border: 1px solid var(--card-border);
+        border-radius: 5px;
+      }
+
+      .project-preview figcaption {
+        margin-top: 0.4rem;
+        color: var(--muted-text);
+        font-size: 0.85rem;
+      }
+
+      .project-actions {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 0.6rem;
         margin-top: auto;
-        align-self: center; /* centered button in card */
+      }
+
+      .project-actions .button {
+        margin-top: 0;
+      }
+
+      .project-actions .button + .button {
+        background-color: transparent;
+        color: var(--accent-color);
+        border: 1px solid var(--accent-color);
+      }
+
+      .project-actions .button + .button:hover {
+        background-color: var(--accent-color);
+        color: var(--accent-text-on);
+      }
+
+      @media (max-width: 1390px) {
+        nav {
+          justify-content: flex-start;
+          gap: 0.35rem;
+          flex-wrap: nowrap;
+          overflow-x: auto;
+          padding: 0.55rem 0.75rem;
+          white-space: nowrap;
+        }
+
+        nav a {
+          flex: 0 0 auto;
+          font-size: 0.95rem;
+          padding: 0.25rem 0.55rem;
+        }
+
+        .toggle-wrapper {
+          flex: 0 0 auto;
+          margin-left: 0.25rem;
+        }
       }
 
       @media (max-width: 1024px) {
@@ -419,6 +669,41 @@
         .project-box {
           flex: 1 1 100%;
           max-width: 100%;
+          min-height: 0;
+        }
+      }
+
+      @media (max-width: 480px) {
+        h1 {
+          font-size: clamp(2.5rem, 15vw, 3.75rem);
+        }
+
+        .section {
+          padding: 1.25rem;
+        }
+
+        .terminal-input-row {
+          padding-right: 0.65rem;
+          padding-left: 0.65rem;
+          font-size: 0.8rem;
+        }
+
+        #terminal-input {
+          min-width: 0;
+          font-size: 16px;
+        }
+
+        .terminal-body {
+          height: 300px;
+          max-height: 55vh;
+          min-height: 230px;
+          padding-right: 0.65rem;
+          padding-left: 0.65rem;
+          font-size: 0.82rem;
+        }
+
+        .terminal-title {
+          font-size: 0.76rem;
         }
       }
 
@@ -431,6 +716,17 @@
         padding: 2.5rem 0;
       }
 
+      #skills .skills {
+        display: grid;
+        grid-template-columns: repeat(9, minmax(0, 1fr));
+        gap: 1.5rem 1rem;
+        align-items: start;
+      }
+
+      #skills .skill-item {
+        min-width: 0;
+      }
+
       .skill-item {
         text-align: center;
       }
@@ -439,13 +735,49 @@
         width: 52px;
         height: 52px;
         transition:
-          transform 0.3s ease,
-          box-shadow 0.3s ease;
+          transform 0.3s ease;
       }
 
-      .skill-logo:hover {
-        transform: scale(1.15) translateY(-2px);
-        box-shadow: 0 10px 18px rgba(0, 0, 0, 0.25);
+      #skills .skill-item {
+        position: relative;
+      }
+
+      #skills .skill-item::before {
+        content: "";
+        position: absolute;
+        top: -8px;
+        left: 50%;
+        width: 68px;
+        height: 68px;
+        border: 1px solid color-mix(in srgb, var(--accent-color) 52%, transparent);
+        border-radius: 50%;
+        background: color-mix(in srgb, var(--accent-color) 10%, transparent);
+        opacity: 0;
+        pointer-events: none;
+        transform: translateX(-50%) scale(0.9);
+        transition:
+          opacity 0.25s ease,
+          transform 0.25s ease;
+      }
+
+      #skills .skill-item:hover::before,
+      #skills .skill-item:focus-within::before {
+        opacity: 1;
+        transform: translateX(-50%) scale(1);
+      }
+
+      #skills .skill-item:hover .skill-logo,
+      #skills .skill-item:focus-within .skill-logo {
+        transform: translateY(-2px) scale(1.05);
+      }
+
+      #skills .skill-logo {
+        position: relative;
+        z-index: 1;
+      }
+
+      body.dark #skills .skill-logo-nextjs {
+        filter: invert(1);
       }
 
       .skill-item small {
@@ -453,6 +785,24 @@
         margin-top: 0.5rem;
         font-size: 1rem;
         color: var(--text-color);
+      }
+
+      @media (max-width: 1024px) {
+        #skills .skills {
+          grid-template-columns: repeat(6, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 768px) {
+        #skills .skills {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 480px) {
+        #skills .skills {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
       }
 
       /* EDUCATION */
@@ -623,6 +973,43 @@
       .publication-link:hover {
         text-decoration: underline;
       }
+
+      .citation-actions {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.75rem;
+        margin-top: 1.25rem;
+      }
+
+      .citation-details summary {
+        cursor: pointer;
+        color: var(--accent-color);
+        font-weight: 700;
+      }
+
+      .citation-text {
+        margin: 0.7rem 0 0;
+        color: var(--muted-text);
+        font-size: 0.95rem;
+      }
+
+      .citation-copy {
+        cursor: pointer;
+        padding: 0.55rem 0.85rem;
+        border: 1px solid var(--accent-color);
+        border-radius: 5px;
+        background: transparent;
+        color: var(--accent-color);
+        font: inherit;
+        font-size: 0.9rem;
+        font-weight: 700;
+      }
+
+      .citation-copy:hover {
+        background: var(--accent-color);
+        color: var(--accent-text-on);
+      }
       footer {
         text-align: center;
         padding: 2rem 0;
@@ -693,11 +1080,35 @@
       .back-to-top:hover {
         transform: translateY(-2px) scale(1.05);
       }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          scroll-behavior: auto !important;
+          transition-duration: 0.01ms !important;
+        }
+
+        .reveal,
+        .reveal-up,
+        .reveal-left,
+        .reveal-scale {
+          opacity: 1;
+          transform: none;
+        }
+      }
     </style>
   </head>
 
   <body>
-    <nav>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <nav aria-label="Primary navigation">
       <a href="#about">About</a>
       <a href="#education">Education</a>
       <a href="#skills">Skills</a>
@@ -706,12 +1117,28 @@
       <a href="#projects">Projects</a>
       <a href="#achievements">Achievements</a>
       <a href="#contact">Contact</a>
-      <a href="assets/Zachary-Ryan-Resume.pdf" target="_blank">Resume</a>
+      <div class="resume-actions" role="group" aria-label="Résumé actions">
+        <a
+          href="assets/Zachary-Ryan-Resume.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          >View Résumé</a
+        >
+        <a
+          href="assets/Zachary-Ryan-Resume.pdf"
+          download="Zachary-Ryan-Resume.pdf"
+          >Download PDF</a
+        >
+      </div>
 
       <div class="toggle-wrapper">
         <span class="toggle-text">Dark Mode</span>
         <label class="toggle-switch" for="theme-toggle">
-          <input type="checkbox" id="theme-toggle" />
+          <input
+            type="checkbox"
+            id="theme-toggle"
+            aria-label="Toggle dark mode"
+          />
           <span class="toggle-track">
             <span class="toggle-thumb"></span>
           </span>
@@ -721,10 +1148,10 @@
 
     <header>
       <h1>Zachary Ryan</h1>
-      <p class="profile-bio">Cybersecurity Student | Navy Veteran</p>
+      <p class="profile-bio">Cybersecurity Student at RMU | U.S. Navy Veteran</p>
     </header>
 
-    <div class="container">
+    <main id="main-content" class="container" tabindex="-1">
       <!-- ABOUT -->
       <section id="about" class="section reveal reveal-up">
         <div class="profile">
@@ -740,12 +1167,11 @@
           trust has to be supported by evidence.
         </p>
         <p class="about-me-para">
-          My work now focuses on cybersecurity research, AI security,
-          vulnerability management, and compliance. Through my internship at
-          Brixmor Property Group and my research on AI phishing detection and
-          auditable evidence in AI cybersecurity compliance, I have become
-          especially interested in how organizations evaluate security controls,
-          manage risk, and prove that security requirements are being met.
+          My work now focuses on security operations, AI security, research,
+          governance, risk, and compliance. Through my Brixmor Property Group
+          internship and AI security research, I am especially interested in
+          how organizations evaluate controls, manage risk, and document
+          evidence for security requirements.
         </p>
 
         <!-- Fallout-style Terminal -->
@@ -753,27 +1179,48 @@
           <div class="terminal-header">
             <span class="terminal-title">
               WELCOME TO ROBCO INDUSTRIES (TM) TERMLINK<br />
-              CLEARANCE: VAULT-TEC SECURITY
+              PORTFOLIO ACCESS: PUBLIC // SIMULATED INTERFACE
             </span>
           </div>
-          <div class="terminal-body" id="terminal-output">
-            <div class="terminal-line output">[Profile]</div>
-            <div class="terminal-line output">[Skills]</div>
-            <div class="terminal-line output">[Projects]</div>
-            <div class="terminal-line output"></div>
+          <div
+            class="terminal-body"
+            id="terminal-output"
+            role="log"
+            aria-live="polite"
+            aria-relevant="additions text"
+            aria-atomic="false"
+            aria-label="Terminal output"
+            tabindex="0"
+          >
             <div class="terminal-line output">
-              Type "help" to view available commands.
+              Portfolio terminal loading. Type "help" after startup.
             </div>
           </div>
           <div class="terminal-input-row">
-            <span class="terminal-prompt">&gt;</span>
+            <span class="terminal-prompt" id="terminal-prompt" aria-hidden="true"
+              >zachary@portfolio:~$</span
+            >
             <input
               id="terminal-input"
               type="text"
+              aria-label="Terminal command"
+              aria-describedby="terminal-instructions terminal-status"
               autocomplete="off"
+              autocapitalize="none"
+              enterkeyhint="send"
               spellcheck="false"
-              placeholder="try: whoami, skills --top, scan portfolio.com"
+              placeholder="try: help, projects, soc --demo"
             />
+            <span class="terminal-sr-only" id="terminal-instructions">
+              Enter a command, use Up and Down Arrow for history, and Tab for
+              completion.
+            </span>
+            <span
+              class="terminal-sr-only"
+              id="terminal-status"
+              role="status"
+              aria-live="polite"
+            ></span>
           </div>
         </div>
       </section>
@@ -783,14 +1230,13 @@
         <h2>Education</h2>
         <div class="education-card reveal reveal-scale">
           <h3>Robert Morris University</h3>
-          <p class="education-degree">B.S. in Cybersecurity (In Progress)</p>
-          <p class="education-meta">Aug 2024 – Dec 2026 · Moon Township, PA</p>
+          <p class="education-degree">B.S. Cybersecurity</p>
+          <p class="education-meta">
+            Aug 2024 – Dec 2026 · Pittsburgh, PA · GPA 3.91/4.0
+          </p>
           <ul class="education-highlights">
-            <li>
-              Outstanding Cybersecurity Student Award 2026 | Dean’s List: Fall
-              2024 - Present
-            </li>
-            <li>Active in campus Cybersecurity Club &amp; CTF Competitions</li>
+            <li>Outstanding Cybersecurity Student Award</li>
+            <li>Dean’s List Recipient</li>
           </ul>
         </div>
       </section>
@@ -802,133 +1248,200 @@
         <div class="skills">
           <div class="skill-item reveal reveal-up">
             <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg"
-              class="skill-logo"
-              alt="SQL"
-            />
-            <small>SQL</small>
-          </div>
-
-          <div class="skill-item reveal reveal-up">
-            <img
               src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg"
               class="skill-logo"
-              alt="Python"
+              alt=""
+              loading="lazy"
+              decoding="async"
             />
             <small>Python</small>
           </div>
 
           <div class="skill-item reveal reveal-up">
             <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg"
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlite/sqlite-original.svg"
               class="skill-logo"
-              alt="Java"
+              alt=""
+              loading="lazy"
+              decoding="async"
             />
-            <small>Java</small>
+            <small>SQL / SQLite</small>
           </div>
 
           <div class="skill-item reveal reveal-up">
             <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/windows8/windows8-original.svg"
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bash/bash-original.svg"
               class="skill-logo"
-              alt="Windows"
+              alt=""
+              loading="lazy"
+              decoding="async"
             />
-            <small>Windows</small>
-          </div>
-
-          <div class="skill-item reveal reveal-up">
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg"
-              class="skill-logo"
-              alt="Linux"
-            />
-            <small>Linux</small>
+            <small>Bash</small>
           </div>
 
           <div class="skill-item reveal reveal-up">
             <img
               src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/powershell/powershell-original.svg"
               class="skill-logo"
-              alt="PowerShell"
+              alt=""
+              loading="lazy"
+              decoding="async"
             />
             <small>PowerShell</small>
           </div>
 
           <div class="skill-item reveal reveal-up">
             <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg"
+              class="skill-logo"
+              alt=""
+              loading="lazy"
+              decoding="async"
+            />
+            <small>TypeScript</small>
+          </div>
+
+          <div class="skill-item reveal reveal-up">
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg"
+              class="skill-logo"
+              alt=""
+              loading="lazy"
+              decoding="async"
+            />
+            <small>Linux</small>
+          </div>
+
+          <div class="skill-item reveal reveal-up">
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg"
+              class="skill-logo"
+              alt=""
+              loading="lazy"
+              decoding="async"
+            />
+            <small>Docker</small>
+          </div>
+
+          <div class="skill-item reveal reveal-up">
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azure/azure-original.svg"
+              class="skill-logo"
+              alt=""
+              loading="lazy"
+              decoding="async"
+            />
+            <small>Azure</small>
+          </div>
+
+          <div class="skill-item reveal reveal-up">
+            <img
               src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg"
               class="skill-logo"
-              alt="Git"
+              alt=""
+              loading="lazy"
+              decoding="async"
             />
             <small>Git / GitHub</small>
           </div>
 
           <div class="skill-item reveal reveal-up">
             <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/fastapi/fastapi-original.svg"
+              class="skill-logo"
+              alt=""
+              loading="lazy"
+              decoding="async"
+            />
+            <small>FastAPI</small>
+          </div>
+
+          <div class="skill-item reveal reveal-up">
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg"
+              class="skill-logo"
+              alt=""
+              loading="lazy"
+              decoding="async"
+            />
+            <small>React</small>
+          </div>
+
+          <div class="skill-item reveal reveal-up">
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg"
+              class="skill-logo skill-logo-nextjs"
+              alt=""
+              loading="lazy"
+              decoding="async"
+            />
+            <small>Next.js</small>
+          </div>
+
+          <div class="skill-item reveal reveal-up">
+            <img
               src="assets/cyber-security.png"
               class="skill-logo"
-              alt="Cybersecurity"
+              alt=""
+              loading="lazy"
+              decoding="async"
             />
-            <small>Cybersecurity</small>
-          </div>
-
-          <div class="skill-item reveal reveal-up">
-            <img
-              src="assets/forensics.png"
-              class="skill-logo"
-              alt="Digital Forensics"
-            />
-            <small>Digital Forensics</small>
-          </div>
-
-          <div class="skill-item reveal reveal-up">
-            <img
-              src="assets/wireshark.png"
-              class="skill-logo"
-              alt="Wireshark"
-            />
-            <small>Wireshark</small>
-          </div>
-
-          <div class="skill-item reveal reveal-up">
-            <img src="assets/nmap.svg" class="skill-logo" alt="Nmap" />
-            <small>Nmap</small>
-          </div>
-
-          <div class="skill-item reveal reveal-up">
-            <img
-              src="assets/communication.png"
-              class="skill-logo"
-              alt="Communication"
-            />
-            <small>Communication</small>
-          </div>
-
-          <div class="skill-item reveal reveal-up">
-            <img
-              src="assets/team-leadership.png"
-              class="skill-logo"
-              alt="Team Leadership"
-            />
-            <small>Team Leadership</small>
-          </div>
-
-          <div class="skill-item reveal reveal-up">
-            <img
-              src="assets/cyber-crime.png"
-              class="skill-logo"
-              alt="Cyberlaw"
-            />
-            <small>Cyberlaw</small>
+            <small>Security Operations</small>
           </div>
 
           <div class="skill-item reveal reveal-up">
             <img
               src="assets/computer-networking.png"
               class="skill-logo"
-              alt="TCP/IP"
+              alt=""
+              loading="lazy"
+              decoding="async"
             />
             <small>TCP/IP</small>
+          </div>
+
+          <div class="skill-item reveal reveal-up">
+            <img
+              src="assets/wireshark.png"
+              class="skill-logo"
+              alt=""
+              loading="lazy"
+              decoding="async"
+            />
+            <small>Wireshark</small>
+          </div>
+
+          <div class="skill-item reveal reveal-up">
+            <img
+              src="assets/nmap.svg"
+              class="skill-logo"
+              alt=""
+              loading="lazy"
+              decoding="async"
+            />
+            <small>Nmap</small>
+          </div>
+
+          <div class="skill-item reveal reveal-up">
+            <img
+              src="assets/forensics.png"
+              class="skill-logo"
+              alt=""
+              loading="lazy"
+              decoding="async"
+            />
+            <small>Digital Forensics</small>
+          </div>
+
+          <div class="skill-item reveal reveal-up">
+            <img
+              src="assets/cyber-crime.png"
+              class="skill-logo"
+              alt=""
+              loading="lazy"
+              decoding="async"
+            />
+            <small>Governance &amp; Risk</small>
           </div>
         </div>
       </section>
@@ -942,22 +1455,26 @@
             <h3>Brixmor Property Group</h3>
             <p class="experience-role">Cybersecurity Intern</p>
             <p class="experience-meta">
-              May 2026 – July 2026 · Philadelphia, PA
+              May 2026 – Jul 2026 · Philadelphia, PA · Hybrid
             </p>
             <ul>
               <li>
-                Developed a risk-based methodology for Cisco Umbrella and
-                evaluated 100+ domains, recommending blocking or allowing based
-                on security risk.
+                Triaged security tickets across a 500+ user enterprise using
+                Freshservice, CrowdStrike, Rapid7, Cisco Umbrella, and
+                Microsoft Defender.
               </li>
               <li>
-                Performed vulnerability management on 25+ high-risk assets,
-                documenting findings and recommending remediation.
+                Supported Rapid7 vulnerability management on 25+ high-risk
+                assets, documenting CVEs and remediation.
               </li>
               <li>
-                Supported cybersecurity operations across a 500+ user enterprise
-                environment, assisting with investigations, threat analysis, and
-                Third-Party Risk Management (TPRM).
+                Assessed 100+ domains in Cisco Umbrella and made block/allow
+                recommendations.
+              </li>
+              <li>
+                Assisted with TPRM policy development for vendor onboarding,
+                security reviews, control assessment, risk acceptance, and
+                compliance.
               </li>
             </ul>
           </div>
@@ -967,22 +1484,23 @@
             <p class="experience-role">
               Machinist's Mate, Nuclear Reactor Department
             </p>
-            <p class="experience-meta">July 2020 – Sept 2023 · Norfolk, VA</p>
+            <p class="experience-meta">Jul 2020 – Sep 2023 · Norfolk, VA</p>
             <ul>
               <li>
-                Operated and maintained nuclear propulsion systems while
-                ensuring safe and reliable reactor operations in a
-                mission-critical environment.
+                Monitored reactor support systems, logs, gauges, alarms, and
+                indicators.
               </li>
               <li>
-                Monitored system indicators, reviewed operational logs, and
-                identified abnormal conditions to support continuous reactor
-                readiness.
+                Diagnosed mechanical and reactor-system abnormalities using
+                manuals, schematics, and procedures.
               </li>
               <li>
-                Enforced strict procedural compliance, layered access controls,
-                and safety standards while operating under high-pressure
-                conditions.
+                Trained junior sailors on watchstanding, system knowledge, and
+                qualifications.
+              </li>
+              <li>
+                Responded to system alarms and abnormal conditions under strict
+                safety, documentation, and operational requirements.
               </li>
             </ul>
           </div>
@@ -1027,30 +1545,49 @@
           <div class="publication-card reveal reveal-left">
             <h3>
               Evaluating AI vs Human Phishing Evasion Across Emulated Email
-              Filters and SpamAssassin
+              Security Filters and SpamAssassin
             </h3>
             <p class="publication-venue">NEDSI Annual Conference Proceedings</p>
-            <p class="publication-meta">Published 2026</p>
+            <p class="publication-meta">
+              Presented Apr 9, 2026 · NEDSI Annual Conference Proceedings
+            </p>
 
             <ul>
               <li>
                 Developed a Python-based framework to emulate Gmail, Outlook,
-                Yahoo, and SpamAssassin email filtering behavior for phishing
-                evaluation.
+                Yahoo, and SpamAssassin email security filtering behavior for
+                phishing evaluation.
               </li>
               <li>
-                Built and analyzed a 1,260-email dataset comparing AI-generated
-                and human-written phishing campaigns using statistical testing.
+                Built and analyzed a 1,260-email dataset comparing
+                AI-generated and human-written phishing campaigns using
+                statistical testing.
               </li>
               <li>
                 Presented findings demonstrating that AI-generated phishing
-                emails bypassed selected emulated email filters more frequently
-                than human-authored emails.
+                emails bypassed selected emulated email security filters more
+                frequently than human-authored emails.
               </li>
             </ul>
 
+            <div class="citation-actions">
+              <details class="citation-details">
+                <summary>View citation</summary>
+                <p class="citation-text">
+                  Ryan, Z., &amp; Mishra, S. (2026). Evaluating AI vs. human phishing evasion across emulated email security filters and SpamAssassin. In NEDSI Annual Conference Proceedings (pp. 189–202).
+                </p>
+              </details>
+              <button
+                class="citation-copy"
+                type="button"
+                data-citation-key="nedsi"
+              >
+                Copy citation
+              </button>
+            </div>
+
             <div class="publication-footer">
-              <span>PDF pp. Pages 189–202</span>
+              <span>PDF pp. 189–202</span>
               <span>Authors: Zachary Ryan, Sushma Mishra</span>
               <a
                 href="https://nedsi.decisionsciences.org/wp-content/uploads/sites/5/2026/06/NEDSI-2026-Proceedings.pdf"
@@ -1068,92 +1605,161 @@
         <h2>Projects</h2>
 
         <div class="projects">
-          <div class="project-box reveal reveal-scale">
-            <h3>AI Network Anomaly Lab</h3>
+          <article class="project-box reveal reveal-scale">
+            <div class="project-heading">
+              <h3>AI Network Anomaly Lab</h3>
+              <span class="featured-badge">Featured</span>
+            </div>
             <p>
-              Full-stack SOC-style lab simulating network flows, scoring them
-              with Isolation Forest ML models in FastAPI, and visualizing
-              anomalies in a React dashboard with SQLite storage.
+              Simulated traffic and ML anomaly detection with FastAPI, Docker
+              generators, React, and SQLite.
             </p>
-            <a
-              href="https://github.com/Zachary200114/ai-network-anomaly-lab"
-              class="button"
-              target="_blank"
-              >View Project</a
-            >
-          </div>
+            <details class="project-details">
+              <summary>View project details</summary>
+              <ul>
+                <li>Uses Isolation Forest scoring against simulated network flows.</li>
+                <li>Displays anomaly activity through a dashboard visualization.</li>
+              </ul>
+              <div class="project-tech-tags" aria-label="Technologies used">
+                <span>FastAPI</span><span>React</span><span>SQLite</span><span>Docker</span>
+              </div>
+              <figure class="project-preview">
+                <a href="assets/project-screenshots/ai-network-anomaly-lab.webp" target="_blank" rel="noopener noreferrer">
+                  <img src="assets/project-screenshots/ai-network-anomaly-lab.webp" width="1400" height="1115" loading="lazy" decoding="async" alt="AI Network Anomaly Lab dashboard interface preview" />
+                </a>
+                <figcaption>Interface preview of the AI Network Anomaly Lab dashboard.</figcaption>
+              </figure>
+            </details>
+            <div class="project-actions">
+              <a href="https://github.com/Zachary200114/ai-network-anomaly-lab" class="button" target="_blank" rel="noopener noreferrer">View Code</a>
+            </div>
+          </article>
 
-          <div class="project-box reveal reveal-scale">
-            <h3>AI-Powered Phishing Email Detector</h3>
+          <article class="project-box reveal reveal-scale">
+            <div class="project-heading">
+              <h3>AI-Powered Phishing Email Detector</h3>
+              <span class="featured-badge">Featured</span>
+            </div>
             <p>
-              Full-stack phishing detection system using FastAPI + React that
-              analyzes email content, evaluates headers, rewrites phishing
-              emails safely, and stores all results in SQLite.
+              FastAPI, React, and SQLite phishing analysis with heuristic
+              checks, header inspection, safe rewriting, and scan history.
             </p>
-            <a
-              href="https://github.com/Zachary200114/ai-phishing-detector"
-              class="button"
-              target="_blank"
-              >View Project</a
-            >
-          </div>
+            <details class="project-details">
+              <summary>View project details</summary>
+              <ul>
+                <li>Combines heuristic and header analysis for phishing review.</li>
+                <li>Provides a safe rewrite/diff workflow with SQLite history.</li>
+              </ul>
+              <div class="project-tech-tags" aria-label="Technologies used">
+                <span>FastAPI</span><span>React</span><span>SQLite</span>
+              </div>
+              <figure class="project-preview">
+                <a href="assets/project-screenshots/ai-phishing-detector.webp" target="_blank" rel="noopener noreferrer">
+                  <img src="assets/project-screenshots/ai-phishing-detector.webp" width="1400" height="560" loading="lazy" decoding="async" alt="AI-Powered Phishing Email Detector interface preview" />
+                </a>
+                <figcaption>Interface preview of the phishing analysis workflow.</figcaption>
+              </figure>
+            </details>
+            <div class="project-actions">
+              <a href="https://github.com/Zachary200114/ai-phishing-detector" class="button" target="_blank" rel="noopener noreferrer">View Code</a>
+            </div>
+          </article>
 
-          <div class="project-box reveal reveal-scale">
+          <article class="project-box reveal reveal-scale">
             <h3>Docker Network Segmentation &amp; Attack Lab</h3>
             <p>
-              Simulated a segmented Docker network using iptables and an
-              attacker container to demonstrate lateral movement and firewall
-              rule effectiveness.
+              Docker multi-tier isolated networks with host firewalls, attacker
+              testing, and connectivity validation.
             </p>
-            <a
-              href="https://github.com/Zachary200114/container-network-seg-lab"
-              class="button"
-              target="_blank"
-              >View Project</a
-            >
-          </div>
+            <details class="project-details">
+              <summary>View project details</summary>
+              <ul>
+                <li>Separates public, private, and management Docker networks.</li>
+                <li>Uses iptables and policy-as-code connectivity validation.</li>
+              </ul>
+              <div class="project-tech-tags" aria-label="Technologies used">
+                <span>Docker</span><span>iptables</span><span>Flask</span><span>PostgreSQL</span>
+              </div>
+            </details>
+            <div class="project-actions">
+              <a href="https://github.com/Zachary200114/container-network-seg-lab" class="button" target="_blank" rel="noopener noreferrer">View Code</a>
+            </div>
+          </article>
 
-          <div class="project-box reveal reveal-scale">
+          <article class="project-box reveal reveal-scale">
             <h3>Port Scanner</h3>
             <p>
-              Web-based port scanner built to quickly enumerate open ports for
-              reconnaissance and vulnerability assessments.
+              Flask and Python sockets scanner using ThreadPoolExecutor for
+              concurrent scanning, with a web UI and timeouts.
             </p>
-            <a
-              href="https://github.com/Zachary200114/Ports"
-              class="button"
-              target="_blank"
-              >View Project</a
-            >
-          </div>
+            <details class="project-details">
+              <summary>View project details</summary>
+              <ul>
+                <li>Performs concurrent TCP scanning with ThreadPoolExecutor.</li>
+                <li>Includes a Flask web UI and time limiting; use only with authorization.</li>
+              </ul>
+              <div class="project-tech-tags" aria-label="Technologies used">
+                <span>Python</span><span>Flask</span><span>Sockets</span><span>ThreadPoolExecutor</span>
+              </div>
+            </details>
+            <div class="project-actions">
+              <a href="https://github.com/Zachary200114/Ports" class="button" target="_blank" rel="noopener noreferrer">View Code</a>
+            </div>
+          </article>
 
-          <div class="project-box reveal reveal-scale">
+          <article class="project-box reveal reveal-scale">
             <h3>Password Cracker</h3>
             <p>
-              Java program simulating brute-force password cracking while also
-              generating secure random passwords.
+              Java Swing application using SHA-256, recursive brute force, and
+              SecureRandom password generation.
             </p>
-            <a
-              href="https://github.com/Zachary200114/PasswordCracker"
-              class="button"
-              target="_blank"
-              >View Project</a
-            >
-          </div>
+            <details class="project-details">
+              <summary>View project details</summary>
+              <ul>
+                <li>Educational local tool for SHA-256 comparison and recursive brute force.</li>
+                <li>Includes SecureRandom password generation in a Java Swing interface.</li>
+              </ul>
+              <div class="project-tech-tags" aria-label="Technologies used">
+                <span>Java</span><span>Swing</span><span>SHA-256</span><span>SecureRandom</span>
+              </div>
+            </details>
+            <div class="project-actions">
+              <a href="https://github.com/Zachary200114/PasswordCracker" class="button" target="_blank" rel="noopener noreferrer">View Code</a>
+            </div>
+          </article>
 
-          <div class="project-box reveal reveal-scale">
-            <h3>Personal Portfolio Website</h3>
+          <article class="project-box reveal reveal-scale">
+            <div class="project-heading">
+              <h3>ThreatSequence</h3>
+              <span class="featured-badge">Featured</span>
+            </div>
             <p>
-              Clean, responsive HTML/CSS portfolio website showcasing
-              cybersecurity work, labs, and technical experience.
+              Interactive SOC portfolio prototype using simulated telemetry to
+              build incident timelines, map behavior to MITRE ATT&amp;CK, and
+              support an analyst workflow from detection through resolution;
+              built with Next.js, React, and TypeScript.
             </p>
-            <a
-              href="https://github.com/Zachary200114/Zachary200114.github.io"
-              class="button"
-              target="_blank"
-              >View Project</a
-            >
-          </div>
+            <details class="project-details">
+              <summary>View project details</summary>
+              <ul>
+                <li>Sequences simulated telemetry into a behavioral incident narrative.</li>
+                <li>Maps behavior to MITRE ATT&amp;CK to support an analyst workflow.</li>
+              </ul>
+              <div class="project-tech-tags" aria-label="Technologies used">
+                <span>Next.js</span><span>React</span><span>TypeScript</span><span>Tailwind</span>
+              </div>
+              <figure class="project-preview">
+                <a href="assets/project-screenshots/threatsequence.webp" target="_blank" rel="noopener noreferrer">
+                  <img src="assets/project-screenshots/threatsequence.webp" width="1400" height="732" loading="lazy" decoding="async" alt="ThreatSequence simulated incident sequence interface preview" />
+                </a>
+                <figcaption>Interface preview of ThreatSequence; its data is simulated.</figcaption>
+              </figure>
+            </details>
+            <div class="project-actions">
+              <a href="https://github.com/Zachary200114/ThreatSequence" class="button" target="_blank" rel="noopener noreferrer">View Code</a>
+              <a href="https://threat-sequence.vercel.app" class="button" target="_blank" rel="noopener noreferrer">Live Demo</a>
+            </div>
+          </article>
         </div>
       </section>
 
@@ -1161,7 +1767,7 @@
       <section id="achievements" class="section reveal reveal-scale">
         <h2>Achievements &amp; Activities</h2>
         <ul>
-          <li>Google Cybersecurity Professional Certification</li>
+          <li>Google Cybersecurity Professional Certificate</li>
           <li>Member of RMU Top Secret Colonials</li>
           <li>Participant in RMU CTF competitions</li>
           <li>Dean’s List (RMU) &amp; President’s List (CCBC)</li>
@@ -1208,39 +1814,40 @@
           </div>
         </div>
       </section>
-    </div>
+    </main>
+
+    <div id="citation-status" class="terminal-sr-only" aria-live="polite"></div>
 
     <footer>&copy; 2026 Zachary Ryan. All rights reserved.</footer>
 
     <!-- Back to top button -->
-    <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+    <button
+      id="back-to-top"
+      class="back-to-top"
+      type="button"
+      aria-label="Back to top"
+    >
       ↑
     </button>
 
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         const toggle = document.getElementById("theme-toggle");
-        const stored = localStorage.getItem("theme");
+        const reducedMotion = window.matchMedia(
+          "(prefers-reduced-motion: reduce)",
+        ).matches;
 
         function apply(theme) {
           if (theme === "dark") {
             document.body.classList.add("dark");
             toggle.checked = true;
-            localStorage.setItem("theme", "dark");
           } else {
             document.body.classList.remove("dark");
             toggle.checked = false;
-            localStorage.setItem("theme", "light");
           }
         }
 
-        if (stored) {
-          apply(stored);
-        } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-          apply("dark");
-        } else {
-          apply("light");
-        }
+        apply("light");
 
         toggle.addEventListener("change", function () {
           apply(toggle.checked ? "dark" : "light");
@@ -1249,19 +1856,23 @@
         /* Scroll reveal */
         const revealEls = document.querySelectorAll(".reveal");
 
-        const observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                entry.target.classList.add("visible");
-                observer.unobserve(entry.target);
-              }
-            });
-          },
-          { threshold: 0.15 },
-        );
+        if (reducedMotion) {
+          revealEls.forEach((el) => el.classList.add("visible"));
+        } else {
+          const observer = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add("visible");
+                  observer.unobserve(entry.target);
+                }
+              });
+            },
+            { threshold: 0.15 },
+          );
 
-        revealEls.forEach((el) => observer.observe(el));
+          revealEls.forEach((el) => observer.observe(el));
+        }
 
         /* Back-to-top */
         const backToTop = document.getElementById("back-to-top");
@@ -1274,63 +1885,1680 @@
         });
 
         backToTop.addEventListener("click", () => {
-          window.scrollTo({ top: 0, behavior: "smooth" });
+          window.scrollTo({
+            top: 0,
+            behavior: reducedMotion ? "auto" : "smooth",
+          });
         });
 
-        /* Terminal mini-shell */
+        /* Keep project details native while limiting one expanded panel at a time. */
+        document.querySelectorAll(".project-details").forEach((details) => {
+          details.addEventListener("toggle", function () {
+            const projectCard = this.closest(".project-box");
+            const projectGrid = projectCard && projectCard.parentElement;
+            if (!projectGrid) return;
+            if (this.open) {
+              projectGrid.querySelectorAll(".project-details[open]").forEach((sibling) => {
+                if (sibling !== this) sibling.open = false;
+              });
+            }
+            projectGrid.classList.toggle(
+              "has-open-project-details",
+              Boolean(projectGrid.querySelector(".project-details[open]")),
+            );
+          });
+        });
+
+        /* Citation controls use fixed text only and keep feedback scoped to the active button. */
+        const citationStatus = document.getElementById("citation-status");
+        const citationValues = Object.freeze({
+          nedsi:
+            "Ryan, Z., & Mishra, S. (2026). Evaluating AI vs. human phishing evasion across emulated email security filters and SpamAssassin. In NEDSI Annual Conference Proceedings (pp. 189–202).",
+        });
+        const citationButtonStates = new WeakMap();
+
+        function copyWithFallback(value) {
+          if (typeof document.execCommand !== "function") return false;
+          const textArea = document.createElement("textarea");
+          textArea.value = value;
+          textArea.setAttribute("readonly", "");
+          textArea.style.position = "fixed";
+          textArea.style.opacity = "0";
+          document.body.appendChild(textArea);
+          textArea.select();
+          textArea.setSelectionRange(0, textArea.value.length);
+          let copied = false;
+          try {
+            copied = document.execCommand("copy");
+          } catch (error) {
+            copied = false;
+          }
+          textArea.remove();
+          return copied;
+        }
+
+        async function copyCitation(value) {
+          if (navigator.clipboard && typeof navigator.clipboard.writeText === "function") {
+            try {
+              await navigator.clipboard.writeText(value);
+              return true;
+            } catch (error) {
+              return copyWithFallback(value);
+            }
+          }
+          return copyWithFallback(value);
+        }
+
+        function showCopyFeedback(button, sequence, label, announcement) {
+          const state = citationButtonStates.get(button);
+          if (!state || state.sequence !== sequence) return;
+          window.clearTimeout(state.timer);
+          button.textContent = label;
+          citationStatus.textContent = announcement;
+          state.timer = window.setTimeout(() => {
+            const currentState = citationButtonStates.get(button);
+            if (currentState && currentState.sequence === sequence) {
+              button.textContent = "Copy citation";
+            }
+          }, 1800);
+        }
+
+        document.addEventListener("click", async (event) => {
+          if (!(event.target instanceof Element)) return;
+          const button = event.target.closest(".citation-copy");
+          if (!button) return;
+          const citation = citationValues[button.dataset.citationKey];
+          if (!citation) return;
+          const state = citationButtonStates.get(button) || { sequence: 0, timer: 0 };
+          state.sequence += 1;
+          window.clearTimeout(state.timer);
+          citationButtonStates.set(button, state);
+          const copied = await copyCitation(citation);
+          showCopyFeedback(
+            button,
+            state.sequence,
+            copied ? "Copied" : "Copy failed",
+            copied ? "Citation copied to the clipboard." : "Citation could not be copied.",
+          );
+        });
+
+        /* Portfolio terminal */
         const termOutput = document.getElementById("terminal-output");
         const termInput = document.getElementById("terminal-input");
+        const termPrompt = document.getElementById("terminal-prompt");
+        const termStatus = document.getElementById("terminal-status");
+
+        const terminalLinks = Object.freeze({
+          resume: "assets/Zachary-Ryan-Resume.pdf",
+          github: "https://github.com/Zachary200114",
+          linkedin: "https://www.linkedin.com/in/zachary-ryan01/",
+          email: "mailto:Zxrst175@mail.rmu.edu",
+          nedsi:
+            "https://nedsi.decisionsciences.org/wp-content/uploads/sites/5/2026/06/NEDSI-2026-Proceedings.pdf",
+        });
+
+        const terminalData = Object.freeze({
+          skills: [
+            "Python",
+            "SQL / SQLite",
+            "Bash",
+            "PowerShell",
+            "TypeScript",
+            "Linux",
+            "Docker",
+            "Azure",
+            "Git / GitHub",
+            "FastAPI",
+            "React",
+            "Next.js",
+            "Security Operations",
+            "TCP/IP",
+            "Wireshark",
+            "Nmap",
+            "Digital Forensics",
+            "Governance & Risk",
+          ],
+          projects: [
+            {
+              slug: "ai-network-anomaly-lab",
+              directory: "ai-network-anomaly-lab",
+              name: "AI Network Anomaly Lab",
+              aliases: ["network anomaly lab", "anomaly lab"],
+              featured: true,
+              description:
+                "Simulated network flows with Isolation Forest scoring and dashboard visualization using FastAPI, Docker, React, and SQLite.",
+              stack: ["FastAPI", "Docker", "React", "SQLite"],
+              url: "https://github.com/Zachary200114/ai-network-anomaly-lab",
+            },
+            {
+              slug: "ai-phishing-detector",
+              directory: "ai-phishing-detector",
+              name: "AI-Powered Phishing Email Detector",
+              aliases: ["phishing detector", "ai phishing detector"],
+              featured: true,
+              description:
+                "FastAPI, React, and SQLite phishing analysis with heuristic checks, header inspection, safe rewriting, and scan history.",
+              stack: ["FastAPI", "React", "SQLite"],
+              url: "https://github.com/Zachary200114/ai-phishing-detector",
+            },
+            {
+              slug: "container-network-seg-lab",
+              directory: "container-network-seg-lab",
+              name: "Docker Network Segmentation & Attack Lab",
+              aliases: ["docker network lab", "segmentation lab"],
+              featured: false,
+              description:
+                "Public, private, and management Docker networks with iptables and policy-as-code connectivity validation.",
+              stack: ["Docker", "iptables", "Flask", "PostgreSQL"],
+              url: "https://github.com/Zachary200114/container-network-seg-lab",
+            },
+            {
+              slug: "port-scanner",
+              directory: "Ports",
+              name: "Port Scanner",
+              aliases: ["ports", "scanner"],
+              featured: false,
+              description:
+                "Authorized-use TCP scanner with Flask web UI, Python sockets, ThreadPoolExecutor concurrency, and time limiting.",
+              stack: ["Python", "Flask", "Sockets", "ThreadPoolExecutor"],
+              url: "https://github.com/Zachary200114/Ports",
+            },
+            {
+              slug: "password-cracker",
+              directory: "PasswordCracker",
+              name: "Password Cracker",
+              aliases: ["passwordcracker"],
+              featured: false,
+              description:
+                "Educational local Java Swing tool using SHA-256 comparison, recursive brute force, and SecureRandom generation.",
+              stack: ["Java", "Swing", "SHA-256", "SecureRandom"],
+              url: "https://github.com/Zachary200114/PasswordCracker",
+            },
+            {
+              slug: "threatsequence",
+              directory: "ThreatSequence",
+              name: "ThreatSequence",
+              aliases: ["threat sequence"],
+              featured: true,
+              description:
+                "Interactive SOC portfolio prototype using simulated telemetry to build incident timelines, map behavior to MITRE ATT&CK, and support an analyst workflow from detection through resolution.",
+              stack: ["Next.js", "React", "TypeScript", "Tailwind"],
+              url: "https://github.com/Zachary200114/ThreatSequence",
+            },
+          ],
+          research: [
+            {
+              title:
+                "Auditable Evidence in AI Cybersecurity Compliance: A Cross-Framework Analysis",
+              venue: "Computers & Security",
+              status: "Submitted June 2026",
+              authors: "Zachary Ryan, Sushma Mishra",
+            },
+            {
+              title:
+                "Evaluating AI vs Human Phishing Evasion Across Emulated Email Security Filters and SpamAssassin",
+              venue: "NEDSI Annual Conference Proceedings",
+              status: "Presented Apr 9, 2026 · PDF pp. 189–202",
+              authors: "Zachary Ryan, Sushma Mishra",
+              url: terminalLinks.nedsi,
+            },
+          ],
+          achievements: [
+            "Outstanding Cybersecurity Student Award",
+            "Google Cybersecurity Professional Certificate",
+            "Member of RMU Top Secret Colonials",
+            "Participant in RMU CTF competitions",
+            "Dean’s List (RMU) & President’s List (CCBC)",
+            "RMU Merit Scholarship Recipient",
+          ],
+        });
+
+        const experienceLog = [
+          "Brixmor: Triaged security tickets across a 500+ user enterprise using Freshservice, CrowdStrike, Rapid7, Cisco Umbrella, and Microsoft Defender.",
+          "Brixmor: Supported Rapid7 vulnerability management on 25+ high-risk assets, documenting CVEs and remediation.",
+          "Brixmor: Assessed 100+ domains in Cisco Umbrella and made block/allow recommendations.",
+          "Brixmor: Assisted with TPRM policy development for vendor onboarding, security reviews, control assessment, risk acceptance, and compliance.",
+          "U.S. Navy: Monitored reactor support systems, logs, gauges, alarms, and indicators.",
+          "U.S. Navy: Diagnosed mechanical and reactor-system abnormalities using manuals, schematics, and procedures.",
+          "U.S. Navy: Trained junior sailors on watchstanding, system knowledge, and qualifications.",
+          "U.S. Navy: Responded to system alarms and abnormal conditions under strict safety, documentation, and operational requirements.",
+        ];
+
+        const allowedTerminalLinks = new Set([
+          ...Object.values(terminalLinks),
+          ...terminalData.projects.map((project) => project.url),
+        ]);
+
+        const commands = [];
+        const commandLookup = new Map();
+        const commandHistory = [];
+        const pendingTimers = new Set();
+        let currentDirectory = "root";
+        let historyIndex = 0;
+        let historyDraft = "";
+        let sequenceGeneration = 0;
+        let bootInProgress = false;
+        let lastCompletionNotice = "";
+
+        function normalizeWhitespace(value) {
+          return value.trim().replace(/\s+/g, " ");
+        }
+
+        function normalizeLookup(value) {
+          return value.toLowerCase().replace(/[^a-z0-9]+/g, "");
+        }
+
+        function getPromptText() {
+          const location = currentDirectory === "projects" ? "~/projects" : "~";
+          return "zachary@portfolio:" + location + "$";
+        }
+
+        function updatePrompt() {
+          termPrompt.textContent = getPromptText();
+        }
+
+        function announceTerminal(message) {
+          termStatus.textContent = message;
+        }
+
+        function scrollTerminal() {
+          termOutput.scrollTop = termOutput.scrollHeight;
+        }
 
         function appendLine(text, type) {
           const div = document.createElement("div");
           div.className = "terminal-line " + (type || "output");
           div.textContent = text;
           termOutput.appendChild(div);
-          termOutput.scrollTop = termOutput.scrollHeight;
+          scrollTerminal();
+          return div;
         }
 
-        function handleCommand(raw) {
-          const input = raw.trim();
+        function appendParts(parts, type) {
+          const div = document.createElement("div");
+          div.className = "terminal-line " + (type || "output");
+
+          parts.forEach((part) => {
+            if (typeof part === "string") {
+              div.appendChild(document.createTextNode(part));
+              return;
+            }
+
+            if (!part || !allowedTerminalLinks.has(part.href)) {
+              div.appendChild(document.createTextNode(part?.label || "Link"));
+              return;
+            }
+
+            const anchor = document.createElement("a");
+            anchor.className = "terminal-link";
+            anchor.href = part.href;
+            anchor.textContent = part.label;
+
+            if (!part.href.startsWith("mailto:")) {
+              anchor.target = "_blank";
+              anchor.rel = "noopener noreferrer";
+            }
+
+            div.appendChild(anchor);
+          });
+
+          termOutput.appendChild(div);
+          scrollTerminal();
+          return div;
+        }
+
+        function appendBullets(items, type) {
+          items.forEach((item) => appendLine("• " + item, type || "output"));
+        }
+
+        function openAllowedTerminalLink(href) {
+          if (!allowedTerminalLinks.has(href)) return;
+          const openedWindow = window.open(href, "_blank", "noopener,noreferrer");
+          if (openedWindow) openedWindow.opener = null;
+        }
+
+        function clearOutput() {
+          termOutput.replaceChildren();
+          scrollTerminal();
+        }
+
+        function cancelSequence() {
+          sequenceGeneration += 1;
+          pendingTimers.forEach((timer) => window.clearTimeout(timer));
+          pendingTimers.clear();
+          termOutput.removeAttribute("aria-busy");
+
+          if (bootInProgress) {
+            bootInProgress = false;
+            termInput.disabled = false;
+          }
+        }
+
+        function runSequence(steps, options) {
+          const settings = Object.assign(
+            {
+              delay: 115,
+              boot: false,
+              focusInput: false,
+              completionMessage: "Sequence complete.",
+            },
+            options,
+          );
+
+          cancelSequence();
+          const generation = sequenceGeneration;
+
+          if (settings.boot) {
+            bootInProgress = true;
+            termInput.disabled = true;
+            termOutput.setAttribute("aria-busy", "true");
+            announceTerminal("Portfolio terminal starting.");
+          }
+
+          function finish() {
+            if (generation !== sequenceGeneration) return;
+            pendingTimers.clear();
+            termOutput.removeAttribute("aria-busy");
+
+            if (settings.boot) {
+              bootInProgress = false;
+              termInput.disabled = false;
+              if (settings.focusInput) termInput.focus({ preventScroll: true });
+            }
+
+            announceTerminal(settings.completionMessage);
+          }
+
+          function renderStep(step) {
+            if (typeof step === "function") {
+              step();
+            } else {
+              appendLine(step.text, step.type);
+            }
+          }
+
+          if (reducedMotion || steps.length === 0) {
+            steps.forEach(renderStep);
+            finish();
+            return;
+          }
+
+          steps.forEach((step, index) => {
+            if (index === 0) {
+              renderStep(step);
+              if (steps.length === 1) finish();
+              return;
+            }
+
+            const timer = window.setTimeout(() => {
+              pendingTimers.delete(timer);
+              if (generation !== sequenceGeneration) return;
+              renderStep(step);
+              if (index === steps.length - 1) finish();
+            }, settings.delay * index);
+            pendingTimers.add(timer);
+          });
+        }
+
+        function bootTerminal(focusInput) {
+          clearOutput();
+          runSequence(
+            [
+              {
+                text: "ROBCO PORTFOLIO OS 2.6 // SIMULATED INTERFACE",
+                type: "heading",
+              },
+              { text: "Loading verified profile index... OK", type: "success" },
+              {
+                text: "18 skills · 6 projects · 2 research entries",
+                type: "output",
+              },
+              {
+                text: "Public portfolio access established. This is not a government security clearance.",
+                type: "muted",
+              },
+              {
+                text: "Session ready. Type 'help' for commands; use Tab to complete.",
+                type: "success",
+              },
+            ],
+            {
+              boot: true,
+              focusInput: Boolean(focusInput),
+              delay: 105,
+              completionMessage: "Portfolio terminal ready.",
+            },
+          );
+        }
+
+        function registerCommand(definition) {
+          commands.push(definition);
+          [definition.name, ...(definition.aliases || [])].forEach((name) => {
+            commandLookup.set(name.toLowerCase(), definition);
+          });
+        }
+
+        function showUsage(command, detail) {
+          if (detail) appendLine(detail, "error");
+          appendLine("Usage: " + command.usage, "muted");
+          appendLine("Try 'help " + command.name + "' for details.", "muted");
+        }
+
+        function requireNoArguments(command, args) {
+          if (args.length === 0) return true;
+          showUsage(command, command.name + ": unexpected argument '" + args[0] + "'.");
+          return false;
+        }
+
+        function printBrixmorExperience(numbered) {
+          appendLine(
+            (numbered ? "[1] " : "") +
+              "Brixmor Property Group — Cybersecurity Intern",
+            "heading",
+          );
+          appendLine("May 2026–Jul 2026 · Philadelphia, PA · Hybrid", "muted");
+          appendBullets(experienceLog.slice(0, 4).map((line) => line.slice(9)));
+        }
+
+        function printNavyExperience(numbered) {
+          appendLine(
+            (numbered ? "[2] " : "") +
+              "United States Navy — Machinist's Mate, Nuclear Reactor Department",
+            "heading",
+          );
+          appendLine("Jul 2020–Sep 2023 · Norfolk, VA", "muted");
+          appendBullets(experienceLog.slice(4).map((line) => line.slice(11)));
+        }
+
+        function findProject(query) {
+          const cleaned = normalizeWhitespace(query);
+          const numeric = Number(cleaned);
+          if (Number.isInteger(numeric) && numeric >= 1) {
+            return terminalData.projects[numeric - 1] || null;
+          }
+
+          const key = normalizeLookup(cleaned);
+          return (
+            terminalData.projects.find((project) => {
+              const names = [project.slug, project.name, ...project.aliases];
+              return names.some((name) => normalizeLookup(name) === key);
+            }) || null
+          );
+        }
+
+        function printProject(project) {
+          appendLine(project.name, "heading");
+          appendLine(project.description, "output");
+          appendLine("Stack: " + project.stack.join(" · "), "muted");
+          appendParts([
+            "Repository: ",
+            { label: project.url + " ↗", href: project.url },
+          ]);
+        }
+
+        function listProjects(projectsToShow, label) {
+          appendLine(label, "heading");
+          projectsToShow.forEach((project) => {
+            const number = terminalData.projects.indexOf(project) + 1;
+            appendLine(number + ". " + project.name + "  [" + project.slug + "]");
+          });
+          appendLine("Use 'project <number-or-name>' for details.", "muted");
+        }
+
+        registerCommand({
+          name: "about",
+          aliases: ["bio"],
+          category: "Profile",
+          usage: "about",
+          description: "Show a short professional introduction.",
+          examples: ["about"],
+          handler(args) {
+            if (!requireNoArguments(this, args)) return;
+            appendLine("Zachary Ryan", "heading");
+            appendLine(
+              "U.S. Navy veteran and Robert Morris University cybersecurity student focused on security operations, AI security, research, governance, risk, and compliance.",
+            );
+            appendLine(
+              "His Navy Nuclear Reactor Department background shaped an evidence-driven approach to accountability, documentation, and mission-critical work.",
+              "muted",
+            );
+          },
+        });
+
+        registerCommand({
+          name: "experience",
+          category: "Profile",
+          usage: "experience [--latest]",
+          description:
+            "Show Brixmor and U.S. Navy experience, or only the latest role.",
+          examples: ["experience", "experience --latest"],
+          handler(args) {
+            if (args.length === 0) {
+              printBrixmorExperience(true);
+              printNavyExperience(true);
+              return;
+            }
+            if (args.length === 1 && args[0].toLowerCase() === "--latest") {
+              printBrixmorExperience(false);
+              return;
+            }
+            showUsage(this, "experience: unknown option '" + args.join(" ") + "'.");
+          },
+        });
+
+        registerCommand({
+          name: "skills",
+          category: "Profile",
+          usage: "skills [--security|--development|--top]",
+          description:
+            "Show the complete skill set or a focused security/development view.",
+          examples: [
+            "skills",
+            "skills --security",
+            "skills --development",
+            "skills --top",
+          ],
+          handler(args) {
+            if (args.length === 0) {
+              appendLine("Complete technical skill set (18)", "heading");
+              appendLine(terminalData.skills.join(" · "));
+              return;
+            }
+
+            if (args.length !== 1) {
+              showUsage(this, "skills: expected one option.");
+              return;
+            }
+
+            const option = args[0].toLowerCase();
+            if (option === "--security") {
+              appendLine("Security & operations", "heading");
+              appendLine(
+                [
+                  "Security Operations",
+                  "Wireshark",
+                  "Nmap",
+                  "Azure",
+                  "Governance & Risk",
+                ].join(" · "),
+              );
+              return;
+            }
+            if (option === "--development") {
+              appendLine("Development", "heading");
+              appendLine(
+                ["Python", "TypeScript", "React", "Next.js", "FastAPI", "SQL / SQLite"].join(
+                  " · ",
+                ),
+              );
+              return;
+            }
+            if (option === "--top") {
+              appendLine("Selected strengths", "heading");
+              appendLine(
+                "Security Operations · Python · Linux · Docker · Azure · Governance & Risk",
+              );
+              return;
+            }
+            showUsage(this, "skills: unknown option '" + args[0] + "'.");
+          },
+        });
+
+        registerCommand({
+          name: "projects",
+          category: "Portfolio",
+          usage: "projects [--featured]",
+          description: "List all projects or the three featured projects.",
+          examples: ["projects", "projects --featured"],
+          handler(args) {
+            if (args.length === 0) {
+              listProjects(terminalData.projects, "Available projects");
+              return;
+            }
+            if (args.length === 1 && args[0].toLowerCase() === "--featured") {
+              listProjects(
+                terminalData.projects.filter((project) => project.featured),
+                "Featured projects",
+              );
+              return;
+            }
+            showUsage(this, "projects: unknown option '" + args.join(" ") + "'.");
+          },
+        });
+
+        registerCommand({
+          name: "project",
+          category: "Portfolio",
+          usage: "project <number-or-name>",
+          description: "Show a project's description, stack, and repository link.",
+          examples: ["project threatsequence", "project 1"],
+          handler(args) {
+            if (args.length === 0) {
+              showUsage(this, "project: provide a project number or name.");
+              return;
+            }
+            const query = args.join(" ");
+            const project = findProject(query);
+            if (!project) {
+              showUsage(this, "project: no project matched '" + query + "'.");
+              return;
+            }
+            printProject(project);
+          },
+        });
+
+        registerCommand({
+          name: "research",
+          aliases: ["publications"],
+          category: "Portfolio",
+          usage: "research",
+          description: "List both cybersecurity research publications.",
+          examples: ["research"],
+          handler(args) {
+            if (!requireNoArguments(this, args)) return;
+            appendLine("Research & publications", "heading");
+            terminalData.research.forEach((publication, index) => {
+              appendLine(index + 1 + ". " + publication.title);
+              appendLine(publication.venue + " · " + publication.status, "muted");
+              appendLine("Authors: " + publication.authors, "muted");
+              if (publication.url) {
+                appendParts([
+                  "   ",
+                  { label: "Read publication ↗", href: publication.url },
+                ]);
+              }
+            });
+          },
+        });
+
+        registerCommand({
+          name: "education",
+          category: "Profile",
+          usage: "education",
+          description: "Show degree, GPA, graduation date, and academic recognition.",
+          examples: ["education"],
+          handler(args) {
+            if (!requireNoArguments(this, args)) return;
+            appendLine("Robert Morris University", "heading");
+            appendLine("B.S. Cybersecurity · Aug 2024–Dec 2026 · Pittsburgh, PA");
+            appendLine("GPA: 3.91/4.0", "success");
+            appendLine(
+              "Recognition: Outstanding Cybersecurity Student Award · Dean’s List Recipient",
+              "muted",
+            );
+          },
+        });
+
+        registerCommand({
+          name: "achievements",
+          aliases: ["achievement"],
+          category: "Profile",
+          usage: "achievements",
+          description: "Show certifications, honors, and cybersecurity activities.",
+          examples: ["achievements"],
+          handler(args) {
+            if (!requireNoArguments(this, args)) return;
+            appendLine("Achievements & activities", "heading");
+            appendBullets(terminalData.achievements);
+          },
+        });
+
+        registerCommand({
+          name: "resume",
+          category: "Connect",
+          usage: "resume",
+          description: "Provide the résumé PDF link.",
+          examples: ["resume"],
+          handler(args) {
+            if (!requireNoArguments(this, args)) return;
+            openAllowedTerminalLink(terminalLinks.resume);
+            appendLine(
+              "Opening résumé in a new tab. If it is blocked, use the link below.",
+              "muted",
+            );
+            appendParts([
+              "Résumé: ",
+              { label: "Open Zachary-Ryan-Resume.pdf ↗", href: terminalLinks.resume },
+            ]);
+          },
+        });
+
+        registerCommand({
+          name: "github",
+          category: "Connect",
+          usage: "github",
+          description: "Provide Zachary's GitHub profile link.",
+          examples: ["github"],
+          handler(args) {
+            if (!requireNoArguments(this, args)) return;
+            openAllowedTerminalLink(terminalLinks.github);
+            appendLine(
+              "Opening GitHub in a new tab. If it is blocked, use the link below.",
+              "muted",
+            );
+            appendParts([
+              "GitHub: ",
+              { label: "github.com/Zachary200114 ↗", href: terminalLinks.github },
+            ]);
+          },
+        });
+
+        registerCommand({
+          name: "linkedin",
+          category: "Connect",
+          usage: "linkedin",
+          description: "Provide Zachary's LinkedIn profile link.",
+          examples: ["linkedin"],
+          handler(args) {
+            if (!requireNoArguments(this, args)) return;
+            openAllowedTerminalLink(terminalLinks.linkedin);
+            appendLine(
+              "Opening LinkedIn in a new tab. If it is blocked, use the link below.",
+              "muted",
+            );
+            appendParts([
+              "LinkedIn: ",
+              { label: "linkedin.com/in/zachary-ryan01 ↗", href: terminalLinks.linkedin },
+            ]);
+          },
+        });
+
+        registerCommand({
+          name: "contact",
+          category: "Connect",
+          usage: "contact",
+          description: "Show email and professional profile links.",
+          examples: ["contact"],
+          handler(args) {
+            if (!requireNoArguments(this, args)) return;
+            appendLine("Contact", "heading");
+            appendParts([
+              "Email: ",
+              { label: "Zxrst175@mail.rmu.edu", href: terminalLinks.email },
+            ]);
+            appendParts([
+              "GitHub: ",
+              { label: "github.com/Zachary200114 ↗", href: terminalLinks.github },
+            ]);
+            appendParts([
+              "LinkedIn: ",
+              { label: "linkedin.com/in/zachary-ryan01 ↗", href: terminalLinks.linkedin },
+            ]);
+          },
+        });
+
+        registerCommand({
+          name: "theme",
+          category: "System",
+          usage: "theme <light|dark>",
+          description: "Switch the current visit between light and dark mode.",
+          examples: ["theme light", "theme dark"],
+          handler(args) {
+            if (args.length !== 1) {
+              showUsage(this, "theme: choose 'light' or 'dark'.");
+              return;
+            }
+            const choice = args[0].toLowerCase();
+            if (choice !== "light" && choice !== "dark") {
+              showUsage(this, "theme: unsupported theme '" + args[0] + "'.");
+              return;
+            }
+            apply(choice);
+            appendLine("Theme set to " + choice + " for this visit.", "success");
+          },
+        });
+
+        registerCommand({
+          name: "status",
+          category: "System",
+          usage: "status",
+          description: "Show a compact, current professional status summary.",
+          examples: ["status"],
+          handler(args) {
+            if (!requireNoArguments(this, args)) return;
+            appendLine("Current status", "heading");
+            appendLine("B.S. Cybersecurity candidate at RMU · Graduation: Dec 2026");
+            appendLine("Brixmor cybersecurity internship completed Jul 2026.");
+            appendLine(
+              "Focus: security operations · AI security · research · governance, risk & compliance",
+              "muted",
+            );
+          },
+        });
+
+        registerCommand({
+          name: "history",
+          category: "System",
+          usage: "history",
+          description: "Show commands entered during this browser visit.",
+          examples: ["history"],
+          handler(args) {
+            if (!requireNoArguments(this, args)) return;
+            appendLine("Command history", "heading");
+            commandHistory.forEach((command, index) => {
+              appendLine(String(index + 1).padStart(3, " ") + "  " + command);
+            });
+          },
+        });
+
+        registerCommand({
+          name: "clear",
+          aliases: ["cls"],
+          category: "System",
+          usage: "clear",
+          description: "Clear terminal output without changing directory or history.",
+          examples: ["clear"],
+          handler(args) {
+            if (args.length > 0) {
+              appendLine(getPromptText() + " " + this.name + " " + args.join(" "), "command");
+              showUsage(this, "clear: unexpected argument '" + args[0] + "'.");
+              return;
+            }
+            clearOutput();
+            announceTerminal("Terminal output cleared.");
+          },
+        });
+
+        registerCommand({
+          name: "reboot",
+          category: "System",
+          usage: "reboot",
+          description:
+            "Replay terminal startup and reset the simulated directory; keep theme and history.",
+          examples: ["reboot"],
+          handler(args) {
+            if (args.length > 0) {
+              showUsage(this, "reboot: unexpected argument '" + args[0] + "'.");
+              return;
+            }
+            currentDirectory = "root";
+            updatePrompt();
+            bootTerminal(true);
+          },
+        });
+
+        registerCommand({
+          name: "help",
+          category: "System",
+          usage: "help [command]",
+          description: "List commands or explain one command in detail.",
+          examples: ["help", "help projects"],
+          handler(args) {
+            if (args.length === 0) {
+              const categoryOrder = [
+                "Profile",
+                "Portfolio",
+                "Connect",
+                "Shell",
+                "System",
+                "Simulations",
+              ];
+              categoryOrder.forEach((category) => {
+                const names = commands
+                  .filter((command) => command.category === category)
+                  .map((command) => command.name);
+                appendLine(category + ": " + names.join(" · "), "heading");
+              });
+              appendLine("Use 'help <command>' for usage and examples.", "muted");
+              appendLine("Arrow keys: history · Tab: completion · Ctrl/⌘+L: clear", "muted");
+              return;
+            }
+
+            const topic = args.join(" ").toLowerCase();
+            const command =
+              commandLookup.get(topic) || commandLookup.get(args[0].toLowerCase());
+            if (!command) {
+              showUsage(this, "help: unknown command '" + args.join(" ") + "'.");
+              return;
+            }
+            appendLine(command.name, "heading");
+            appendLine(command.description);
+            appendLine("Usage: " + command.usage, "success");
+            if (command.aliases?.length) {
+              appendLine("Aliases: " + command.aliases.join(", "), "muted");
+            }
+            if (command.examples?.length) {
+              appendLine("Examples: " + command.examples.join(" · "), "muted");
+            }
+          },
+        });
+
+        registerCommand({
+          name: "ls",
+          aliases: ["dir"],
+          category: "Shell",
+          usage: "ls [projects]",
+          description: "List the simulated portfolio directory or its projects.",
+          examples: ["ls", "ls projects"],
+          handler(args) {
+            if (args.length > 1) {
+              showUsage(this, "ls: expected zero or one path.");
+              return;
+            }
+            const path = (args[0] || "").toLowerCase().replace(/\/$/, "");
+            const listProjectDirectory =
+              (args.length === 0 && currentDirectory === "projects") ||
+              path === "projects" ||
+              path === "~/projects" ||
+              path === "/home/zachary/portfolio/projects";
+
+            if (listProjectDirectory) {
+              terminalData.projects.forEach((project) =>
+                appendLine(project.directory + "/"),
+              );
+              return;
+            }
+
+            if (args.length === 0 || path === "~" || path === "/home/zachary/portfolio") {
+              appendLine(
+                "about.txt  contact.txt  experience.log  resume.pdf  skills/  projects/  research/",
+              );
+              return;
+            }
+            showUsage(this, "ls: cannot access '" + args[0] + "': no such directory.");
+          },
+        });
+
+        registerCommand({
+          name: "cat",
+          category: "Shell",
+          usage: "cat <about.txt|contact.txt|experience.log>",
+          description: "Read a simulated portfolio text file.",
+          examples: ["cat about.txt", "cat contact.txt", "cat experience.log"],
+          handler(args) {
+            if (args.length !== 1) {
+              showUsage(this, "cat: provide exactly one file.");
+              return;
+            }
+            const file = args[0].toLowerCase();
+            if (file === "about.txt") {
+              commandLookup.get("about").handler([]);
+              return;
+            }
+            if (file === "contact.txt") {
+              commandLookup.get("contact").handler([]);
+              return;
+            }
+            if (file === "experience.log") {
+              experienceLog.forEach((line) => appendLine(line));
+              return;
+            }
+            if (file === "resume.pdf") {
+              appendLine("cat: resume.pdf is a PDF document.", "warning");
+              appendParts([
+                "Open it instead: ",
+                { label: "Zachary-Ryan-Resume.pdf ↗", href: terminalLinks.resume },
+              ]);
+              return;
+            }
+            showUsage(this, "cat: '" + args[0] + "': no such file.");
+          },
+        });
+
+        registerCommand({
+          name: "cd",
+          category: "Shell",
+          usage: "cd [projects|..|~|/home/zachary/portfolio]",
+          description: "Change the simulated portfolio directory.",
+          examples: ["cd projects", "cd ..", "cd ~"],
+          handler(args) {
+            if (args.length > 1) {
+              showUsage(this, "cd: expected one path.");
+              return;
+            }
+            const path = (args[0] || "~").toLowerCase().replace(/\/$/, "");
+            if (
+              path === "projects" ||
+              path === "~/projects" ||
+              path === "/home/zachary/portfolio/projects"
+            ) {
+              currentDirectory = "projects";
+              updatePrompt();
+              appendLine("Directory: /home/zachary/portfolio/projects", "muted");
+              return;
+            }
+            if (
+              path === "~" ||
+              path === ".." ||
+              path === "/home/zachary/portfolio"
+            ) {
+              currentDirectory = "root";
+              updatePrompt();
+              appendLine("Directory: /home/zachary/portfolio", "muted");
+              return;
+            }
+            showUsage(this, "cd: '" + args[0] + "': no such directory.");
+          },
+        });
+
+        registerCommand({
+          name: "open",
+          category: "Shell",
+          usage: "open <project-name>",
+          description: "Provide a clickable repository link for a portfolio project.",
+          examples: ["open ThreatSequence"],
+          handler(args) {
+            if (args.length === 0) {
+              showUsage(this, "open: provide a project name.");
+              return;
+            }
+            const query = args.join(" ");
+            const project = findProject(query);
+            if (!project) {
+              showUsage(this, "open: no project matched '" + query + "'.");
+              return;
+            }
+            openAllowedTerminalLink(project.url);
+            appendLine(
+              "Opening " + project.name + " in a new tab. If it is blocked, use the link below.",
+              "muted",
+            );
+            appendParts([
+              project.name + ": ",
+              { label: "Open repository ↗", href: project.url },
+            ]);
+          },
+        });
+
+        registerCommand({
+          name: "whoami",
+          category: "Shell",
+          usage: "whoami",
+          description: "Show the portfolio owner's identity and professional headline.",
+          examples: ["whoami"],
+          handler(args) {
+            if (!requireNoArguments(this, args)) return;
+            appendLine("Zachary Ryan — Cybersecurity Student at RMU | U.S. Navy Veteran");
+          },
+        });
+
+        registerCommand({
+          name: "pwd",
+          category: "Shell",
+          usage: "pwd",
+          description: "Print the current simulated portfolio directory.",
+          examples: ["pwd"],
+          handler(args) {
+            if (!requireNoArguments(this, args)) return;
+            appendLine(
+              currentDirectory === "projects"
+                ? "/home/zachary/portfolio/projects"
+                : "/home/zachary/portfolio",
+            );
+          },
+        });
+
+        registerCommand({
+          name: "date",
+          category: "Shell",
+          usage: "date",
+          description: "Show the visitor's local date and time.",
+          examples: ["date"],
+          handler(args) {
+            if (!requireNoArguments(this, args)) return;
+            try {
+              appendLine(
+                "Local time: " +
+                  new Intl.DateTimeFormat(undefined, {
+                    dateStyle: "full",
+                    timeStyle: "long",
+                  }).format(new Date()),
+              );
+            } catch (error) {
+              appendLine("Local time: " + new Date().toString());
+            }
+          },
+        });
+
+        registerCommand({
+          name: "uname",
+          category: "Shell",
+          usage: "uname -a",
+          description: "Show a playful description of this simulated portfolio system.",
+          examples: ["uname -a"],
+          handler(args) {
+            if (args.length === 1 && args[0].toLowerCase() === "-a") {
+              appendLine(
+                "PortfolioOS 2.6 · RobCo-inspired static GitHub Pages interface · HTML/CSS/JavaScript",
+              );
+              return;
+            }
+            showUsage(this, "uname: this portfolio shell supports the '-a' option.");
+          },
+        });
+
+        registerCommand({
+          name: "sudo",
+          category: "Shell",
+          usage: "sudo hire zachary",
+          description: "Run a tasteful hiring easter egg and show contact information.",
+          examples: ["sudo hire zachary"],
+          handler(args) {
+            if (args.join(" ").toLowerCase() !== "hire zachary") {
+              showUsage(this, "sudo: portfolio authorization requires a valid hiring command.");
+              return;
+            }
+            appendLine(
+              "[SIMULATION] Request approved: excellent choice. No root access required.",
+              "simulation",
+            );
+            appendParts([
+              "Start a conversation: ",
+              { label: "Zxrst175@mail.rmu.edu", href: terminalLinks.email },
+            ]);
+          },
+        });
+
+        registerCommand({
+          name: "man",
+          category: "Shell",
+          usage: "man zachary",
+          description: "Show a concise résumé-style manual page.",
+          examples: ["man zachary"],
+          handler(args) {
+            if (args.length !== 1 || args[0].toLowerCase() !== "zachary") {
+              showUsage(this, "man: no manual entry for '" + (args.join(" ") || "") + "'.");
+              return;
+            }
+            appendLine("ZACHARY(1) — PORTFOLIO MANUAL", "heading");
+            appendLine("NAME", "heading");
+            appendLine("  Zachary Ryan — cybersecurity student and U.S. Navy veteran");
+            appendLine("SYNOPSIS", "heading");
+            appendLine("  B.S. Cybersecurity candidate, RMU, graduating Dec 2026");
+            appendLine("DESCRIPTION", "heading");
+            appendLine(
+              "  U.S. Navy veteran with cybersecurity operations, vulnerability management, TPRM, research, and hands-on project experience.",
+            );
+            appendLine("FOCUS", "heading");
+            appendLine("  Security operations, AI security, research, governance, risk, compliance");
+            appendLine("CONTACT", "heading");
+            appendParts([
+              "  ",
+              { label: "Zxrst175@mail.rmu.edu", href: terminalLinks.email },
+              " · ",
+              { label: "GitHub ↗", href: terminalLinks.github },
+              " · ",
+              { label: "LinkedIn ↗", href: terminalLinks.linkedin },
+            ]);
+            appendLine("SEE ALSO", "heading");
+            appendLine("  experience · skills · projects · research · resume · contact");
+          },
+        });
+
+        registerCommand({
+          name: "grep",
+          category: "Shell",
+          usage: "grep <term> experience.log",
+          description: "Search the simulated experience log for matching lines.",
+          examples: ["grep security experience.log"],
+          handler(args) {
+            if (
+              args.length < 2 ||
+              args[args.length - 1].toLowerCase() !== "experience.log"
+            ) {
+              showUsage(this, "grep: provide a search term and experience.log.");
+              return;
+            }
+            const query = args.slice(0, -1).join(" ");
+            if (query.toLowerCase() === "security") {
+              appendLine(
+                "Brixmor — Security operations: triaged security tickets across a 500+ user enterprise and supported vulnerability management, domain assessment, and TPRM.",
+              );
+              appendLine(
+                "U.S. Navy — Security-relevant operations: responded to system alarms and abnormal conditions under strict safety, documentation, and operational requirements.",
+              );
+              return;
+            }
+            const matches = experienceLog.filter((line) =>
+              line.toLowerCase().includes(query.toLowerCase()),
+            );
+            if (matches.length === 0) {
+              appendLine("grep: no matches for '" + query + "'.", "muted");
+              return;
+            }
+            matches.forEach((line) => appendLine(line));
+          },
+        });
+
+        registerCommand({
+          name: "scan",
+          category: "Simulations",
+          usage: "scan <portfolio|skills>",
+          description: "Run a clearly labeled simulated portfolio or skill inventory scan.",
+          examples: ["scan portfolio", "scan skills"],
+          handler(args) {
+            if (args.length !== 1) {
+              showUsage(this, "scan: choose 'portfolio' or 'skills'.");
+              return;
+            }
+            const target = args[0].toLowerCase();
+            if (target === "portfolio") {
+              runSequence(
+                [
+                  { text: "[SIMULATION] Portfolio review started.", type: "simulation" },
+                  { text: "Indexing 8 portfolio sections...", type: "output" },
+                  { text: "Checking 6 project references...", type: "output" },
+                  { text: "Reviewing contact and résumé routes...", type: "output" },
+                  {
+                    text: "[SIMULATION COMPLETE] Demonstration only; no real security scan was performed.",
+                    type: "warning",
+                  },
+                ],
+                { completionMessage: "Simulated portfolio review complete." },
+              );
+              return;
+            }
+            if (target === "skills") {
+              runSequence(
+                [
+                  { text: "[SIMULATION] Skill inventory analysis started.", type: "simulation" },
+                  {
+                    text: "Security & governance: Security Operations · Wireshark · Nmap · Digital Forensics · Governance & Risk",
+                    type: "output",
+                  },
+                  {
+                    text: "Development & data: Python · SQL / SQLite · TypeScript · FastAPI · React · Next.js",
+                    type: "output",
+                  },
+                  {
+                    text: "Systems, cloud & tooling: Bash · PowerShell · Linux · Docker · Azure · Git / GitHub · TCP/IP",
+                    type: "output",
+                  },
+                  {
+                    text: "[SIMULATION COMPLETE] 18 displayed skills categorized from this page.",
+                    type: "success",
+                  },
+                ],
+                { completionMessage: "Simulated skill inventory complete." },
+              );
+              return;
+            }
+            showUsage(this, "scan: unsupported target '" + args[0] + "'.");
+          },
+        });
+
+        registerCommand({
+          name: "analyze",
+          category: "Simulations",
+          usage: "analyze threatsequence",
+          description: "Progressively summarize ThreatSequence's verified stack and capabilities.",
+          examples: ["analyze threatsequence"],
+          handler(args) {
+            if (normalizeLookup(args.join(" ")) !== "threatsequence") {
+              showUsage(this, "analyze: this demo currently supports ThreatSequence.");
+              return;
+            }
+            const project = findProject("threatsequence");
+            runSequence(
+              [
+                { text: "[SIMULATION] Reading portfolio project metadata...", type: "simulation" },
+                { text: "Project: ThreatSequence", type: "heading" },
+                { text: "Stack: Next.js · React · TypeScript", type: "output" },
+                {
+                  text: "Capabilities: simulated telemetry · incident timelines · MITRE ATT&CK mapping · analyst workflow",
+                  type: "output",
+                },
+                () =>
+                  appendParts([
+                    "Repository: ",
+                    { label: "Open ThreatSequence ↗", href: project.url },
+                  ]),
+                {
+                  text: "[SIMULATION COMPLETE] Analysis used only published portfolio details.",
+                  type: "warning",
+                },
+              ],
+              { completionMessage: "ThreatSequence portfolio analysis complete." },
+            );
+          },
+        });
+
+        registerCommand({
+          name: "trace",
+          category: "Simulations",
+          usage: "trace experience",
+          description: "Build a concise Navy-to-cybersecurity career timeline.",
+          examples: ["trace experience"],
+          handler(args) {
+            if (args.length !== 1 || args[0].toLowerCase() !== "experience") {
+              showUsage(this, "trace: this demo currently supports 'experience'.");
+              return;
+            }
+            runSequence(
+              [
+                { text: "[SIMULATED TIMELINE]", type: "simulation" },
+                {
+                  text: "2020–2023  U.S. Navy · Machinist's Mate, Nuclear Reactor Department",
+                  type: "output",
+                },
+                {
+                  text: "2024–2026  Robert Morris University · B.S. Cybersecurity candidate",
+                  type: "output",
+                },
+                {
+                  text: "2026  AI-security research and publication work",
+                  type: "output",
+                },
+                {
+                  text: "May–Jul 2026  Brixmor Property Group · Cybersecurity Intern",
+                  type: "success",
+                },
+              ],
+              { completionMessage: "Simulated experience timeline complete." },
+            );
+          },
+        });
+
+        registerCommand({
+          name: "risk",
+          category: "Simulations",
+          usage: "risk --summary",
+          description: "Summarize verified governance and risk interests.",
+          examples: ["risk --summary"],
+          handler(args) {
+            if (args.length !== 1 || args[0].toLowerCase() !== "--summary") {
+              showUsage(this, "risk: use the '--summary' option.");
+              return;
+            }
+            appendLine("Governance & risk summary", "heading");
+            appendBullets([
+              "TPRM policy support for vendor onboarding, reviews, control assessment, risk acceptance, and compliance.",
+              "Research on auditable evidence across AI cybersecurity frameworks, including NIST AI RMF and ISO/IEC 42001.",
+              "Interest in control evaluation, evidence, governance, risk, and compliance.",
+            ]);
+          },
+        });
+
+        registerCommand({
+          name: "soc",
+          category: "Simulations",
+          usage: "soc --demo",
+          description: "Run a miniature, explicitly fictional alert-investigation sequence.",
+          examples: ["soc --demo"],
+          handler(args) {
+            if (args.length !== 1 || args[0].toLowerCase() !== "--demo") {
+              showUsage(this, "soc: use the '--demo' option.");
+              return;
+            }
+            runSequence(
+              [
+                { text: "[SYNTHETIC DEMO] Alert SYN-042 received.", type: "simulation" },
+                { text: "Triage: validating fictional telemetry...", type: "output" },
+                { text: "Context: demo identity · demo host · no live systems", type: "output" },
+                {
+                  text: "Analysis: building a sample timeline and ATT&CK mapping.",
+                  type: "output",
+                },
+                { text: "Disposition: demo resolved and documented.", type: "success" },
+                {
+                  text: "[SYNTHETIC DEMO COMPLETE] No real alert or telemetry was accessed.",
+                  type: "warning",
+                },
+              ],
+              { completionMessage: "Synthetic SOC demonstration complete." },
+            );
+          },
+        });
+
+        registerCommand({
+          name: "decrypt",
+          category: "Simulations",
+          usage: "decrypt resume",
+          description: "Play a short fictional decoding animation, then show the résumé link.",
+          examples: ["decrypt resume"],
+          handler(args) {
+            if (args.length !== 1 || args[0].toLowerCase() !== "resume") {
+              showUsage(this, "decrypt: this demo supports 'resume'.");
+              return;
+            }
+            runSequence(
+              [
+                { text: "[SIMULATION] Résumé package detected.", type: "simulation" },
+                { text: "Decoding imaginary Vault-Tec cipher...", type: "output" },
+                {
+                  text: "[SIMULATION COMPLETE] No encryption was used.",
+                  type: "warning",
+                },
+                () =>
+                  appendParts([
+                    "Résumé ready: ",
+                    {
+                      label: "Open Zachary-Ryan-Resume.pdf ↗",
+                      href: terminalLinks.resume,
+                    },
+                  ]),
+              ],
+              { completionMessage: "Playful résumé decode complete." },
+            );
+          },
+        });
+
+        registerCommand({
+          name: "clearance",
+          category: "Simulations",
+          usage: "clearance",
+          description: "Show a fictional portfolio access screen—not a security clearance.",
+          examples: ["clearance"],
+          handler(args) {
+            if (!requireNoArguments(this, args)) return;
+            appendLine("[FICTIONAL PORTFOLIO ACCESS SCREEN]", "simulation");
+            appendLine("Public profile: AUTHORIZED", "success");
+            appendLine("Projects and research: AUTHORIZED", "success");
+            appendLine("Government security clearance: NOT CLAIMED / NOT APPLICABLE", "warning");
+          },
+        });
+
+        function rememberCommand(command) {
+          commandHistory.push(command);
+          if (commandHistory.length > 100) commandHistory.shift();
+          historyIndex = commandHistory.length;
+          historyDraft = "";
+        }
+
+        function executeCommand(raw) {
+          const input = normalizeWhitespace(raw);
           if (!input) return;
 
-          appendLine("> " + input, "command");
+          rememberCommand(input);
+          cancelSequence();
 
-          if (input === "whoami") {
-            appendLine(
-              "Zachary Ryan – Cybersecurity Student & Navy Veteran",
-              "output",
-            );
-          } else if (input === "skills --top") {
-            appendLine(
-              "Python, Linux, Networking, FastAPI, Digital Forensics",
-              "output",
-            );
-          } else if (input.startsWith("scan ")) {
-            const target = input.slice(5).trim() || "target";
-            appendLine("Scanning " + target + "...", "output");
-            appendLine("No critical vulnerabilities found. ✅", "output");
-          } else if (input === "clear") {
-            termOutput.innerHTML = "";
-          } else if (input === "help") {
-            appendLine(
-              "Available commands: whoami, skills --top, scan <target>, clear, help",
-              "output",
-            );
-          } else {
-            appendLine(
-              "Command not found. Type 'help' for available commands.",
-              "output",
-            );
+          const tokens = input.split(" ");
+          const commandName = tokens.shift().toLowerCase();
+          const args = tokens;
+          const command = commandLookup.get(commandName);
+
+          if (commandName === "clear" || commandName === "cls") {
+            command.handler(args);
+            return;
+          }
+
+          appendLine(getPromptText() + " " + input, "command");
+
+          if (!command) {
+            appendLine("Command not found: " + commandName, "error");
+            appendLine("Type 'help' to view available commands.", "muted");
+            return;
+          }
+
+          command.handler(args);
+        }
+
+        function completionCandidates() {
+          const candidates = new Set();
+          commands.forEach((command) => {
+            candidates.add(command.name);
+            candidates.add("help " + command.name);
+            (command.aliases || []).forEach((alias) => candidates.add(alias));
+            (command.examples || []).forEach((example) => candidates.add(example));
+          });
+          terminalData.projects.forEach((project) => {
+            candidates.add("project " + project.slug);
+            candidates.add("open " + project.name);
+          });
+          [
+            "cat about.txt",
+            "cat contact.txt",
+            "cat experience.log",
+            "cat resume.pdf",
+            "cd projects",
+            "cd ..",
+            "cd ~",
+            "cd /home/zachary/portfolio",
+            "ls projects",
+            "grep security experience.log",
+          ].forEach((candidate) => candidates.add(candidate));
+          return Array.from(candidates).sort((a, b) => a.localeCompare(b));
+        }
+
+        function longestCommonPrefix(values) {
+          if (values.length === 0) return "";
+          let prefix = values[0];
+          for (let index = 1; index < values.length; index += 1) {
+            while (
+              prefix &&
+              !values[index].toLowerCase().startsWith(prefix.toLowerCase())
+            ) {
+              prefix = prefix.slice(0, -1);
+            }
+          }
+          return prefix;
+        }
+
+        function handleCompletion(event) {
+          if (event.shiftKey) return;
+          const cursor = termInput.selectionStart;
+          if (cursor !== termInput.value.length) return;
+
+          const prefix = termInput.value.trimStart().replace(/\s+/g, " ");
+          if (!prefix.trim()) return;
+
+          const matches = completionCandidates().filter((candidate) =>
+            candidate.toLowerCase().startsWith(prefix.toLowerCase()),
+          );
+          if (matches.length === 0) return;
+
+          const exactCommand = commandLookup.get(prefix.toLowerCase());
+          const argumentCompletions = matches.filter(
+            (candidate) => candidate.length > prefix.length,
+          );
+          const rootMatches = Array.from(
+            new Set(
+              commands.flatMap((command) => [
+                command.name,
+                ...(command.aliases || []),
+              ]),
+            ),
+          )
+            .filter((candidate) =>
+              candidate.toLowerCase().startsWith(prefix.toLowerCase()),
+            )
+            .sort((a, b) => a.localeCompare(b));
+
+          if (
+            exactCommand &&
+            rootMatches.some(
+              (candidate) => candidate.toLowerCase() !== prefix.toLowerCase(),
+            )
+          ) {
+            const noticeKey =
+              prefix.toLowerCase() + "::roots::" + rootMatches.join("|");
+            if (lastCompletionNotice !== noticeKey) {
+              event.preventDefault();
+              appendLine("Completions: " + rootMatches.join(" · "), "muted");
+              lastCompletionNotice = noticeKey;
+              announceTerminal(rootMatches.length + " command options shown.");
+            }
+            return;
+          }
+
+          if (exactCommand && argumentCompletions.some((candidate) => candidate.includes(" "))) {
+            event.preventDefault();
+            termInput.value = prefix + " ";
+            termInput.setSelectionRange(termInput.value.length, termInput.value.length);
+            lastCompletionNotice = "";
+            announceTerminal("Command completed. Add an argument.");
+            return;
+          }
+
+          if (matches.length === 1) {
+            if (matches[0].toLowerCase() === prefix.toLowerCase()) return;
+            event.preventDefault();
+            termInput.value = matches[0];
+            termInput.setSelectionRange(termInput.value.length, termInput.value.length);
+            lastCompletionNotice = "";
+            announceTerminal("Command completion inserted.");
+            return;
+          }
+
+          const shared = longestCommonPrefix(matches);
+          if (shared.length > prefix.length) {
+            event.preventDefault();
+            termInput.value = shared;
+            termInput.setSelectionRange(shared.length, shared.length);
+            lastCompletionNotice = "";
+            announceTerminal("Partial command completion inserted.");
+            return;
+          }
+
+          const noticeKey = prefix.toLowerCase() + "::" + matches.join("|");
+          if (lastCompletionNotice !== noticeKey) {
+            event.preventDefault();
+            appendLine("Completions: " + matches.join(" · "), "muted");
+            lastCompletionNotice = noticeKey;
+            announceTerminal(matches.length + " completion options shown.");
           }
         }
 
-        termInput.addEventListener("keydown", function (e) {
-          if (e.key === "Enter") {
-            e.preventDefault();
-            handleCommand(termInput.value);
+        termInput.addEventListener("input", () => {
+          if (historyIndex === commandHistory.length) historyDraft = termInput.value;
+          lastCompletionNotice = "";
+        });
+
+        termInput.addEventListener("keydown", function (event) {
+          if (event.key === "Enter") {
+            event.preventDefault();
+            executeCommand(termInput.value);
             termInput.value = "";
+            lastCompletionNotice = "";
+            return;
+          }
+
+          if (event.key === "ArrowUp" && commandHistory.length > 0) {
+            event.preventDefault();
+            if (historyIndex === commandHistory.length) historyDraft = termInput.value;
+            historyIndex = Math.max(0, historyIndex - 1);
+            termInput.value = commandHistory[historyIndex];
+            termInput.setSelectionRange(termInput.value.length, termInput.value.length);
+            return;
+          }
+
+          if (event.key === "ArrowDown" && commandHistory.length > 0) {
+            event.preventDefault();
+            historyIndex = Math.min(commandHistory.length, historyIndex + 1);
+            termInput.value =
+              historyIndex === commandHistory.length
+                ? historyDraft
+                : commandHistory[historyIndex];
+            termInput.setSelectionRange(termInput.value.length, termInput.value.length);
+            return;
+          }
+
+          if (event.key === "Tab") {
+            handleCompletion(event);
+            return;
+          }
+
+          if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "l") {
+            event.preventDefault();
+            cancelSequence();
+            clearOutput();
+            announceTerminal("Terminal output cleared.");
           }
         });
+
+        updatePrompt();
+        historyIndex = commandHistory.length;
+        bootTerminal(false);
       });
     </script>
   </body>
