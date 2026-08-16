@@ -48,18 +48,42 @@
 
     <style>
       :root {
-        --bg-color: #ffffff;
-        --text-color: #333333;
-        --accent-color: #31675f;
-        --accent-text-on: #ffffff;
-        --header-bg: #f8f1e8;
-        --section-bg: #fdfdfd;
-        --card-bg: #ffffff;
-        --card-border: #eaeaea;
-        --nav-bg: #31675f;
-        --footer-bg: #f8f1e8;
-        --muted-text: #555555;
-        --shadow-soft: 0 0 10px rgba(0, 0, 0, 0.1);
+        --pine-ink: #1c2e23;
+        --forest-green: #35594a;
+        --sage: #8fa888;
+        --moss-accent: #a9c46c;
+        --warm-cream: #f3e7d3;
+        --paper-white: #faf7f2;
+        --charcoal-ink: #2b2a25;
+        --bg-color: var(--paper-white);
+        --text-color: var(--charcoal-ink);
+        --accent-color: var(--forest-green);
+        --accent-text-on: var(--paper-white);
+        --header-bg: var(--warm-cream);
+        --section-bg: var(--paper-white);
+        --card-bg: var(--paper-white);
+        --card-border: color-mix(
+          in srgb,
+          var(--sage) 58%,
+          var(--paper-white)
+        );
+        --nav-bg: var(--pine-ink);
+        --nav-text: var(--paper-white);
+        --footer-bg: var(--pine-ink);
+        --footer-text: var(--warm-cream);
+        --muted-text: color-mix(
+          in srgb,
+          var(--charcoal-ink) 72%,
+          var(--paper-white)
+        );
+        --toggle-track-bg: color-mix(
+          in srgb,
+          var(--sage) 62%,
+          var(--paper-white)
+        );
+        --toggle-thumb-bg: var(--paper-white);
+        --toggle-active-bg: var(--forest-green);
+        --shadow-soft: 0 8px 24px rgba(28, 46, 35, 0.09);
       }
 
       body.dark {
@@ -72,8 +96,13 @@
         --card-bg: #020617;
         --card-border: #1f2937;
         --nav-bg: #0f172a;
+        --nav-text: #ffffff;
         --footer-bg: #020617;
+        --footer-text: #9ca3af;
         --muted-text: #9ca3af;
+        --toggle-track-bg: #e5e7eb;
+        --toggle-thumb-bg: #ffffff;
+        --toggle-active-bg: #22c55e;
         --shadow-soft: 0 0 18px rgba(0, 0, 0, 0.6);
       }
 
@@ -179,7 +208,7 @@
       }
 
       nav a {
-        color: #ffffff;
+        color: var(--nav-text);
         text-decoration: none;
         font-size: 1.1rem;
         padding: 0.25rem 0.75rem;
@@ -209,7 +238,7 @@
 
       nav :focus-visible,
       .terminal-card :focus-visible {
-        outline-color: #ffffff;
+        outline-color: var(--nav-text);
       }
 
       /* Toggle switch wrapper */
@@ -218,7 +247,7 @@
         align-items: center;
         gap: 0.45rem;
         margin-left: 0.75rem;
-        color: #ffffff;
+        color: var(--nav-text);
         font-size: 0.95rem;
         white-space: nowrap;
       }
@@ -243,12 +272,12 @@
       }
 
       .toggle-switch input:focus-visible + .toggle-track {
-        outline: 3px solid #ffffff;
+        outline: 3px solid var(--nav-text);
         outline-offset: 3px;
       }
 
       .toggle-track {
-        background-color: #e5e7eb;
+        background-color: var(--toggle-track-bg);
         border-radius: 999px;
         width: 100%;
         height: 100%;
@@ -263,14 +292,14 @@
         left: 3px;
         width: 20px;
         height: 20px;
-        background: white;
+        background: var(--toggle-thumb-bg);
         border-radius: 50%;
         transition: 0.25s ease;
         box-shadow: 0 2px 4px rgba(15, 23, 42, 0.35);
       }
 
       .toggle-switch input:checked + .toggle-track {
-        background-color: #22c55e;
+        background-color: var(--toggle-active-bg);
       }
 
       .toggle-switch input:checked + .toggle-track .toggle-thumb {
@@ -298,6 +327,14 @@
         border: 1px solid var(--card-border);
         box-shadow: var(--shadow-soft);
         border-radius: 6px;
+      }
+
+      body:not(.dark) main > .section:nth-of-type(even) {
+        background-color: color-mix(
+          in srgb,
+          var(--warm-cream) 58%,
+          var(--paper-white)
+        );
       }
 
       .section h2 {
@@ -816,7 +853,7 @@
           border: 1px solid rgba(255, 255, 255, 0.4);
           border-radius: 6px;
           background: transparent;
-          color: #ffffff;
+          color: var(--nav-text);
           cursor: pointer;
           font: inherit;
           font-weight: 700;
@@ -1416,7 +1453,7 @@
         text-align: center;
         padding: 2rem 0;
         background-color: var(--footer-bg);
-        color: var(--muted-text);
+        color: var(--footer-text);
         margin-top: 3rem;
       }
 
@@ -1481,6 +1518,92 @@
 
       .back-to-top:hover {
         transform: translateY(-2px) scale(1.05);
+      }
+
+      /* Layered botanical palette accents for light mode only. */
+      body:not(.dark) nav a:hover {
+        background-color: var(--moss-accent);
+        color: var(--pine-ink);
+      }
+
+      body:not(.dark) .mobile-nav-toggle:hover {
+        border-color: var(--moss-accent);
+        background-color: color-mix(
+          in srgb,
+          var(--moss-accent) 28%,
+          transparent
+        );
+      }
+
+      body:not(.dark) .button:hover,
+      body:not(.dark) .terminal-launch-button:hover,
+      body:not(.dark) .citation-copy:hover {
+        border-color: var(--moss-accent);
+        background-color: var(--moss-accent);
+        color: var(--pine-ink);
+        box-shadow: 0 10px 22px rgba(28, 46, 35, 0.16);
+      }
+
+      body:not(.dark) .project-actions .button + .button:hover {
+        border-color: var(--moss-accent);
+        background-color: var(--moss-accent);
+        color: var(--pine-ink);
+      }
+
+      body:not(.dark) .featured-badge {
+        border-color: var(--moss-accent);
+        background-color: color-mix(
+          in srgb,
+          var(--moss-accent) 34%,
+          var(--paper-white)
+        );
+        color: var(--pine-ink);
+      }
+
+      body:not(.dark) .project-details summary {
+        border-color: var(--sage);
+        background-color: color-mix(
+          in srgb,
+          var(--sage) 18%,
+          var(--paper-white)
+        );
+      }
+
+      body:not(.dark) .project-details summary:hover {
+        border-color: var(--moss-accent);
+        background-color: color-mix(
+          in srgb,
+          var(--moss-accent) 28%,
+          var(--paper-white)
+        );
+        color: var(--pine-ink);
+      }
+
+      body:not(.dark) .project-details[open] summary {
+        border-color: var(--forest-green);
+      }
+
+      body:not(.dark) .project-tech-tags span {
+        border-color: var(--sage);
+        background-color: color-mix(
+          in srgb,
+          var(--sage) 13%,
+          var(--paper-white)
+        );
+      }
+
+      body:not(.dark) .experience-timeline::before {
+        background: color-mix(in srgb, var(--sage) 76%, transparent);
+      }
+
+      body:not(.dark) .publication-link:hover {
+        text-decoration-color: var(--moss-accent);
+        text-decoration-thickness: 2px;
+      }
+
+      body:not(.dark) .back-to-top:hover {
+        background-color: var(--moss-accent);
+        color: var(--pine-ink);
       }
 
       @media (max-width: 768px) {
