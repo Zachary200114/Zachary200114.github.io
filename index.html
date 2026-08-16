@@ -969,7 +969,7 @@
         position: relative;
         display: grid;
         gap: 1.75rem;
-        max-width: 900px;
+        max-width: 1000px;
         margin: 1.5rem auto 0;
         padding: 0;
         list-style: none;
@@ -980,7 +980,7 @@
         position: absolute;
         top: 1.8rem;
         bottom: 1.8rem;
-        left: calc(130px + 1.1rem + 14px);
+        left: calc(190px + 1.1rem + 13px);
         width: 2px;
         background: color-mix(in srgb, var(--accent-color) 42%, transparent);
       }
@@ -988,7 +988,7 @@
       .timeline-item {
         position: relative;
         display: grid;
-        grid-template-columns: 130px 28px minmax(0, 1fr);
+        grid-template-columns: 190px 28px minmax(0, 1fr);
         column-gap: 1.1rem;
         align-items: start;
         min-width: 0;
@@ -1003,11 +1003,12 @@
         font-weight: 700;
         line-height: 1.35;
         text-align: right;
+        white-space: nowrap;
       }
 
       .timeline-date time,
       .timeline-date > span {
-        display: block;
+        display: inline;
       }
 
       .timeline-marker {
@@ -1063,7 +1064,7 @@
         line-height: 1.8;
       }
 
-      @media (max-width: 680px) {
+      @media (max-width: 850px) {
         .experience-timeline {
           gap: 1.35rem;
         }
@@ -1682,40 +1683,6 @@
 
         <ol class="experience-timeline" aria-label="Career timeline">
           <li class="timeline-item reveal reveal-left">
-            <p class="timeline-date" aria-label="July 2020 to September 2023">
-              <time datetime="2020-07">Jul 2020</time>
-              <span aria-hidden="true">–</span>
-              <time datetime="2023-09">Sep 2023</time>
-            </p>
-            <span class="timeline-marker" aria-hidden="true"></span>
-            <article class="experience-card timeline-card">
-              <h3>United States Navy</h3>
-              <p class="experience-role">
-                Machinist's Mate, Nuclear Reactor Department
-              </p>
-              <p class="experience-meta">Jul 2020 – Sep 2023 · Norfolk, VA</p>
-              <ul>
-                <li>
-                  Monitored reactor support systems, logs, gauges, alarms, and
-                  indicators.
-                </li>
-                <li>
-                  Diagnosed mechanical and reactor-system abnormalities using
-                  manuals, schematics, and procedures.
-                </li>
-                <li>
-                  Trained junior sailors on watchstanding, system knowledge, and
-                  qualifications.
-                </li>
-                <li>
-                  Responded to system alarms and abnormal conditions under strict
-                  safety, documentation, and operational requirements.
-                </li>
-              </ul>
-            </article>
-          </li>
-
-          <li class="timeline-item reveal reveal-left">
             <p class="timeline-date" aria-label="May 2026 to July 2026">
               <time datetime="2026-05">May 2026</time>
               <span aria-hidden="true">–</span>
@@ -1750,6 +1717,41 @@
               </ul>
             </article>
           </li>
+
+          <li class="timeline-item reveal reveal-left">
+            <p class="timeline-date" aria-label="July 2020 to September 2023">
+              <time datetime="2020-07">Jul 2020</time>
+              <span aria-hidden="true">–</span>
+              <time datetime="2023-09">Sep 2023</time>
+            </p>
+            <span class="timeline-marker" aria-hidden="true"></span>
+            <article class="experience-card timeline-card">
+              <h3>United States Navy</h3>
+              <p class="experience-role">
+                Machinist's Mate, Nuclear Reactor Department
+              </p>
+              <p class="experience-meta">Jul 2020 – Sep 2023 · Norfolk, VA</p>
+              <ul>
+                <li>
+                  Monitored reactor support systems, logs, gauges, alarms, and
+                  indicators.
+                </li>
+                <li>
+                  Diagnosed mechanical and reactor-system abnormalities using
+                  manuals, schematics, and procedures.
+                </li>
+                <li>
+                  Trained junior sailors on watchstanding, system knowledge, and
+                  qualifications.
+                </li>
+                <li>
+                  Responded to system alarms and abnormal conditions under strict
+                  safety, documentation, and operational requirements.
+                </li>
+              </ul>
+            </article>
+          </li>
+
         </ol>
       </section>
       <!-- PUBLICATIONS -->
