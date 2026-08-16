@@ -660,7 +660,7 @@
         color: var(--accent-text-on);
         background-color: var(--accent-color);
         text-decoration: none;
-        border-radius: 5px;
+        border-radius: 999px;
         text-align: center;
         font-size: 1rem;
         transition:
@@ -747,7 +747,7 @@
         gap: 0.75rem;
         padding: 0.65rem 0.8rem;
         border: 1px solid var(--card-border);
-        border-radius: 5px;
+        border-radius: 999px;
         background-color: color-mix(
           in srgb,
           var(--accent-color) 6%,
@@ -786,6 +786,36 @@
 
       .project-details[open] summary::after {
         content: "−";
+      }
+
+      .project-details.is-expanding > :not(summary) {
+        animation: project-details-content-in 0.35s ease both;
+      }
+
+      .project-details.is-closing > :not(summary) {
+        animation: project-details-content-out 0.25s ease both;
+      }
+
+      @keyframes project-details-content-in {
+        from {
+          opacity: 0;
+          transform: translateY(-0.35rem);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes project-details-content-out {
+        from {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        to {
+          opacity: 0;
+          transform: translateY(-0.25rem);
+        }
       }
 
       .project-details ul {
@@ -907,7 +937,7 @@
           justify-content: space-between;
           padding: 0.55rem 0.7rem;
           border: 1px solid rgba(255, 255, 255, 0.4);
-          border-radius: 6px;
+          border-radius: 999px;
           background: transparent;
           color: var(--nav-text);
           cursor: pointer;
@@ -1518,7 +1548,7 @@
         cursor: pointer;
         padding: 0.55rem 0.85rem;
         border: 1px solid var(--accent-color);
-        border-radius: 5px;
+        border-radius: 999px;
         background: transparent;
         color: var(--accent-color);
         font: inherit;
@@ -2783,23 +2813,130 @@
           });
         });
 
-        /* Keep project details native while limiting one expanded panel at a time. */
+        /* Smooth project-detail panels while retaining native details semantics. */
+        const projectDetailsStates = new WeakMap();
+
+        function getProjectDetailsState(details) {
+          if (!projectDetailsStates.has(details)) {
+            projectDetailsStates.set(details, {
+              animation: null,
+              targetOpen: details.open,
+            });
+          }
+          return projectDetailsStates.get(details);
+        }
+
+        function syncProjectGrid(details) {
+          const projectCard = details.closest(".project-box");
+          const projectGrid = projectCard && projectCard.parentElement;
+          if (!projectGrid) return;
+
+          projectGrid.classList.toggle(
+            "has-open-project-details",
+            Boolean(projectGrid.querySelector(".project-details[open]")),
+          );
+        }
+
+        function finishProjectDetails(details, shouldOpen, animation = null) {
+          const state = getProjectDetailsState(details);
+          if (animation && state.animation !== animation) return;
+
+          details.open = shouldOpen;
+          details.classList.remove("is-expanding", "is-closing");
+          details.style.height = "";
+          details.style.overflow = "";
+          state.animation = null;
+          state.targetOpen = shouldOpen;
+          syncProjectGrid(details);
+        }
+
+        function setProjectDetails(details, shouldOpen) {
+          const summary = details.querySelector("summary");
+          if (!summary) return;
+
+          const state = getProjectDetailsState(details);
+          state.targetOpen = shouldOpen;
+
+          if (!state.animation && details.open === shouldOpen) {
+            syncProjectGrid(details);
+            return;
+          }
+
+          const currentHeight = details.offsetHeight;
+          if (state.animation) {
+            const previousAnimation = state.animation;
+            details.style.height = `${currentHeight}px`;
+            state.animation = null;
+            previousAnimation.cancel();
+          }
+
+          details.classList.remove("is-expanding", "is-closing");
+
+          if (reducedMotion || typeof details.animate !== "function") {
+            finishProjectDetails(details, shouldOpen);
+            return;
+          }
+
+          if (shouldOpen) {
+            details.open = true;
+            details.classList.add("is-expanding");
+          } else if (details.open) {
+            details.classList.add("is-closing");
+          } else {
+            finishProjectDetails(details, false);
+            return;
+          }
+
+          details.style.height = `${currentHeight}px`;
+          details.style.overflow = "hidden";
+
+          const targetHeight = shouldOpen
+            ? details.scrollHeight
+            : summary.offsetHeight;
+          const animation = details.animate(
+            {
+              height: [`${currentHeight}px`, `${targetHeight}px`],
+            },
+            {
+              duration: 350,
+              easing: "ease",
+            },
+          );
+
+          state.animation = animation;
+          animation.onfinish = () => {
+            finishProjectDetails(details, shouldOpen, animation);
+          };
+          animation.oncancel = () => {
+            if (state.animation === animation) state.animation = null;
+          };
+          syncProjectGrid(details);
+        }
+
         document.querySelectorAll(".project-details").forEach((details) => {
-          details.addEventListener("toggle", function () {
-            const projectCard = this.closest(".project-box");
+          const summary = details.querySelector("summary");
+          if (!summary) return;
+
+          getProjectDetailsState(details);
+          summary.addEventListener("click", function (event) {
+            event.preventDefault();
+
+            const state = getProjectDetailsState(details);
+            const shouldOpen = !state.targetOpen;
+            const projectCard = details.closest(".project-box");
             const projectGrid = projectCard && projectCard.parentElement;
-            if (!projectGrid) return;
-            if (this.open) {
+
+            if (shouldOpen && projectGrid) {
               projectGrid
-                .querySelectorAll(".project-details[open]")
+                .querySelectorAll(".project-details")
                 .forEach((sibling) => {
-                  if (sibling !== this) sibling.open = false;
+                  if (sibling !== details) {
+                    setProjectDetails(sibling, false);
+                  }
                 });
             }
-            projectGrid.classList.toggle(
-              "has-open-project-details",
-              Boolean(projectGrid.querySelector(".project-details[open]")),
-            );
+
+            setProjectDetails(details, shouldOpen);
           });
         });
 
