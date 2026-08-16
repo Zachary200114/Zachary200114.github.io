@@ -42,7 +42,7 @@
 
     <!-- Fonts -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&amp;family=Roboto:wght@400;700&amp;family=Share+Tech+Mono&amp;display=swap"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&amp;family=Playfair+Display:wght@400;700&amp;family=Share+Tech+Mono&amp;display=swap"
       rel="stylesheet"
     />
 
@@ -99,7 +99,7 @@
       }
 
       body {
-        font-family: "Roboto", sans-serif;
+        font-family: "Montserrat", sans-serif;
         margin: 0;
         padding: 0;
         background-color: var(--bg-color);
@@ -115,6 +115,13 @@
         font-size: 60px;
         color: var(--accent-color);
         font-family: "Playfair Display", serif;
+      }
+
+      button,
+      input,
+      select,
+      textarea {
+        font-family: inherit;
       }
 
       header,
@@ -260,7 +267,7 @@
       .profile-bio {
         color: var(--accent-color);
         font-size: 22px;
-        font-family: "Playfair Display", serif;
+        font-family: "Montserrat", sans-serif;
       }
 
       .container {
@@ -283,6 +290,7 @@
         color: var(--accent-color);
         font-size: 38px;
         text-align: center;
+        font-family: "Playfair Display", serif;
       }
 
       /* ABOUT */
@@ -296,9 +304,72 @@
         text-align: justify;
       }
 
+      .terminal-launcher {
+        display: flex;
+        justify-content: center;
+        margin-top: 1.5rem;
+      }
+
+      .terminal-launch-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.65rem;
+        min-height: 46px;
+        padding: 0.7rem 1.05rem;
+        border: 1px solid var(--accent-color);
+        border-radius: 999px;
+        background: transparent;
+        color: var(--accent-color);
+        cursor: pointer;
+        font-size: 0.95rem;
+        font-weight: 700;
+        transition:
+          background-color 0.2s ease,
+          color 0.2s ease,
+          box-shadow 0.2s ease,
+          transform 0.2s ease;
+      }
+
+      .terminal-launch-button:hover {
+        background: var(--accent-color);
+        color: var(--accent-text-on);
+        box-shadow: var(--shadow-soft);
+        transform: translateY(-2px);
+      }
+
+      .terminal-launch-icon {
+        font-size: 1.15rem;
+        line-height: 1;
+        transition: transform 0.25s ease;
+      }
+
+      .terminal-launch-button[aria-expanded="true"] .terminal-launch-icon {
+        transform: rotate(45deg);
+      }
+
+      .terminal-panel {
+        display: grid;
+        grid-template-rows: 0fr;
+        opacity: 0;
+        transition:
+          grid-template-rows 0.35s ease,
+          opacity 0.25s ease;
+      }
+
+      .terminal-panel.is-open {
+        grid-template-rows: 1fr;
+        opacity: 1;
+      }
+
+      .terminal-panel-inner {
+        min-height: 0;
+        overflow: hidden;
+      }
+
       /* ===== FALLOUT-STYLE TERMINAL ===== */
       .terminal-card {
-        margin: 2rem auto 0 auto;
+        margin: 2rem auto 1.5rem;
         max-width: 760px;
         border-radius: 8px;
         background-color: #020b02;
@@ -570,7 +641,11 @@
         padding: 0.65rem 0.8rem;
         border: 1px solid var(--card-border);
         border-radius: 5px;
-        background-color: color-mix(in srgb, var(--accent-color) 6%, var(--card-bg));
+        background-color: color-mix(
+          in srgb,
+          var(--accent-color) 6%,
+          var(--card-bg)
+        );
         cursor: pointer;
         color: var(--accent-color);
         font-weight: 700;
@@ -591,7 +666,11 @@
 
       .project-details summary:hover {
         border-color: var(--accent-color);
-        background-color: color-mix(in srgb, var(--accent-color) 11%, var(--card-bg));
+        background-color: color-mix(
+          in srgb,
+          var(--accent-color) 11%,
+          var(--card-bg)
+        );
       }
 
       .project-details[open] summary {
@@ -769,55 +848,54 @@
       .skill-logo {
         width: 52px;
         height: 52px;
-        transition:
-          transform 0.3s ease;
+        transition: transform 0.3s ease;
       }
 
       #skills .skill-item {
         position: relative;
-      }
-
-      #skills .skill-item::before {
-        content: "";
-        position: absolute;
-        top: -8px;
-        left: 50%;
-        width: 68px;
-        height: 68px;
-        border: 1px solid color-mix(in srgb, var(--accent-color) 52%, transparent);
-        border-radius: 50%;
-        background: color-mix(in srgb, var(--accent-color) 10%, transparent);
-        opacity: 0;
-        pointer-events: none;
-        transform: translateX(-50%) scale(0.9);
-        transition:
-          opacity 0.25s ease,
-          transform 0.25s ease;
-      }
-
-      #skills .skill-item:hover::before,
-      #skills .skill-item:focus-within::before {
-        opacity: 1;
-        transform: translateX(-50%) scale(1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
       }
 
       #skills .skill-item:hover .skill-logo,
       #skills .skill-item:focus-within .skill-logo {
-        transform: translateY(-2px) scale(1.05);
+        filter: drop-shadow(
+          0 8px 7px color-mix(in srgb, var(--accent-color) 38%, transparent)
+        );
+        transform: translateY(-5px) scale(1.12);
       }
 
       #skills .skill-logo {
         position: relative;
         z-index: 1;
+        display: block;
+        width: 52px;
+        height: 52px;
+        object-fit: contain;
+        box-sizing: border-box;
+        filter: drop-shadow(0 0 0 transparent);
+        transform-origin: center;
+        transition:
+          filter 0.25s ease,
+          transform 0.25s ease;
       }
 
       body.dark #skills .skill-logo-nextjs {
         filter: invert(1);
       }
 
+      body.dark #skills .skill-item:hover .skill-logo-nextjs,
+      body.dark #skills .skill-item:focus-within .skill-logo-nextjs {
+        filter: invert(1)
+          drop-shadow(
+            0 8px 7px color-mix(in srgb, var(--accent-color) 38%, transparent)
+          );
+      }
+
       .skill-item small {
         display: block;
-        margin-top: 0.5rem;
+        margin-top: 0.65rem;
         font-size: 1rem;
         color: var(--text-color);
       }
@@ -901,14 +979,64 @@
         font-size: 0.98rem;
       }
 
-      .experience-list {
-        display: flex;
-        flex-direction: column;
+      .experience-timeline {
+        position: relative;
+        display: grid;
         gap: 1.75rem;
-        margin-top: 1.5rem;
         max-width: 900px;
-        margin-left: auto;
-        margin-right: auto;
+        margin: 1.5rem auto 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .experience-timeline::before {
+        content: "";
+        position: absolute;
+        top: 1.8rem;
+        bottom: 1.8rem;
+        left: calc(130px + 1.1rem + 14px);
+        width: 2px;
+        background: color-mix(in srgb, var(--accent-color) 42%, transparent);
+      }
+
+      .timeline-item {
+        position: relative;
+        display: grid;
+        grid-template-columns: 130px 28px minmax(0, 1fr);
+        column-gap: 1.1rem;
+        align-items: start;
+        min-width: 0;
+      }
+
+      .timeline-date {
+        grid-column: 1;
+        margin: 0;
+        padding-top: 1.3rem;
+        color: var(--accent-color);
+        font-size: 0.9rem;
+        font-weight: 700;
+        line-height: 1.35;
+        text-align: right;
+      }
+
+      .timeline-date time,
+      .timeline-date > span {
+        display: block;
+      }
+
+      .timeline-marker {
+        grid-column: 2;
+        grid-row: 1;
+        width: 16px;
+        height: 16px;
+        box-sizing: border-box;
+        margin-top: 1.45rem;
+        justify-self: center;
+        border: 3px solid var(--accent-color);
+        border-radius: 50%;
+        background: var(--section-bg);
+        box-shadow: 0 0 0 4px color-mix(in srgb, var(--section-bg) 84%, transparent);
+        z-index: 1;
       }
 
       .experience-card {
@@ -918,6 +1046,16 @@
         border-radius: 6px;
         padding: 1.5rem 2rem;
         border-left: 4px solid var(--accent-color);
+      }
+
+      .timeline-card {
+        grid-column: 3;
+        min-width: 0;
+      }
+
+      .timeline-card h3 {
+        margin: 0;
+        color: var(--text-color);
       }
 
       .experience-role {
@@ -938,6 +1076,51 @@
         margin-top: 0.75rem;
         padding-left: 1.2rem;
         line-height: 1.8;
+      }
+
+      @media (max-width: 680px) {
+        .experience-timeline {
+          gap: 1.35rem;
+        }
+
+        .experience-timeline::before {
+          top: 1rem;
+          bottom: 1rem;
+          left: 13px;
+        }
+
+        .timeline-item {
+          grid-template-columns: 28px minmax(0, 1fr);
+          column-gap: 0.85rem;
+        }
+
+        .timeline-date {
+          grid-column: 2;
+          grid-row: 1;
+          display: flex;
+          gap: 0.3rem;
+          padding: 0;
+          font-size: 0.84rem;
+          text-align: left;
+        }
+
+        .timeline-date time,
+        .timeline-date > span {
+          display: inline;
+        }
+
+        .timeline-marker {
+          grid-column: 1;
+          grid-row: 1 / span 2;
+          align-self: start;
+          margin-top: 0.2rem;
+        }
+
+        .timeline-card {
+          grid-column: 2;
+          grid-row: 2;
+          padding: 1.25rem;
+        }
       }
       /* PUBLICATIONS */
       .publication-list {
@@ -1183,7 +1366,9 @@
 
     <header>
       <h1>Zachary Ryan</h1>
-      <p class="profile-bio">Cybersecurity Student at RMU | U.S. Navy Veteran</p>
+      <p class="profile-bio">
+        Cybersecurity Student at RMU | U.S. Navy Veteran
+      </p>
     </header>
 
     <main id="main-content" class="container" tabindex="-1">
@@ -1204,13 +1389,34 @@
         <p class="about-me-para">
           My work now focuses on security operations, AI security, research,
           governance, risk, and compliance. Through my Brixmor Property Group
-          internship and AI security research, I am especially interested in
-          how organizations evaluate controls, manage risk, and document
-          evidence for security requirements.
+          internship and AI security research, I am especially interested in how
+          organizations evaluate controls, manage risk, and document evidence
+          for security requirements.
         </p>
 
+        <div class="terminal-launcher">
+          <button
+            class="terminal-launch-button"
+            id="terminal-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="fallout-terminal-panel"
+          >
+            <span id="terminal-toggle-label">Play my Fallout terminal</span>
+            <span class="terminal-launch-icon" aria-hidden="true">+</span>
+          </button>
+        </div>
+
         <!-- Fallout-style Terminal -->
-        <div class="terminal-card reveal reveal-scale">
+        <div
+          class="terminal-panel"
+          id="fallout-terminal-panel"
+          aria-hidden="true"
+          inert
+          hidden
+        >
+          <div class="terminal-panel-inner">
+            <div class="terminal-card">
           <div class="terminal-header">
             <span class="terminal-title">
               WELCOME TO ROBCO INDUSTRIES (TM) TERMLINK<br />
@@ -1232,7 +1438,10 @@
             </div>
           </div>
           <div class="terminal-input-row">
-            <span class="terminal-prompt" id="terminal-prompt" aria-hidden="true"
+            <span
+              class="terminal-prompt"
+              id="terminal-prompt"
+              aria-hidden="true"
               >zachary@portfolio:~$</span
             >
             <input
@@ -1256,7 +1465,9 @@
               role="status"
               aria-live="polite"
             ></span>
+            </div>
           </div>
+        </div>
         </div>
       </section>
 
@@ -1485,61 +1696,77 @@
       <section id="experience" class="section reveal reveal-up">
         <h2>Experience</h2>
 
-        <div class="experience-list">
-          <div class="experience-card reveal reveal-left">
-            <h3>Brixmor Property Group</h3>
-            <p class="experience-role">Cybersecurity Intern</p>
-            <p class="experience-meta">
-              May 2026 – Jul 2026 · Philadelphia, PA · Hybrid
+        <ol class="experience-timeline" aria-label="Career timeline">
+          <li class="timeline-item reveal reveal-left">
+            <p class="timeline-date" aria-label="July 2020 to September 2023">
+              <time datetime="2020-07">Jul 2020</time>
+              <span aria-hidden="true">–</span>
+              <time datetime="2023-09">Sep 2023</time>
             </p>
-            <ul>
-              <li>
-                Triaged security tickets across a 500+ user enterprise using
-                Freshservice, CrowdStrike, Rapid7, Cisco Umbrella, and
-                Microsoft Defender.
-              </li>
-              <li>
-                Supported Rapid7 vulnerability management on 25+ high-risk
-                assets, documenting CVEs and remediation.
-              </li>
-              <li>
-                Assessed 100+ domains in Cisco Umbrella and made block/allow
-                recommendations.
-              </li>
-              <li>
-                Assisted with TPRM policy development for vendor onboarding,
-                security reviews, control assessment, risk acceptance, and
-                compliance.
-              </li>
-            </ul>
-          </div>
+            <span class="timeline-marker" aria-hidden="true"></span>
+            <article class="experience-card timeline-card">
+              <h3>United States Navy</h3>
+              <p class="experience-role">
+                Machinist's Mate, Nuclear Reactor Department
+              </p>
+              <p class="experience-meta">Jul 2020 – Sep 2023 · Norfolk, VA</p>
+              <ul>
+                <li>
+                  Monitored reactor support systems, logs, gauges, alarms, and
+                  indicators.
+                </li>
+                <li>
+                  Diagnosed mechanical and reactor-system abnormalities using
+                  manuals, schematics, and procedures.
+                </li>
+                <li>
+                  Trained junior sailors on watchstanding, system knowledge, and
+                  qualifications.
+                </li>
+                <li>
+                  Responded to system alarms and abnormal conditions under strict
+                  safety, documentation, and operational requirements.
+                </li>
+              </ul>
+            </article>
+          </li>
 
-          <div class="experience-card reveal reveal-left">
-            <h3>United States Navy</h3>
-            <p class="experience-role">
-              Machinist's Mate, Nuclear Reactor Department
+          <li class="timeline-item reveal reveal-left">
+            <p class="timeline-date" aria-label="May 2026 to July 2026">
+              <time datetime="2026-05">May 2026</time>
+              <span aria-hidden="true">–</span>
+              <time datetime="2026-07">Jul 2026</time>
             </p>
-            <p class="experience-meta">Jul 2020 – Sep 2023 · Norfolk, VA</p>
-            <ul>
-              <li>
-                Monitored reactor support systems, logs, gauges, alarms, and
-                indicators.
-              </li>
-              <li>
-                Diagnosed mechanical and reactor-system abnormalities using
-                manuals, schematics, and procedures.
-              </li>
-              <li>
-                Trained junior sailors on watchstanding, system knowledge, and
-                qualifications.
-              </li>
-              <li>
-                Responded to system alarms and abnormal conditions under strict
-                safety, documentation, and operational requirements.
-              </li>
-            </ul>
-          </div>
-        </div>
+            <span class="timeline-marker" aria-hidden="true"></span>
+            <article class="experience-card timeline-card">
+              <h3>Brixmor Property Group</h3>
+              <p class="experience-role">Cybersecurity Intern</p>
+              <p class="experience-meta">
+                May 2026 – Jul 2026 · Philadelphia, PA · Hybrid
+              </p>
+              <ul>
+                <li>
+                  Triaged security tickets across a 500+ user enterprise using
+                  Freshservice, CrowdStrike, Rapid7, Cisco Umbrella, and Microsoft
+                  Defender.
+                </li>
+                <li>
+                  Supported Rapid7 vulnerability management on 25+ high-risk
+                  assets, documenting CVEs and remediation.
+                </li>
+                <li>
+                  Assessed 100+ domains in Cisco Umbrella and made block/allow
+                  recommendations.
+                </li>
+                <li>
+                  Assisted with TPRM policy development for vendor onboarding,
+                  security reviews, control assessment, risk acceptance, and
+                  compliance.
+                </li>
+              </ul>
+            </article>
+          </li>
+        </ol>
       </section>
       <!-- PUBLICATIONS -->
       <section id="publications" class="section reveal reveal-up">
@@ -1594,9 +1821,8 @@
                 phishing evaluation.
               </li>
               <li>
-                Built and analyzed a 1,260-email dataset comparing
-                AI-generated and human-written phishing campaigns using
-                statistical testing.
+                Built and analyzed a 1,260-email dataset comparing AI-generated
+                and human-written phishing campaigns using statistical testing.
               </li>
               <li>
                 Presented findings demonstrating that AI-generated phishing
@@ -1609,7 +1835,10 @@
               <details class="citation-details">
                 <summary>View citation</summary>
                 <p class="citation-text">
-                  Ryan, Z., &amp; Mishra, S. (2026). Evaluating AI vs. human phishing evasion across emulated email security filters and SpamAssassin. In NEDSI Annual Conference Proceedings (pp. 189–202).
+                  Ryan, Z., &amp; Mishra, S. (2026). Evaluating AI vs. human
+                  phishing evasion across emulated email security filters and
+                  SpamAssassin. In NEDSI Annual Conference Proceedings (pp.
+                  189–202).
                 </p>
               </details>
               <button
@@ -1652,21 +1881,45 @@
             <details class="project-details">
               <summary><span>Project details</span></summary>
               <ul>
-                <li>Uses Isolation Forest scoring against simulated network flows.</li>
-                <li>Displays anomaly activity through a dashboard visualization.</li>
+                <li>
+                  Uses Isolation Forest scoring against simulated network flows.
+                </li>
+                <li>
+                  Displays anomaly activity through a dashboard visualization.
+                </li>
               </ul>
               <div class="project-tech-tags" aria-label="Technologies used">
-                <span>FastAPI</span><span>React</span><span>SQLite</span><span>Docker</span>
+                <span>FastAPI</span><span>React</span><span>SQLite</span
+                ><span>Docker</span>
               </div>
               <figure class="project-preview">
-                <a href="assets/project-screenshots/ai-network-anomaly-lab.webp" target="_blank" rel="noopener noreferrer">
-                  <img src="assets/project-screenshots/ai-network-anomaly-lab.webp" width="1400" height="1115" loading="lazy" decoding="async" alt="AI Network Anomaly Lab dashboard interface preview" />
+                <a
+                  href="assets/project-screenshots/ai-network-anomaly-lab.webp"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="assets/project-screenshots/ai-network-anomaly-lab.webp"
+                    width="1400"
+                    height="1115"
+                    loading="lazy"
+                    decoding="async"
+                    alt="AI Network Anomaly Lab dashboard interface preview"
+                  />
                 </a>
-                <figcaption>Interface preview of the AI Network Anomaly Lab dashboard.</figcaption>
+                <figcaption>
+                  Interface preview of the AI Network Anomaly Lab dashboard.
+                </figcaption>
               </figure>
             </details>
             <div class="project-actions">
-              <a href="https://github.com/Zachary200114/ai-network-anomaly-lab" class="button" target="_blank" rel="noopener noreferrer">View Code</a>
+              <a
+                href="https://github.com/Zachary200114/ai-network-anomaly-lab"
+                class="button"
+                target="_blank"
+                rel="noopener noreferrer"
+                >View Code</a
+              >
             </div>
           </article>
 
@@ -1682,21 +1935,44 @@
             <details class="project-details">
               <summary><span>Project details</span></summary>
               <ul>
-                <li>Combines heuristic and header analysis for phishing review.</li>
-                <li>Provides a safe rewrite/diff workflow with SQLite history.</li>
+                <li>
+                  Combines heuristic and header analysis for phishing review.
+                </li>
+                <li>
+                  Provides a safe rewrite/diff workflow with SQLite history.
+                </li>
               </ul>
               <div class="project-tech-tags" aria-label="Technologies used">
                 <span>FastAPI</span><span>React</span><span>SQLite</span>
               </div>
               <figure class="project-preview">
-                <a href="assets/project-screenshots/ai-phishing-detector.webp" target="_blank" rel="noopener noreferrer">
-                  <img src="assets/project-screenshots/ai-phishing-detector.webp" width="1400" height="560" loading="lazy" decoding="async" alt="AI-Powered Phishing Email Detector interface preview" />
+                <a
+                  href="assets/project-screenshots/ai-phishing-detector.webp"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="assets/project-screenshots/ai-phishing-detector.webp"
+                    width="1400"
+                    height="560"
+                    loading="lazy"
+                    decoding="async"
+                    alt="AI-Powered Phishing Email Detector interface preview"
+                  />
                 </a>
-                <figcaption>Interface preview of the phishing analysis workflow.</figcaption>
+                <figcaption>
+                  Interface preview of the phishing analysis workflow.
+                </figcaption>
               </figure>
             </details>
             <div class="project-actions">
-              <a href="https://github.com/Zachary200114/ai-phishing-detector" class="button" target="_blank" rel="noopener noreferrer">View Code</a>
+              <a
+                href="https://github.com/Zachary200114/ai-phishing-detector"
+                class="button"
+                target="_blank"
+                rel="noopener noreferrer"
+                >View Code</a
+              >
             </div>
           </article>
 
@@ -1709,15 +1985,26 @@
             <details class="project-details">
               <summary><span>Project details</span></summary>
               <ul>
-                <li>Separates public, private, and management Docker networks.</li>
-                <li>Uses iptables and policy-as-code connectivity validation.</li>
+                <li>
+                  Separates public, private, and management Docker networks.
+                </li>
+                <li>
+                  Uses iptables and policy-as-code connectivity validation.
+                </li>
               </ul>
               <div class="project-tech-tags" aria-label="Technologies used">
-                <span>Docker</span><span>iptables</span><span>Flask</span><span>PostgreSQL</span>
+                <span>Docker</span><span>iptables</span><span>Flask</span
+                ><span>PostgreSQL</span>
               </div>
             </details>
             <div class="project-actions">
-              <a href="https://github.com/Zachary200114/container-network-seg-lab" class="button" target="_blank" rel="noopener noreferrer">View Code</a>
+              <a
+                href="https://github.com/Zachary200114/container-network-seg-lab"
+                class="button"
+                target="_blank"
+                rel="noopener noreferrer"
+                >View Code</a
+              >
             </div>
           </article>
 
@@ -1730,15 +2017,27 @@
             <details class="project-details">
               <summary><span>Project details</span></summary>
               <ul>
-                <li>Performs concurrent TCP scanning with ThreadPoolExecutor.</li>
-                <li>Includes a Flask web UI and time limiting; use only with authorization.</li>
+                <li>
+                  Performs concurrent TCP scanning with ThreadPoolExecutor.
+                </li>
+                <li>
+                  Includes a Flask web UI and time limiting; use only with
+                  authorization.
+                </li>
               </ul>
               <div class="project-tech-tags" aria-label="Technologies used">
-                <span>Python</span><span>Flask</span><span>Sockets</span><span>ThreadPoolExecutor</span>
+                <span>Python</span><span>Flask</span><span>Sockets</span
+                ><span>ThreadPoolExecutor</span>
               </div>
             </details>
             <div class="project-actions">
-              <a href="https://github.com/Zachary200114/Ports" class="button" target="_blank" rel="noopener noreferrer">View Code</a>
+              <a
+                href="https://github.com/Zachary200114/Ports"
+                class="button"
+                target="_blank"
+                rel="noopener noreferrer"
+                >View Code</a
+              >
             </div>
           </article>
 
@@ -1751,15 +2050,28 @@
             <details class="project-details">
               <summary><span>Project details</span></summary>
               <ul>
-                <li>Educational local tool for SHA-256 comparison and recursive brute force.</li>
-                <li>Includes SecureRandom password generation in a Java Swing interface.</li>
+                <li>
+                  Educational local tool for SHA-256 comparison and recursive
+                  brute force.
+                </li>
+                <li>
+                  Includes SecureRandom password generation in a Java Swing
+                  interface.
+                </li>
               </ul>
               <div class="project-tech-tags" aria-label="Technologies used">
-                <span>Java</span><span>Swing</span><span>SHA-256</span><span>SecureRandom</span>
+                <span>Java</span><span>Swing</span><span>SHA-256</span
+                ><span>SecureRandom</span>
               </div>
             </details>
             <div class="project-actions">
-              <a href="https://github.com/Zachary200114/PasswordCracker" class="button" target="_blank" rel="noopener noreferrer">View Code</a>
+              <a
+                href="https://github.com/Zachary200114/PasswordCracker"
+                class="button"
+                target="_blank"
+                rel="noopener noreferrer"
+                >View Code</a
+              >
             </div>
           </article>
 
@@ -1777,22 +2089,54 @@
             <details class="project-details">
               <summary><span>Project details</span></summary>
               <ul>
-                <li>Sequences simulated telemetry into a behavioral incident narrative.</li>
-                <li>Maps behavior to MITRE ATT&amp;CK to support an analyst workflow.</li>
+                <li>
+                  Sequences simulated telemetry into a behavioral incident
+                  narrative.
+                </li>
+                <li>
+                  Maps behavior to MITRE ATT&amp;CK to support an analyst
+                  workflow.
+                </li>
               </ul>
               <div class="project-tech-tags" aria-label="Technologies used">
-                <span>Next.js</span><span>React</span><span>TypeScript</span><span>Tailwind</span>
+                <span>Next.js</span><span>React</span><span>TypeScript</span
+                ><span>Tailwind</span>
               </div>
               <figure class="project-preview">
-                <a href="assets/project-screenshots/threatsequence.webp" target="_blank" rel="noopener noreferrer">
-                  <img src="assets/project-screenshots/threatsequence.webp" width="1400" height="732" loading="lazy" decoding="async" alt="ThreatSequence simulated incident sequence interface preview" />
+                <a
+                  href="assets/project-screenshots/threatsequence.webp"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="assets/project-screenshots/threatsequence.webp"
+                    width="1400"
+                    height="732"
+                    loading="lazy"
+                    decoding="async"
+                    alt="ThreatSequence simulated incident sequence interface preview"
+                  />
                 </a>
-                <figcaption>Interface preview of ThreatSequence; its data is simulated.</figcaption>
+                <figcaption>
+                  Interface preview of ThreatSequence; its data is simulated.
+                </figcaption>
               </figure>
             </details>
             <div class="project-actions">
-              <a href="https://github.com/Zachary200114/ThreatSequence" class="button" target="_blank" rel="noopener noreferrer">View Code</a>
-              <a href="https://threat-sequence.vercel.app" class="button" target="_blank" rel="noopener noreferrer">Live Demo</a>
+              <a
+                href="https://github.com/Zachary200114/ThreatSequence"
+                class="button"
+                target="_blank"
+                rel="noopener noreferrer"
+                >View Code</a
+              >
+              <a
+                href="https://threat-sequence.vercel.app"
+                class="button"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Live Demo</a
+              >
             </div>
           </article>
         </div>
@@ -1933,9 +2277,11 @@
             const projectGrid = projectCard && projectCard.parentElement;
             if (!projectGrid) return;
             if (this.open) {
-              projectGrid.querySelectorAll(".project-details[open]").forEach((sibling) => {
-                if (sibling !== this) sibling.open = false;
-              });
+              projectGrid
+                .querySelectorAll(".project-details[open]")
+                .forEach((sibling) => {
+                  if (sibling !== this) sibling.open = false;
+                });
             }
             projectGrid.classList.toggle(
               "has-open-project-details",
@@ -1948,7 +2294,7 @@
         const citationStatus = document.getElementById("citation-status");
         const citationValues = Object.freeze({
           nedsi:
-            "Ryan, Z., & Mishra, S. (2026). Evaluating AI vs. human phishing evasion across emulated email security filters and SpamAssassin. In NEDSI Annual Conference Proceedings (pp. 189–202).",
+            "Ryan, Z., & Mishra, S. (2026). Evaluating AI vs. human phishing evasion across emulated email security filters and SpamAssassin. NEDSI Annual Conference Proceedings (pp. 189–202).",
         });
         const citationButtonStates = new WeakMap();
 
@@ -1973,7 +2319,10 @@
         }
 
         async function copyCitation(value) {
-          if (navigator.clipboard && typeof navigator.clipboard.writeText === "function") {
+          if (
+            navigator.clipboard &&
+            typeof navigator.clipboard.writeText === "function"
+          ) {
             try {
               await navigator.clipboard.writeText(value);
               return true;
@@ -2004,7 +2353,10 @@
           if (!button) return;
           const citation = citationValues[button.dataset.citationKey];
           if (!citation) return;
-          const state = citationButtonStates.get(button) || { sequence: 0, timer: 0 };
+          const state = citationButtonStates.get(button) || {
+            sequence: 0,
+            timer: 0,
+          };
           state.sequence += 1;
           window.clearTimeout(state.timer);
           citationButtonStates.set(button, state);
@@ -2013,7 +2365,9 @@
             button,
             state.sequence,
             copied ? "Copied" : "Copy failed",
-            copied ? "Citation copied to the clipboard." : "Citation could not be copied.",
+            copied
+              ? "Citation copied to the clipboard."
+              : "Citation could not be copied.",
           );
         });
 
@@ -2248,7 +2602,11 @@
 
         function openAllowedTerminalLink(href) {
           if (!allowedTerminalLinks.has(href)) return;
-          const openedWindow = window.open(href, "_blank", "noopener,noreferrer");
+          const openedWindow = window.open(
+            href,
+            "_blank",
+            "noopener,noreferrer",
+          );
           if (openedWindow) openedWindow.opener = null;
         }
 
@@ -2381,7 +2739,10 @@
 
         function requireNoArguments(command, args) {
           if (args.length === 0) return true;
-          showUsage(command, command.name + ": unexpected argument '" + args[0] + "'.");
+          showUsage(
+            command,
+            command.name + ": unexpected argument '" + args[0] + "'.",
+          );
           return false;
         }
 
@@ -2435,7 +2796,9 @@
           appendLine(label, "heading");
           projectsToShow.forEach((project) => {
             const number = terminalData.projects.indexOf(project) + 1;
-            appendLine(number + ". " + project.name + "  [" + project.slug + "]");
+            appendLine(
+              number + ". " + project.name + "  [" + project.slug + "]",
+            );
           });
           appendLine("Use 'project <number-or-name>' for details.", "muted");
         }
@@ -2477,7 +2840,10 @@
               printBrixmorExperience(false);
               return;
             }
-            showUsage(this, "experience: unknown option '" + args.join(" ") + "'.");
+            showUsage(
+              this,
+              "experience: unknown option '" + args.join(" ") + "'.",
+            );
           },
         });
 
@@ -2522,9 +2888,14 @@
             if (option === "--development") {
               appendLine("Development", "heading");
               appendLine(
-                ["Python", "TypeScript", "React", "Next.js", "FastAPI", "SQL / SQLite"].join(
-                  " · ",
-                ),
+                [
+                  "Python",
+                  "TypeScript",
+                  "React",
+                  "Next.js",
+                  "FastAPI",
+                  "SQL / SQLite",
+                ].join(" · "),
               );
               return;
             }
@@ -2557,7 +2928,10 @@
               );
               return;
             }
-            showUsage(this, "projects: unknown option '" + args.join(" ") + "'.");
+            showUsage(
+              this,
+              "projects: unknown option '" + args.join(" ") + "'.",
+            );
           },
         });
 
@@ -2565,7 +2939,8 @@
           name: "project",
           category: "Portfolio",
           usage: "project <number-or-name>",
-          description: "Show a project's description, stack, and repository link.",
+          description:
+            "Show a project's description, stack, and repository link.",
           examples: ["project threatsequence", "project 1"],
           handler(args) {
             if (args.length === 0) {
@@ -2594,7 +2969,10 @@
             appendLine("Research & publications", "heading");
             terminalData.research.forEach((publication, index) => {
               appendLine(index + 1 + ". " + publication.title);
-              appendLine(publication.venue + " · " + publication.status, "muted");
+              appendLine(
+                publication.venue + " · " + publication.status,
+                "muted",
+              );
               appendLine("Authors: " + publication.authors, "muted");
               if (publication.url) {
                 appendParts([
@@ -2610,12 +2988,15 @@
           name: "education",
           category: "Profile",
           usage: "education",
-          description: "Show degree, GPA, graduation date, and academic recognition.",
+          description:
+            "Show degree, GPA, graduation date, and academic recognition.",
           examples: ["education"],
           handler(args) {
             if (!requireNoArguments(this, args)) return;
             appendLine("Robert Morris University", "heading");
-            appendLine("B.S. Cybersecurity · Aug 2024–Dec 2026 · Pittsburgh, PA");
+            appendLine(
+              "B.S. Cybersecurity · Aug 2024–Dec 2026 · Pittsburgh, PA",
+            );
             appendLine("GPA: 3.91/4.0", "success");
             appendLine(
               "Recognition: Outstanding Cybersecurity Student Award · Dean’s List Recipient",
@@ -2629,7 +3010,8 @@
           aliases: ["achievement"],
           category: "Profile",
           usage: "achievements",
-          description: "Show certifications, honors, and cybersecurity activities.",
+          description:
+            "Show certifications, honors, and cybersecurity activities.",
           examples: ["achievements"],
           handler(args) {
             if (!requireNoArguments(this, args)) return;
@@ -2653,7 +3035,10 @@
             );
             appendParts([
               "Résumé: ",
-              { label: "Open Zachary-Ryan-Resume.pdf ↗", href: terminalLinks.resume },
+              {
+                label: "Open Zachary-Ryan-Resume.pdf ↗",
+                href: terminalLinks.resume,
+              },
             ]);
           },
         });
@@ -2673,7 +3058,10 @@
             );
             appendParts([
               "GitHub: ",
-              { label: "github.com/Zachary200114 ↗", href: terminalLinks.github },
+              {
+                label: "github.com/Zachary200114 ↗",
+                href: terminalLinks.github,
+              },
             ]);
           },
         });
@@ -2693,7 +3081,10 @@
             );
             appendParts([
               "LinkedIn: ",
-              { label: "linkedin.com/in/zachary-ryan01 ↗", href: terminalLinks.linkedin },
+              {
+                label: "linkedin.com/in/zachary-ryan01 ↗",
+                href: terminalLinks.linkedin,
+              },
             ]);
           },
         });
@@ -2713,11 +3104,17 @@
             ]);
             appendParts([
               "GitHub: ",
-              { label: "github.com/Zachary200114 ↗", href: terminalLinks.github },
+              {
+                label: "github.com/Zachary200114 ↗",
+                href: terminalLinks.github,
+              },
             ]);
             appendParts([
               "LinkedIn: ",
-              { label: "linkedin.com/in/zachary-ryan01 ↗", href: terminalLinks.linkedin },
+              {
+                label: "linkedin.com/in/zachary-ryan01 ↗",
+                href: terminalLinks.linkedin,
+              },
             ]);
           },
         });
@@ -2739,7 +3136,10 @@
               return;
             }
             apply(choice);
-            appendLine("Theme set to " + choice + " for this visit.", "success");
+            appendLine(
+              "Theme set to " + choice + " for this visit.",
+              "success",
+            );
           },
         });
 
@@ -2752,7 +3152,9 @@
           handler(args) {
             if (!requireNoArguments(this, args)) return;
             appendLine("Current status", "heading");
-            appendLine("B.S. Cybersecurity candidate at RMU · Graduation: Dec 2026");
+            appendLine(
+              "B.S. Cybersecurity candidate at RMU · Graduation: Dec 2026",
+            );
             appendLine("Brixmor cybersecurity internship completed Jul 2026.");
             appendLine(
               "Focus: security operations · AI security · research · governance, risk & compliance",
@@ -2781,11 +3183,15 @@
           aliases: ["cls"],
           category: "System",
           usage: "clear",
-          description: "Clear terminal output without changing directory or history.",
+          description:
+            "Clear terminal output without changing directory or history.",
           examples: ["clear"],
           handler(args) {
             if (args.length > 0) {
-              appendLine(getPromptText() + " " + this.name + " " + args.join(" "), "command");
+              appendLine(
+                getPromptText() + " " + this.name + " " + args.join(" "),
+                "command",
+              );
               showUsage(this, "clear: unexpected argument '" + args[0] + "'.");
               return;
             }
@@ -2834,16 +3240,26 @@
                   .map((command) => command.name);
                 appendLine(category + ": " + names.join(" · "), "heading");
               });
-              appendLine("Use 'help <command>' for usage and examples.", "muted");
-              appendLine("Arrow keys: history · Tab: completion · Ctrl/⌘+L: clear", "muted");
+              appendLine(
+                "Use 'help <command>' for usage and examples.",
+                "muted",
+              );
+              appendLine(
+                "Arrow keys: history · Tab: completion · Ctrl/⌘+L: clear",
+                "muted",
+              );
               return;
             }
 
             const topic = args.join(" ").toLowerCase();
             const command =
-              commandLookup.get(topic) || commandLookup.get(args[0].toLowerCase());
+              commandLookup.get(topic) ||
+              commandLookup.get(args[0].toLowerCase());
             if (!command) {
-              showUsage(this, "help: unknown command '" + args.join(" ") + "'.");
+              showUsage(
+                this,
+                "help: unknown command '" + args.join(" ") + "'.",
+              );
               return;
             }
             appendLine(command.name, "heading");
@@ -2863,7 +3279,8 @@
           aliases: ["dir"],
           category: "Shell",
           usage: "ls [projects]",
-          description: "List the simulated portfolio directory or its projects.",
+          description:
+            "List the simulated portfolio directory or its projects.",
           examples: ["ls", "ls projects"],
           handler(args) {
             if (args.length > 1) {
@@ -2884,13 +3301,20 @@
               return;
             }
 
-            if (args.length === 0 || path === "~" || path === "/home/zachary/portfolio") {
+            if (
+              args.length === 0 ||
+              path === "~" ||
+              path === "/home/zachary/portfolio"
+            ) {
               appendLine(
                 "about.txt  contact.txt  experience.log  resume.pdf  skills/  projects/  research/",
               );
               return;
             }
-            showUsage(this, "ls: cannot access '" + args[0] + "': no such directory.");
+            showUsage(
+              this,
+              "ls: cannot access '" + args[0] + "': no such directory.",
+            );
           },
         });
 
@@ -2922,7 +3346,10 @@
               appendLine("cat: resume.pdf is a PDF document.", "warning");
               appendParts([
                 "Open it instead: ",
-                { label: "Zachary-Ryan-Resume.pdf ↗", href: terminalLinks.resume },
+                {
+                  label: "Zachary-Ryan-Resume.pdf ↗",
+                  href: terminalLinks.resume,
+                },
               ]);
               return;
             }
@@ -2949,7 +3376,10 @@
             ) {
               currentDirectory = "projects";
               updatePrompt();
-              appendLine("Directory: /home/zachary/portfolio/projects", "muted");
+              appendLine(
+                "Directory: /home/zachary/portfolio/projects",
+                "muted",
+              );
               return;
             }
             if (
@@ -2970,7 +3400,8 @@
           name: "open",
           category: "Shell",
           usage: "open <project-name>",
-          description: "Provide a clickable repository link for a portfolio project.",
+          description:
+            "Provide a clickable repository link for a portfolio project.",
           examples: ["open ThreatSequence"],
           handler(args) {
             if (args.length === 0) {
@@ -2985,7 +3416,9 @@
             }
             openAllowedTerminalLink(project.url);
             appendLine(
-              "Opening " + project.name + " in a new tab. If it is blocked, use the link below.",
+              "Opening " +
+                project.name +
+                " in a new tab. If it is blocked, use the link below.",
               "muted",
             );
             appendParts([
@@ -2999,11 +3432,14 @@
           name: "whoami",
           category: "Shell",
           usage: "whoami",
-          description: "Show the portfolio owner's identity and professional headline.",
+          description:
+            "Show the portfolio owner's identity and professional headline.",
           examples: ["whoami"],
           handler(args) {
             if (!requireNoArguments(this, args)) return;
-            appendLine("Zachary Ryan — Cybersecurity Student at RMU | U.S. Navy Veteran");
+            appendLine(
+              "Zachary Ryan — Cybersecurity Student at RMU | U.S. Navy Veteran",
+            );
           },
         });
 
@@ -3049,7 +3485,8 @@
           name: "uname",
           category: "Shell",
           usage: "uname -a",
-          description: "Show a playful description of this simulated portfolio system.",
+          description:
+            "Show a playful description of this simulated portfolio system.",
           examples: ["uname -a"],
           handler(args) {
             if (args.length === 1 && args[0].toLowerCase() === "-a") {
@@ -3058,7 +3495,10 @@
               );
               return;
             }
-            showUsage(this, "uname: this portfolio shell supports the '-a' option.");
+            showUsage(
+              this,
+              "uname: this portfolio shell supports the '-a' option.",
+            );
           },
         });
 
@@ -3066,11 +3506,15 @@
           name: "sudo",
           category: "Shell",
           usage: "sudo hire zachary",
-          description: "Run a tasteful hiring easter egg and show contact information.",
+          description:
+            "Run a tasteful hiring easter egg and show contact information.",
           examples: ["sudo hire zachary"],
           handler(args) {
             if (args.join(" ").toLowerCase() !== "hire zachary") {
-              showUsage(this, "sudo: portfolio authorization requires a valid hiring command.");
+              showUsage(
+                this,
+                "sudo: portfolio authorization requires a valid hiring command.",
+              );
               return;
             }
             appendLine(
@@ -3092,20 +3536,29 @@
           examples: ["man zachary"],
           handler(args) {
             if (args.length !== 1 || args[0].toLowerCase() !== "zachary") {
-              showUsage(this, "man: no manual entry for '" + (args.join(" ") || "") + "'.");
+              showUsage(
+                this,
+                "man: no manual entry for '" + (args.join(" ") || "") + "'.",
+              );
               return;
             }
             appendLine("ZACHARY(1) — PORTFOLIO MANUAL", "heading");
             appendLine("NAME", "heading");
-            appendLine("  Zachary Ryan — cybersecurity student and U.S. Navy veteran");
+            appendLine(
+              "  Zachary Ryan — cybersecurity student and U.S. Navy veteran",
+            );
             appendLine("SYNOPSIS", "heading");
-            appendLine("  B.S. Cybersecurity candidate, RMU, graduating Dec 2026");
+            appendLine(
+              "  B.S. Cybersecurity candidate, RMU, graduating Dec 2026",
+            );
             appendLine("DESCRIPTION", "heading");
             appendLine(
               "  U.S. Navy veteran with cybersecurity operations, vulnerability management, TPRM, research, and hands-on project experience.",
             );
             appendLine("FOCUS", "heading");
-            appendLine("  Security operations, AI security, research, governance, risk, compliance");
+            appendLine(
+              "  Security operations, AI security, research, governance, risk, compliance",
+            );
             appendLine("CONTACT", "heading");
             appendParts([
               "  ",
@@ -3116,7 +3569,9 @@
               { label: "LinkedIn ↗", href: terminalLinks.linkedin },
             ]);
             appendLine("SEE ALSO", "heading");
-            appendLine("  experience · skills · projects · research · resume · contact");
+            appendLine(
+              "  experience · skills · projects · research · resume · contact",
+            );
           },
         });
 
@@ -3124,14 +3579,18 @@
           name: "grep",
           category: "Shell",
           usage: "grep <term> experience.log",
-          description: "Search the simulated experience log for matching lines.",
+          description:
+            "Search the simulated experience log for matching lines.",
           examples: ["grep security experience.log"],
           handler(args) {
             if (
               args.length < 2 ||
               args[args.length - 1].toLowerCase() !== "experience.log"
             ) {
-              showUsage(this, "grep: provide a search term and experience.log.");
+              showUsage(
+                this,
+                "grep: provide a search term and experience.log.",
+              );
               return;
             }
             const query = args.slice(0, -1).join(" ");
@@ -3159,7 +3618,8 @@
           name: "scan",
           category: "Simulations",
           usage: "scan <portfolio|skills>",
-          description: "Run a clearly labeled simulated portfolio or skill inventory scan.",
+          description:
+            "Run a clearly labeled simulated portfolio or skill inventory scan.",
           examples: ["scan portfolio", "scan skills"],
           handler(args) {
             if (args.length !== 1) {
@@ -3170,10 +3630,16 @@
             if (target === "portfolio") {
               runSequence(
                 [
-                  { text: "[SIMULATION] Portfolio review started.", type: "simulation" },
+                  {
+                    text: "[SIMULATION] Portfolio review started.",
+                    type: "simulation",
+                  },
                   { text: "Indexing 8 portfolio sections...", type: "output" },
                   { text: "Checking 6 project references...", type: "output" },
-                  { text: "Reviewing contact and résumé routes...", type: "output" },
+                  {
+                    text: "Reviewing contact and résumé routes...",
+                    type: "output",
+                  },
                   {
                     text: "[SIMULATION COMPLETE] Demonstration only; no real security scan was performed.",
                     type: "warning",
@@ -3186,7 +3652,10 @@
             if (target === "skills") {
               runSequence(
                 [
-                  { text: "[SIMULATION] Skill inventory analysis started.", type: "simulation" },
+                  {
+                    text: "[SIMULATION] Skill inventory analysis started.",
+                    type: "simulation",
+                  },
                   {
                     text: "Security & governance: Security Operations · Wireshark · Nmap · Digital Forensics · Governance & Risk",
                     type: "output",
@@ -3216,17 +3685,24 @@
           name: "analyze",
           category: "Simulations",
           usage: "analyze threatsequence",
-          description: "Progressively summarize ThreatSequence's verified stack and capabilities.",
+          description:
+            "Progressively summarize ThreatSequence's verified stack and capabilities.",
           examples: ["analyze threatsequence"],
           handler(args) {
             if (normalizeLookup(args.join(" ")) !== "threatsequence") {
-              showUsage(this, "analyze: this demo currently supports ThreatSequence.");
+              showUsage(
+                this,
+                "analyze: this demo currently supports ThreatSequence.",
+              );
               return;
             }
             const project = findProject("threatsequence");
             runSequence(
               [
-                { text: "[SIMULATION] Reading portfolio project metadata...", type: "simulation" },
+                {
+                  text: "[SIMULATION] Reading portfolio project metadata...",
+                  type: "simulation",
+                },
                 { text: "Project: ThreatSequence", type: "heading" },
                 { text: "Stack: Next.js · React · TypeScript", type: "output" },
                 {
@@ -3243,7 +3719,10 @@
                   type: "warning",
                 },
               ],
-              { completionMessage: "ThreatSequence portfolio analysis complete." },
+              {
+                completionMessage:
+                  "ThreatSequence portfolio analysis complete.",
+              },
             );
           },
         });
@@ -3256,7 +3735,10 @@
           examples: ["trace experience"],
           handler(args) {
             if (args.length !== 1 || args[0].toLowerCase() !== "experience") {
-              showUsage(this, "trace: this demo currently supports 'experience'.");
+              showUsage(
+                this,
+                "trace: this demo currently supports 'experience'.",
+              );
               return;
             }
             runSequence(
@@ -3308,7 +3790,8 @@
           name: "soc",
           category: "Simulations",
           usage: "soc --demo",
-          description: "Run a miniature, explicitly fictional alert-investigation sequence.",
+          description:
+            "Run a miniature, explicitly fictional alert-investigation sequence.",
           examples: ["soc --demo"],
           handler(args) {
             if (args.length !== 1 || args[0].toLowerCase() !== "--demo") {
@@ -3317,14 +3800,26 @@
             }
             runSequence(
               [
-                { text: "[SYNTHETIC DEMO] Alert SYN-042 received.", type: "simulation" },
-                { text: "Triage: validating fictional telemetry...", type: "output" },
-                { text: "Context: demo identity · demo host · no live systems", type: "output" },
+                {
+                  text: "[SYNTHETIC DEMO] Alert SYN-042 received.",
+                  type: "simulation",
+                },
+                {
+                  text: "Triage: validating fictional telemetry...",
+                  type: "output",
+                },
+                {
+                  text: "Context: demo identity · demo host · no live systems",
+                  type: "output",
+                },
                 {
                   text: "Analysis: building a sample timeline and ATT&CK mapping.",
                   type: "output",
                 },
-                { text: "Disposition: demo resolved and documented.", type: "success" },
+                {
+                  text: "Disposition: demo resolved and documented.",
+                  type: "success",
+                },
                 {
                   text: "[SYNTHETIC DEMO COMPLETE] No real alert or telemetry was accessed.",
                   type: "warning",
@@ -3339,7 +3834,8 @@
           name: "decrypt",
           category: "Simulations",
           usage: "decrypt resume",
-          description: "Play a short fictional decoding animation, then show the résumé link.",
+          description:
+            "Play a short fictional decoding animation, then show the résumé link.",
           examples: ["decrypt resume"],
           handler(args) {
             if (args.length !== 1 || args[0].toLowerCase() !== "resume") {
@@ -3348,8 +3844,14 @@
             }
             runSequence(
               [
-                { text: "[SIMULATION] Résumé package detected.", type: "simulation" },
-                { text: "Decoding imaginary Vault-Tec cipher...", type: "output" },
+                {
+                  text: "[SIMULATION] Résumé package detected.",
+                  type: "simulation",
+                },
+                {
+                  text: "Decoding imaginary Vault-Tec cipher...",
+                  type: "output",
+                },
                 {
                   text: "[SIMULATION COMPLETE] No encryption was used.",
                   type: "warning",
@@ -3372,14 +3874,18 @@
           name: "clearance",
           category: "Simulations",
           usage: "clearance",
-          description: "Show a fictional portfolio access screen—not a security clearance.",
+          description:
+            "Show a fictional portfolio access screen—not a security clearance.",
           examples: ["clearance"],
           handler(args) {
             if (!requireNoArguments(this, args)) return;
             appendLine("[FICTIONAL PORTFOLIO ACCESS SCREEN]", "simulation");
             appendLine("Public profile: AUTHORIZED", "success");
             appendLine("Projects and research: AUTHORIZED", "success");
-            appendLine("Government security clearance: NOT CLAIMED / NOT APPLICABLE", "warning");
+            appendLine(
+              "Government security clearance: NOT CLAIMED / NOT APPLICABLE",
+              "warning",
+            );
           },
         });
 
@@ -3424,7 +3930,9 @@
             candidates.add(command.name);
             candidates.add("help " + command.name);
             (command.aliases || []).forEach((alias) => candidates.add(alias));
-            (command.examples || []).forEach((example) => candidates.add(example));
+            (command.examples || []).forEach((example) =>
+              candidates.add(example),
+            );
           });
           terminalData.projects.forEach((project) => {
             candidates.add("project " + project.slug);
@@ -3506,10 +4014,16 @@
             return;
           }
 
-          if (exactCommand && argumentCompletions.some((candidate) => candidate.includes(" "))) {
+          if (
+            exactCommand &&
+            argumentCompletions.some((candidate) => candidate.includes(" "))
+          ) {
             event.preventDefault();
             termInput.value = prefix + " ";
-            termInput.setSelectionRange(termInput.value.length, termInput.value.length);
+            termInput.setSelectionRange(
+              termInput.value.length,
+              termInput.value.length,
+            );
             lastCompletionNotice = "";
             announceTerminal("Command completed. Add an argument.");
             return;
@@ -3519,7 +4033,10 @@
             if (matches[0].toLowerCase() === prefix.toLowerCase()) return;
             event.preventDefault();
             termInput.value = matches[0];
-            termInput.setSelectionRange(termInput.value.length, termInput.value.length);
+            termInput.setSelectionRange(
+              termInput.value.length,
+              termInput.value.length,
+            );
             lastCompletionNotice = "";
             announceTerminal("Command completion inserted.");
             return;
@@ -3545,7 +4062,8 @@
         }
 
         termInput.addEventListener("input", () => {
-          if (historyIndex === commandHistory.length) historyDraft = termInput.value;
+          if (historyIndex === commandHistory.length)
+            historyDraft = termInput.value;
           lastCompletionNotice = "";
         });
 
@@ -3560,10 +4078,14 @@
 
           if (event.key === "ArrowUp" && commandHistory.length > 0) {
             event.preventDefault();
-            if (historyIndex === commandHistory.length) historyDraft = termInput.value;
+            if (historyIndex === commandHistory.length)
+              historyDraft = termInput.value;
             historyIndex = Math.max(0, historyIndex - 1);
             termInput.value = commandHistory[historyIndex];
-            termInput.setSelectionRange(termInput.value.length, termInput.value.length);
+            termInput.setSelectionRange(
+              termInput.value.length,
+              termInput.value.length,
+            );
             return;
           }
 
@@ -3574,7 +4096,10 @@
               historyIndex === commandHistory.length
                 ? historyDraft
                 : commandHistory[historyIndex];
-            termInput.setSelectionRange(termInput.value.length, termInput.value.length);
+            termInput.setSelectionRange(
+              termInput.value.length,
+              termInput.value.length,
+            );
             return;
           }
 
@@ -3583,7 +4108,10 @@
             return;
           }
 
-          if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "l") {
+          if (
+            (event.ctrlKey || event.metaKey) &&
+            event.key.toLowerCase() === "l"
+          ) {
             event.preventDefault();
             cancelSequence();
             clearOutput();
@@ -3591,9 +4119,81 @@
           }
         });
 
+        const terminalToggleButton = document.getElementById("terminal-toggle");
+        const terminalPanel = document.getElementById("fallout-terminal-panel");
+        const terminalToggleLabel = document.getElementById(
+          "terminal-toggle-label",
+        );
+        let terminalStarted = false;
+        let terminalPanelTimer = null;
+        let terminalPanelFrame = null;
+
+        function setTerminalPanel(open) {
+          if (terminalPanelTimer !== null) {
+            window.clearTimeout(terminalPanelTimer);
+            terminalPanelTimer = null;
+          }
+
+          if (terminalPanelFrame !== null) {
+            window.cancelAnimationFrame(terminalPanelFrame);
+            terminalPanelFrame = null;
+          }
+
+          terminalToggleButton.setAttribute("aria-expanded", String(open));
+          terminalPanel.setAttribute("aria-hidden", String(!open));
+          terminalToggleLabel.textContent = open
+            ? "Close Fallout terminal"
+            : "Play my Fallout terminal";
+
+          if (open) {
+            terminalPanel.hidden = false;
+            terminalPanel.removeAttribute("inert");
+
+            if (reducedMotion) {
+              terminalPanel.classList.add("is-open");
+            } else {
+              terminalPanelFrame = window.requestAnimationFrame(() => {
+                terminalPanel.classList.add("is-open");
+                terminalPanelFrame = null;
+              });
+            }
+
+            if (!terminalStarted) {
+              terminalStarted = true;
+              bootTerminal(false);
+            }
+            return;
+          }
+
+          if (terminalPanel.contains(document.activeElement)) {
+            terminalToggleButton.focus({ preventScroll: true });
+          }
+
+          terminalPanel.setAttribute("inert", "");
+          terminalPanel.classList.remove("is-open");
+
+          if (reducedMotion) {
+            terminalPanel.hidden = true;
+          } else {
+            terminalPanelTimer = window.setTimeout(() => {
+              if (
+                terminalToggleButton.getAttribute("aria-expanded") === "false"
+              ) {
+                terminalPanel.hidden = true;
+              }
+              terminalPanelTimer = null;
+            }, 360);
+          }
+        }
+
+        terminalToggleButton.addEventListener("click", () => {
+          const open =
+            terminalToggleButton.getAttribute("aria-expanded") !== "true";
+          setTerminalPanel(open);
+        });
+
         updatePrompt();
         historyIndex = commandHistory.length;
-        bootTerminal(false);
       });
     </script>
   </body>
