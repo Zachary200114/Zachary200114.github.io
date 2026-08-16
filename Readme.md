@@ -1,61 +1,84 @@
-# Zachary Ryan | Cybersecurity Portfolio
+# Zachary Ryan — Cybersecurity Portfolio
 
-> Cybersecurity student at Robert Morris University and U.S. Navy veteran focused on security operations, AI security, governance, risk, and compliance.
+> U.S. Navy veteran and Robert Morris University cybersecurity student focused on security operations, AI security, research, governance, risk, and compliance.
 
-[Visit the portfolio](https://zachary200114.github.io/) · [View résumé](assets/Zachary-Ryan-Resume.pdf) · [LinkedIn](https://www.linkedin.com/in/zachary-ryan01/) · [GitHub](https://github.com/Zachary200114)
+[**View the live portfolio**](https://zachary200114.github.io/) · [View résumé](assets/Zachary-Ryan-Resume.pdf) · [LinkedIn](https://www.linkedin.com/in/zachary-ryan01/) · [GitHub](https://github.com/Zachary200114)
 
-This repository contains the source for my personal portfolio website. It brings together my cybersecurity internship experience, research, technical projects, and transition from the U.S. Navy's Nuclear Reactor Department into cybersecurity.
+## Overview
 
-## What the portfolio communicates
+This repository contains the source for my personal cybersecurity portfolio. The site presents my education, professional experience, research, technical skills, and hands-on projects in one lightweight, responsive page.
 
-- **Operational security perspective** — Security operations, vulnerability management, third-party risk, documentation, and evidence-based decision-making.
-- **Research interests** — AI security, phishing evasion, cybersecurity governance, compliance, and assurance.
-- **Hands-on work** — Cybersecurity and software projects spanning anomaly detection, phishing analysis, network segmentation, and SOC-style workflows.
-- **A polished, lightweight experience** — One accessible single-page site with responsive layout, light and dark modes, native project details, and an interactive terminal.
+The portfolio connects my operational background in the U.S. Navy’s Nuclear Reactor Department with my current work in cybersecurity. It emphasizes evidence-driven security decisions, clear documentation, practical technical work, and the relationship between security operations and governance, risk, and compliance.
 
-## Featured work
+## Portfolio highlights
 
-### [AI Network Anomaly Lab](https://github.com/Zachary200114/ai-network-anomaly-lab)
+- **Unified introduction** — A continuous hero and About section brings together my headshot, professional identity, background, and current areas of focus.
+- **Career timeline** — A most-recent-first timeline covers my Brixmor Property Group cybersecurity internship and U.S. Navy experience.
+- **Research** — Current work includes AI phishing evasion research and a cross-framework analysis of auditable evidence in AI cybersecurity compliance.
+- **Project showcase** — Six projects include concise summaries, expandable technical details, technology tags, repository links, and authentic previews for featured work.
+- **Interactive terminal** — A collapsed-by-default Fallout-inspired portfolio shell provides commands for exploring my background, experience, skills, projects, research, résumé, and contact information.
+- **Responsive experience** — The layout, navigation, project cards, timeline, and terminal adapt for desktop, tablet, and phone screens.
+- **Accessible interaction** — Semantic HTML, keyboard support, visible focus states, reduced-motion handling, descriptive labels, and safe external links are built into the page.
 
-Simulates network flows and surfaces anomalies with Isolation Forest scoring and a dashboard visualization.
+## Featured projects
 
-`FastAPI` · `React` · `SQLite` · `Docker`
+| Project | Focus | Technology |
+| --- | --- | --- |
+| [AI Network Anomaly Lab](https://github.com/Zachary200114/ai-network-anomaly-lab) | Simulated network flows, Isolation Forest anomaly scoring, and dashboard visualization | FastAPI, React, SQLite, Docker |
+| [AI-Powered Phishing Email Detector](https://github.com/Zachary200114/ai-phishing-detector) | Heuristic and header analysis, safe rewriting, and scan history | FastAPI, React, SQLite |
+| [ThreatSequence](https://github.com/Zachary200114/ThreatSequence) | Simulated telemetry, incident timelines, and MITRE ATT&CK mapping | Next.js, React, TypeScript, Tailwind |
 
-### [AI-Powered Phishing Email Detector](https://github.com/Zachary200114/ai-phishing-detector)
+[Launch the ThreatSequence live demo](https://threat-sequence.vercel.app/)
 
-Analyzes phishing emails through heuristic and header checks, with a safe rewrite/diff workflow and SQLite-backed history.
+Additional projects presented on the site:
 
-`FastAPI` · `React` · `SQLite`
-
-### [ThreatSequence](https://github.com/Zachary200114/ThreatSequence)
-
-An interactive SOC portfolio prototype that sequences **simulated** telemetry into incident timelines and maps behavior to MITRE ATT&CK.
-
-`Next.js` · `React` · `TypeScript` · `Tailwind`
-
-[View the live demo](https://threat-sequence.vercel.app/)
-
-Other work featured on the site includes a Docker network segmentation lab, an authorized-use TCP port scanner, and a Java password-cracking education project.
+- [Docker Network Segmentation & Attack Lab](https://github.com/Zachary200114/container-network-seg-lab)
+- [Port Scanner](https://github.com/Zachary200114/Ports)
+- [Password Cracker](https://github.com/Zachary200114/PasswordCracker)
 
 ## Research
 
-- **[Evaluating AI vs. Human Phishing Evasion Across Emulated Email Security Filters and SpamAssassin](https://nedsi.decisionsciences.org/wp-content/uploads/sites/5/2026/06/NEDSI-2026-Proceedings.pdf)** — Presented at the NEDSI Annual Conference on April 9, 2026; proceedings pages 189–202.
-- **Auditable Evidence in AI Cybersecurity Compliance: A Cross-Framework Analysis** — Submitted to *Computers & Security* in June 2026.
+### Evaluating AI vs Human Phishing Evasion Across Emulated Email Security Filters and SpamAssassin
 
-## Portfolio experience
+Presented at the NEDSI Annual Conference on April 9, 2026, and published in the conference proceedings on pages 189–202.
 
-- **Project cards** with expandable details, verified technology tags, and authentic previews for featured work.
-- **Interactive portfolio terminal** with profile, project, research, contact, navigation, and clearly labeled simulated-demo commands.
-- **Accessible interactions** including keyboard-friendly native disclosures, visible focus states, reduced-motion support, and safe external links.
-- **Light-first theme** with a current-visit dark-mode toggle.
+[Read the NEDSI proceedings](https://nedsi.decisionsciences.org/wp-content/uploads/sites/5/2026/06/NEDSI-2026-Proceedings.pdf)
+
+### Auditable Evidence in AI Cybersecurity Compliance: A Cross-Framework Analysis
+
+Submitted to *Computers & Security* in June 2026. The research examines how governance, regulatory, and vendor frameworks define or imply the evidence needed to support cybersecurity assurance, compliance, and independent audits.
+
+## Interactive portfolio terminal
+
+The optional terminal expands from the About section and behaves like a small portfolio-focused shell. It includes:
+
+- Profile, education, experience, skills, projects, research, achievements, résumé, and contact commands
+- Shell-style navigation such as `ls`, `cd`, `cat`, `pwd`, `whoami`, `grep`, and `man zachary`
+- Command history with the arrow keys and Tab completion
+- Clickable, allowlisted links to professional profiles, repositories, publications, and the résumé
+- Clearly labeled simulated sequences for portfolio scanning, skill analysis, SOC investigation, career tracing, and résumé decryption
+- Reduced-motion-aware boot and simulation sequences
+
+The terminal is a portfolio interface only. It does not execute operating-system commands or scan a live system.
+
+## Visual system
+
+- **Typography:** Playfair Display for the name and section headings, Montserrat for body copy and interface elements, and Share Tech Mono inside the terminal
+- **Light mode:** Paper white and warm cream with forest, sage, and restrained moss accents
+- **Dark mode:** Deep pine surfaces, warm off-white text, muted sage metadata, and calm moss controls
+- **Theme behavior:** Light mode loads by default; visitors can switch themes during the current visit
+- **Motion:** Subtle reveal effects and smooth expandable panels, with reduced-motion preferences respected
 
 ## Built with
 
-- HTML, CSS, and vanilla JavaScript
-- Google Fonts and Devicon assets
+- Semantic HTML5
+- Modern CSS, including responsive layouts, custom properties, Grid, and Subgrid
+- Vanilla JavaScript
+- Google Fonts
+- Devicon, Simple Icons, Lucide, and Bootstrap Icons assets
 - GitHub Pages
 
-The site intentionally stays framework-free and easy to maintain: the page structure, styles, and behavior live primarily in `index.html`, with local assets under `assets/`.
+The site intentionally remains framework-free. Its structure, styling, and behavior live primarily in `index.html`, while local media and documents are stored in `assets/`.
 
 ## Run locally
 
@@ -73,16 +96,17 @@ Then open [http://localhost:8000](http://localhost:8000) in a browser.
 .
 ├── assets/
 │   ├── project-screenshots/     # Authentic previews for featured projects
-│   ├── Zachary-Ryan-Resume.pdf  # Downloadable résumé
+│   ├── Zachary-Ryan-Resume.pdf  # Current résumé
 │   └── ...                      # Profile, skill, and contact assets
-├── index.html                   # Single-page portfolio and interactive behavior
-└── Readme.md                    # Project overview and setup notes
+├── index.html                   # Portfolio content, styling, and interactions
+└── Readme.md                    # Project overview and local setup
 ```
 
 ## Connect
 
+- [Portfolio](https://zachary200114.github.io/)
 - [LinkedIn](https://www.linkedin.com/in/zachary-ryan01/)
 - [GitHub](https://github.com/Zachary200114)
-- [Zxrst175@mail.rmu.edu](mailto:Zxrst175@mail.rmu.edu)
+- [Email](mailto:Zxrst175@mail.rmu.edu)
 
 © 2026 Zachary Ryan. All rights reserved.
