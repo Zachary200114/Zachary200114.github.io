@@ -160,6 +160,20 @@
         box-sizing: border-box;
       }
 
+      .nav-content {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        box-sizing: border-box;
+      }
+
+      .mobile-nav-toggle {
+        display: none;
+      }
+
       section {
         scroll-margin-top: 5rem;
       }
@@ -753,10 +767,18 @@
       @media (max-width: 1390px) {
         nav {
           justify-content: flex-start;
+          gap: 0;
+          flex-wrap: wrap;
+          overflow: visible;
+          padding: 0.55rem 0.75rem;
+          white-space: normal;
+        }
+
+        .nav-content {
+          justify-content: flex-start;
           gap: 0.35rem;
           flex-wrap: nowrap;
           overflow-x: auto;
-          padding: 0.55rem 0.75rem;
           white-space: nowrap;
         }
 
@@ -780,6 +802,153 @@
       }
 
       @media (max-width: 768px) {
+        nav {
+          align-items: stretch;
+          padding: 0.45rem 0.65rem;
+        }
+
+        .mobile-nav-toggle {
+          width: 100%;
+          min-height: 46px;
+          align-items: center;
+          justify-content: space-between;
+          padding: 0.55rem 0.7rem;
+          border: 1px solid rgba(255, 255, 255, 0.4);
+          border-radius: 6px;
+          background: transparent;
+          color: #ffffff;
+          cursor: pointer;
+          font: inherit;
+          font-weight: 700;
+        }
+
+        body.mobile-nav-enabled .mobile-nav-toggle {
+          display: flex;
+        }
+
+        .mobile-nav-icon {
+          display: grid;
+          width: 22px;
+          gap: 4px;
+        }
+
+        .mobile-nav-icon span {
+          display: block;
+          height: 2px;
+          border-radius: 999px;
+          background: currentColor;
+          transition:
+            transform 0.2s ease,
+            opacity 0.2s ease;
+        }
+
+        .mobile-nav-toggle[aria-expanded="true"]
+          .mobile-nav-icon
+          span:nth-child(1) {
+          transform: translateY(6px) rotate(45deg);
+        }
+
+        .mobile-nav-toggle[aria-expanded="true"]
+          .mobile-nav-icon
+          span:nth-child(2) {
+          opacity: 0;
+        }
+
+        .mobile-nav-toggle[aria-expanded="true"]
+          .mobile-nav-icon
+          span:nth-child(3) {
+          transform: translateY(-6px) rotate(-45deg);
+        }
+
+        .nav-content {
+          width: 100%;
+          max-height: calc(100vh - 3.75rem);
+          max-height: calc(100dvh - 3.75rem);
+          flex-direction: column;
+          align-items: stretch;
+          gap: 0.2rem;
+          overflow-x: hidden;
+          overflow-y: auto;
+          padding: 0.45rem 0 0.2rem;
+          white-space: normal;
+        }
+
+        body.mobile-nav-enabled .nav-content {
+          display: none;
+        }
+
+        body.mobile-nav-enabled .nav-content.is-open {
+          display: flex;
+        }
+
+        body.mobile-nav-open {
+          overflow: hidden;
+        }
+
+        .nav-content a {
+          display: flex;
+          width: 100%;
+          min-height: 44px;
+          align-items: center;
+          box-sizing: border-box;
+          padding: 0.55rem 0.75rem;
+        }
+
+        .resume-actions {
+          display: block;
+          width: 100%;
+        }
+
+        .toggle-wrapper {
+          width: 100%;
+          min-height: 44px;
+          justify-content: space-between;
+          box-sizing: border-box;
+          margin-left: 0;
+          padding: 0.55rem 0.75rem;
+        }
+
+        header {
+          margin-top: 3.75rem;
+          padding: 2.25rem 1rem 1.75rem;
+        }
+
+        section {
+          scroll-margin-top: 4.75rem;
+        }
+
+        .container {
+          width: calc(100% - 1.25rem);
+          padding: 1rem 0;
+        }
+
+        .section {
+          margin: 1.25rem 0;
+          padding: 1.25rem;
+        }
+
+        .profile-bio {
+          font-size: 1rem;
+          line-height: 1.5;
+        }
+
+        .about-me-para {
+          text-align: left;
+        }
+
+        .button,
+        .project-details summary,
+        .citation-copy {
+          min-height: 44px;
+          box-sizing: border-box;
+        }
+
+        .citation-details summary {
+          min-height: 44px;
+          box-sizing: border-box;
+          padding: 0.5rem 0;
+        }
+
         .project-box {
           flex: 1 1 100%;
           max-width: 100%;
@@ -792,8 +961,38 @@
           font-size: clamp(2.5rem, 15vw, 3.75rem);
         }
 
+        .container {
+          width: calc(100% - 1rem);
+        }
+
         .section {
-          padding: 1.25rem;
+          padding: 1rem;
+        }
+
+        .section h2 {
+          margin-top: 0.25rem;
+          font-size: 2.15rem;
+        }
+
+        .profile img {
+          width: min(170px, 65vw);
+        }
+
+        .project-actions {
+          align-items: stretch;
+        }
+
+        .project-actions .button {
+          display: flex;
+          flex: 1 1 100%;
+          min-height: 44px;
+          align-items: center;
+          justify-content: center;
+          box-sizing: border-box;
+        }
+
+        .terminal-launch-button {
+          width: 100%;
         }
 
         .terminal-input-row {
@@ -1284,6 +1483,56 @@
         transform: translateY(-2px) scale(1.05);
       }
 
+      @media (max-width: 768px) {
+        .education-card,
+        .publication-card {
+          padding: 1.25rem;
+        }
+
+        .skills {
+          gap: 1rem;
+          padding: 1.5rem 0;
+        }
+
+        .education-highlights,
+        .experience-card ul,
+        .publication-card ul {
+          padding-left: 1.15rem;
+        }
+
+        .reveal-left {
+          transform: translateY(16px);
+        }
+      }
+
+      @media (max-width: 480px) {
+        .education-card,
+        .publication-card,
+        .timeline-card {
+          padding: 1rem;
+        }
+
+        .publication-card h3 {
+          font-size: 1.15rem;
+        }
+
+        .publication-footer {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0.35rem;
+        }
+
+        .back-to-top {
+          right: 1rem;
+          bottom: 1rem;
+        }
+
+        footer {
+          box-sizing: border-box;
+          padding: 1.5rem 1rem;
+        }
+      }
+
       @media (prefers-reduced-motion: reduce) {
         html {
           scroll-behavior: auto;
@@ -1312,35 +1561,53 @@
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
     <nav aria-label="Primary navigation">
-      <a href="#about">About</a>
-      <a href="#education">Education</a>
-      <a href="#skills">Skills</a>
-      <a href="#experience">Experience</a>
-      <a href="#publications">Publications</a>
-      <a href="#projects">Projects</a>
-      <a href="#achievements">Achievements</a>
-      <a href="#contact">Contact</a>
-      <div class="resume-actions">
-        <a
-          href="assets/Zachary-Ryan-Resume.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-          >View Résumé</a
-        >
-      </div>
+      <button
+        class="mobile-nav-toggle"
+        id="mobile-nav-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="primary-nav-content"
+        aria-label="Open navigation menu"
+      >
+        <span>Menu</span>
+        <span class="mobile-nav-icon" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button>
 
-      <div class="toggle-wrapper">
-        <span class="toggle-text">Dark Mode</span>
-        <label class="toggle-switch" for="theme-toggle">
-          <input
-            type="checkbox"
-            id="theme-toggle"
-            aria-label="Toggle dark mode"
-          />
-          <span class="toggle-track">
-            <span class="toggle-thumb"></span>
-          </span>
-        </label>
+      <div class="nav-content" id="primary-nav-content">
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#publications">Publications</a>
+        <a href="#projects">Projects</a>
+        <a href="#achievements">Achievements</a>
+        <a href="#contact">Contact</a>
+        <div class="resume-actions">
+          <a
+            href="assets/Zachary-Ryan-Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            >View Résumé</a
+          >
+        </div>
+
+        <div class="toggle-wrapper">
+          <span class="toggle-text">Dark Mode</span>
+          <label class="toggle-switch" for="theme-toggle">
+            <input
+              type="checkbox"
+              id="theme-toggle"
+              aria-label="Toggle dark mode"
+            />
+            <span class="toggle-track">
+              <span class="toggle-thumb"></span>
+            </span>
+          </label>
+        </div>
       </div>
     </nav>
 
@@ -2212,6 +2479,68 @@
         toggle.addEventListener("change", function () {
           apply(toggle.checked ? "dark" : "light");
         });
+
+        /* Compact, keyboard-accessible navigation for phone-sized screens. */
+        const mobileNavToggle = document.getElementById("mobile-nav-toggle");
+        const mobileNavContent = document.getElementById(
+          "primary-nav-content",
+        );
+        const mobileNavQuery = window.matchMedia("(max-width: 768px)");
+
+        document.body.classList.add("mobile-nav-enabled");
+
+        function setMobileNav(open, returnFocus = false) {
+          const shouldOpen = mobileNavQuery.matches && open;
+
+          mobileNavContent.classList.toggle("is-open", shouldOpen);
+          mobileNavToggle.setAttribute("aria-expanded", String(shouldOpen));
+          mobileNavToggle.setAttribute(
+            "aria-label",
+            shouldOpen ? "Close navigation menu" : "Open navigation menu",
+          );
+          document.body.classList.toggle("mobile-nav-open", shouldOpen);
+
+          if (
+            !shouldOpen &&
+            returnFocus &&
+            mobileNavContent.contains(document.activeElement)
+          ) {
+            mobileNavToggle.focus();
+          }
+        }
+
+        mobileNavToggle.addEventListener("click", function () {
+          const isOpen =
+            mobileNavToggle.getAttribute("aria-expanded") === "true";
+          setMobileNav(!isOpen);
+        });
+
+        mobileNavContent.querySelectorAll("a").forEach((link) => {
+          link.addEventListener("click", function () {
+            setMobileNav(false);
+          });
+        });
+
+        document.addEventListener("keydown", function (event) {
+          if (
+            event.key === "Escape" &&
+            mobileNavToggle.getAttribute("aria-expanded") === "true"
+          ) {
+            setMobileNav(false, true);
+          }
+        });
+
+        const resetMobileNav = function () {
+          setMobileNav(false);
+        };
+
+        if (typeof mobileNavQuery.addEventListener === "function") {
+          mobileNavQuery.addEventListener("change", resetMobileNav);
+        } else {
+          mobileNavQuery.addListener(resetMobileNav);
+        }
+
+        setMobileNav(false);
 
         /* Scroll reveal */
         const revealEls = document.querySelectorAll(".reveal");
