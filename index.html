@@ -561,10 +561,45 @@
       }
 
       .project-details summary {
-        width: fit-content;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        box-sizing: border-box;
+        gap: 0.75rem;
+        padding: 0.65rem 0.8rem;
+        border: 1px solid var(--card-border);
+        border-radius: 5px;
+        background-color: color-mix(in srgb, var(--accent-color) 6%, var(--card-bg));
         cursor: pointer;
         color: var(--accent-color);
         font-weight: 700;
+        list-style: none;
+      }
+
+      .project-details summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .project-details summary::after {
+        content: "+";
+        flex: 0 0 auto;
+        font-size: 1.3rem;
+        font-weight: 400;
+        line-height: 1;
+      }
+
+      .project-details summary:hover {
+        border-color: var(--accent-color);
+        background-color: color-mix(in srgb, var(--accent-color) 11%, var(--card-bg));
+      }
+
+      .project-details[open] summary {
+        border-color: var(--accent-color);
+      }
+
+      .project-details[open] summary::after {
+        content: "−";
       }
 
       .project-details ul {
@@ -1615,7 +1650,7 @@
               generators, React, and SQLite.
             </p>
             <details class="project-details">
-              <summary>View project details</summary>
+              <summary><span>Project details</span></summary>
               <ul>
                 <li>Uses Isolation Forest scoring against simulated network flows.</li>
                 <li>Displays anomaly activity through a dashboard visualization.</li>
@@ -1645,7 +1680,7 @@
               checks, header inspection, safe rewriting, and scan history.
             </p>
             <details class="project-details">
-              <summary>View project details</summary>
+              <summary><span>Project details</span></summary>
               <ul>
                 <li>Combines heuristic and header analysis for phishing review.</li>
                 <li>Provides a safe rewrite/diff workflow with SQLite history.</li>
@@ -1672,7 +1707,7 @@
               testing, and connectivity validation.
             </p>
             <details class="project-details">
-              <summary>View project details</summary>
+              <summary><span>Project details</span></summary>
               <ul>
                 <li>Separates public, private, and management Docker networks.</li>
                 <li>Uses iptables and policy-as-code connectivity validation.</li>
@@ -1693,7 +1728,7 @@
               concurrent scanning, with a web UI and timeouts.
             </p>
             <details class="project-details">
-              <summary>View project details</summary>
+              <summary><span>Project details</span></summary>
               <ul>
                 <li>Performs concurrent TCP scanning with ThreadPoolExecutor.</li>
                 <li>Includes a Flask web UI and time limiting; use only with authorization.</li>
@@ -1714,7 +1749,7 @@
               SecureRandom password generation.
             </p>
             <details class="project-details">
-              <summary>View project details</summary>
+              <summary><span>Project details</span></summary>
               <ul>
                 <li>Educational local tool for SHA-256 comparison and recursive brute force.</li>
                 <li>Includes SecureRandom password generation in a Java Swing interface.</li>
@@ -1740,7 +1775,7 @@
               built with Next.js, React, and TypeScript.
             </p>
             <details class="project-details">
-              <summary>View project details</summary>
+              <summary><span>Project details</span></summary>
               <ul>
                 <li>Sequences simulated telemetry into a behavioral incident narrative.</li>
                 <li>Maps behavior to MITRE ATT&amp;CK to support an analyst workflow.</li>
