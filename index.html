@@ -62,11 +62,7 @@
         --header-bg: var(--warm-cream);
         --section-bg: var(--paper-white);
         --card-bg: var(--paper-white);
-        --card-border: color-mix(
-          in srgb,
-          var(--sage) 58%,
-          var(--paper-white)
-        );
+        --card-border: color-mix(in srgb, var(--sage) 58%, var(--paper-white));
         --nav-bg: var(--pine-ink);
         --nav-text: var(--paper-white);
         --footer-bg: var(--pine-ink);
@@ -169,9 +165,25 @@
 
       header {
         background-color: var(--header-bg);
-        padding: 3rem 0;
+        padding: 4rem 1.5rem 3.5rem;
         text-align: center;
         margin-top: 3.5rem;
+        box-sizing: border-box;
+      }
+
+      .hero-about {
+        scroll-margin-top: 5rem;
+      }
+
+      .hero-about-inner {
+        width: min(100%, 900px);
+        margin: 0 auto;
+      }
+
+      .hero-about h1 {
+        margin: 1.15rem 0 0.35rem;
+        font-size: clamp(3.25rem, 6vw, 4.25rem);
+        line-height: 1.08;
       }
 
       nav {
@@ -313,6 +325,10 @@
         font-family: "Montserrat", sans-serif;
       }
 
+      .hero-about .profile-bio {
+        margin: 0;
+      }
+
       .container {
         width: 80%;
         max-width: 1100px;
@@ -329,7 +345,7 @@
         border-radius: 6px;
       }
 
-      body:not(.dark) main > .section:nth-of-type(even) {
+      body:not(.dark) main > .section:nth-of-type(odd) {
         background-color: color-mix(
           in srgb,
           var(--warm-cream) 58%,
@@ -351,8 +367,48 @@
         display: block;
         margin: 0 auto;
       }
+
+      .hero-about .profile img {
+        width: 190px;
+      }
+
+      .hero-about-divider {
+        width: 72px;
+        height: 1px;
+        margin: 1.8rem auto 1.65rem;
+        background-color: var(--sage);
+      }
+
+      body.dark .hero-about-divider {
+        background-color: color-mix(
+          in srgb,
+          var(--accent-color) 46%,
+          transparent
+        );
+      }
+
+      .hero-about-heading {
+        margin: 0;
+        color: var(--accent-color);
+        font-family: "Playfair Display", serif;
+        font-size: 2.2rem;
+        line-height: 1.2;
+        text-align: center;
+      }
+
+      .hero-about-copy {
+        max-width: 820px;
+        margin: 1.35rem auto 0;
+        text-align: left;
+      }
+
       .about-me-para {
-        text-align: justify;
+        margin: 0 0 1.1rem;
+        text-align: left;
+      }
+
+      .hero-about-copy .about-me-para:last-child {
+        margin-bottom: 0;
       }
 
       .terminal-launcher {
@@ -950,6 +1006,18 @@
           padding: 2.25rem 1rem 1.75rem;
         }
 
+        .hero-about h1 {
+          margin-top: 1rem;
+        }
+
+        .hero-about-divider {
+          margin: 1.5rem auto 1.4rem;
+        }
+
+        .hero-about-copy {
+          margin-top: 1.15rem;
+        }
+
         section {
           scroll-margin-top: 4.75rem;
         }
@@ -998,6 +1066,10 @@
           font-size: clamp(2.5rem, 15vw, 3.75rem);
         }
 
+        .hero-about h1 {
+          font-size: clamp(2.65rem, 14vw, 3.5rem);
+        }
+
         .container {
           width: calc(100% - 1rem);
         }
@@ -1013,6 +1085,14 @@
 
         .profile img {
           width: min(170px, 65vw);
+        }
+
+        .hero-about .profile img {
+          width: min(170px, 65vw);
+        }
+
+        .hero-about-heading {
+          font-size: 2rem;
         }
 
         .project-actions {
@@ -1258,7 +1338,8 @@
         border: 3px solid var(--accent-color);
         border-radius: 50%;
         background: var(--section-bg);
-        box-shadow: 0 0 0 4px color-mix(in srgb, var(--section-bg) 84%, transparent);
+        box-shadow: 0 0 0 4px
+          color-mix(in srgb, var(--section-bg) 84%, transparent);
         z-index: 1;
       }
 
@@ -1734,35 +1815,34 @@
       </div>
     </nav>
 
-    <header>
-      <h1>Zachary Ryan</h1>
-      <p class="profile-bio">
-        Cybersecurity Student at RMU | U.S. Navy Veteran
-      </p>
-    </header>
-
-    <main id="main-content" class="container" tabindex="-1">
-      <!-- ABOUT -->
-      <section id="about" class="section reveal reveal-up">
+    <header id="about" class="hero-about">
+      <div class="hero-about-inner">
         <div class="profile">
           <img src="assets/final-profile-picture.png" alt="Zachary Ryan" />
         </div>
-        <h2>About Me</h2>
-        <p class="about-me-para">
-          I’m a U.S. Navy veteran and cybersecurity student at Robert Morris
-          University with an interest in the intersection of technical security,
-          governance, risk, and policy. My background in the Navy’s Nuclear
-          Reactor Department shaped how I think about accountability,
-          documentation, and operating in mission-critical environments where
-          trust has to be supported by evidence.
+        <h1>Zachary Ryan</h1>
+        <p class="profile-bio">
+          Cybersecurity Student at RMU | U.S. Navy Veteran
         </p>
-        <p class="about-me-para">
-          My work now focuses on security operations, AI security, research,
-          governance, risk, and compliance. Through my Brixmor Property Group
-          internship and AI security research, I am especially interested in how
-          organizations evaluate controls, manage risk, and document evidence
-          for security requirements.
-        </p>
+        <div class="hero-about-divider" aria-hidden="true"></div>
+        <h2 class="hero-about-heading">About Me</h2>
+        <div class="hero-about-copy">
+          <p class="about-me-para">
+            I’m a U.S. Navy veteran and cybersecurity student at Robert Morris
+            University with an interest in the intersection of technical
+            security, governance, risk, and policy. My background in the Navy’s
+            Nuclear Reactor Department shaped how I think about accountability,
+            documentation, and operating in mission-critical environments where
+            trust has to be supported by evidence.
+          </p>
+          <p class="about-me-para">
+            My work now focuses on security operations, AI security, research,
+            governance, risk, and compliance. Through my Brixmor Property Group
+            internship and AI security research, I am especially interested in
+            how organizations evaluate controls, manage risk, and document
+            evidence for security requirements.
+          </p>
+        </div>
 
         <div class="terminal-launcher">
           <button
@@ -1787,59 +1867,62 @@
         >
           <div class="terminal-panel-inner">
             <div class="terminal-card">
-          <div class="terminal-header">
-            <span class="terminal-title">
-              WELCOME TO ROBCO INDUSTRIES (TM) TERMLINK<br />
-              PORTFOLIO ACCESS: PUBLIC // SIMULATED INTERFACE
-            </span>
-          </div>
-          <div
-            class="terminal-body"
-            id="terminal-output"
-            role="log"
-            aria-live="polite"
-            aria-relevant="additions text"
-            aria-atomic="false"
-            aria-label="Terminal output"
-            tabindex="0"
-          >
-            <div class="terminal-line output">
-              Portfolio terminal loading. Type "help" after startup.
-            </div>
-          </div>
-          <div class="terminal-input-row">
-            <span
-              class="terminal-prompt"
-              id="terminal-prompt"
-              aria-hidden="true"
-              >zachary@portfolio:~$</span
-            >
-            <input
-              id="terminal-input"
-              type="text"
-              aria-label="Terminal command"
-              aria-describedby="terminal-instructions terminal-status"
-              autocomplete="off"
-              autocapitalize="none"
-              enterkeyhint="send"
-              spellcheck="false"
-              placeholder="try: help, projects, soc --demo"
-            />
-            <span class="terminal-sr-only" id="terminal-instructions">
-              Enter a command, use Up and Down Arrow for history, and Tab for
-              completion.
-            </span>
-            <span
-              class="terminal-sr-only"
-              id="terminal-status"
-              role="status"
-              aria-live="polite"
-            ></span>
+              <div class="terminal-header">
+                <span class="terminal-title">
+                  WELCOME TO ROBCO INDUSTRIES (TM) TERMLINK<br />
+                  PORTFOLIO ACCESS: PUBLIC // SIMULATED INTERFACE
+                </span>
+              </div>
+              <div
+                class="terminal-body"
+                id="terminal-output"
+                role="log"
+                aria-live="polite"
+                aria-relevant="additions text"
+                aria-atomic="false"
+                aria-label="Terminal output"
+                tabindex="0"
+              >
+                <div class="terminal-line output">
+                  Portfolio terminal loading. Type "help" after startup.
+                </div>
+              </div>
+              <div class="terminal-input-row">
+                <span
+                  class="terminal-prompt"
+                  id="terminal-prompt"
+                  aria-hidden="true"
+                  >zachary@portfolio:~$</span
+                >
+                <input
+                  id="terminal-input"
+                  type="text"
+                  aria-label="Terminal command"
+                  aria-describedby="terminal-instructions terminal-status"
+                  autocomplete="off"
+                  autocapitalize="none"
+                  enterkeyhint="send"
+                  spellcheck="false"
+                  placeholder="try: help, projects, soc --demo"
+                />
+                <span class="terminal-sr-only" id="terminal-instructions">
+                  Enter a command, use Up and Down Arrow for history, and Tab
+                  for completion.
+                </span>
+                <span
+                  class="terminal-sr-only"
+                  id="terminal-status"
+                  role="status"
+                  aria-live="polite"
+                ></span>
+              </div>
             </div>
           </div>
         </div>
-        </div>
-      </section>
+      </div>
+    </header>
+
+    <main id="main-content" class="container" tabindex="-1">
 
       <!-- EDUCATION -->
       <section id="education" class="section reveal reveal-left">
@@ -2083,8 +2166,8 @@
               <ul>
                 <li>
                   Triaged security tickets across a 500+ user enterprise using
-                  Freshservice, CrowdStrike, Rapid7, Cisco Umbrella, and Microsoft
-                  Defender.
+                  Freshservice, CrowdStrike, Rapid7, Cisco Umbrella, and
+                  Microsoft Defender.
                 </li>
                 <li>
                   Supported Rapid7 vulnerability management on 25+ high-risk
@@ -2130,13 +2213,12 @@
                   qualifications.
                 </li>
                 <li>
-                  Responded to system alarms and abnormal conditions under strict
-                  safety, documentation, and operational requirements.
+                  Responded to system alarms and abnormal conditions under
+                  strict safety, documentation, and operational requirements.
                 </li>
               </ul>
             </article>
           </li>
-
         </ol>
       </section>
       <!-- PUBLICATIONS -->
@@ -2208,7 +2290,7 @@
                 <p class="citation-text">
                   Ryan, Z., &amp; Mishra, S. (2026). Evaluating AI vs. human
                   phishing evasion across emulated email security filters and
-                  SpamAssassin. In NEDSI Annual Conference Proceedings (pp.
+                  SpamAssassin. NEDSI Annual Conference Proceedings (pp.
                   189–202).
                 </p>
               </details>
@@ -2605,9 +2687,7 @@
 
         /* Compact, keyboard-accessible navigation for phone-sized screens. */
         const mobileNavToggle = document.getElementById("mobile-nav-toggle");
-        const mobileNavContent = document.getElementById(
-          "primary-nav-content",
-        );
+        const mobileNavContent = document.getElementById("primary-nav-content");
         const mobileNavQuery = window.matchMedia("(max-width: 768px)");
 
         document.body.classList.add("mobile-nav-enabled");
