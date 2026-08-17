@@ -1191,6 +1191,10 @@
       }
 
       /* SKILLS */
+      #skills {
+        box-shadow: none;
+      }
+
       .skills {
         display: flex;
         justify-content: center;
@@ -1349,11 +1353,25 @@
       }
 
       .tech-stack-category h3 {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
         margin: 0 0 0.85rem;
         color: var(--accent-color);
         font-family: "Montserrat", sans-serif;
         font-size: 1rem;
         line-height: 1.35;
+      }
+
+      .tech-stack-heading-icon {
+        width: 1.05rem;
+        height: 1.05rem;
+        flex: 0 0 auto;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
       }
 
       .tech-stack-tags {
@@ -2698,7 +2716,17 @@
                 class="tech-stack-category"
                 aria-labelledby="stack-security-operations"
               >
-                <h3 id="stack-security-operations">Security operations</h3>
+                <h3 id="stack-security-operations">
+                  <svg
+                    class="tech-stack-heading-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path d="M20 13c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9V5l8-3 8 3v8Z"></path>
+                    <path d="m9 12 2 2 4-4"></path>
+                  </svg>
+                  <span>Security operations</span>
+                </h3>
                 <div class="tech-stack-tags">
                   <span class="tech-stack-tag">Microsoft Defender</span>
                   <span class="tech-stack-tag">CrowdStrike</span>
@@ -2714,7 +2742,18 @@
                 class="tech-stack-category"
                 aria-labelledby="stack-security-practices"
               >
-                <h3 id="stack-security-practices">Security practices</h3>
+                <h3 id="stack-security-practices">
+                  <svg
+                    class="tech-stack-heading-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <rect x="5" y="4" width="14" height="17"></rect>
+                    <path d="M9 4V2h6v2"></path>
+                    <path d="m9 13 2 2 4-4"></path>
+                  </svg>
+                  <span>Security practices</span>
+                </h3>
                 <div class="tech-stack-tags">
                   <span class="tech-stack-tag">Vulnerability management</span>
                   <span class="tech-stack-tag">Security ticket triage</span>
@@ -2729,7 +2768,16 @@
                 class="tech-stack-category"
                 aria-labelledby="stack-cloud-operations"
               >
-                <h3 id="stack-cloud-operations">Cloud &amp; IT operations</h3>
+                <h3 id="stack-cloud-operations">
+                  <svg
+                    class="tech-stack-heading-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path d="M17.5 19H6a4 4 0 0 1-.7-7.9A7 7 0 0 1 18.8 9a5 5 0 0 1-1.3 10Z"></path>
+                  </svg>
+                  <span>Cloud &amp; IT operations</span>
+                </h3>
                 <div class="tech-stack-tags">
                   <span class="tech-stack-tag">Microsoft Azure</span>
                   <span class="tech-stack-tag">Freshservice</span>
@@ -2741,7 +2789,19 @@
                 aria-labelledby="stack-vulnerability-network"
               >
                 <h3 id="stack-vulnerability-network">
-                  Vulnerability &amp; network analysis
+                  <svg
+                    class="tech-stack-heading-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path d="M3 7V3h4"></path>
+                    <path d="M17 3h4v4"></path>
+                    <path d="M21 17v4h-4"></path>
+                    <path d="M7 21H3v-4"></path>
+                    <circle cx="11" cy="11" r="4"></circle>
+                    <path d="m14 14 3 3"></path>
+                  </svg>
+                  <span>Vulnerability &amp; network analysis</span>
                 </h3>
                 <div class="tech-stack-tags">
                   <span class="tech-stack-tag">Rapid7</span>
@@ -2754,7 +2814,18 @@
                 class="tech-stack-category tech-stack-category--wide"
                 aria-labelledby="stack-development"
               >
-                <h3 id="stack-development">Development stack</h3>
+                <h3 id="stack-development">
+                  <svg
+                    class="tech-stack-heading-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path d="m18 16 4-4-4-4"></path>
+                    <path d="m6 8-4 4 4 4"></path>
+                    <path d="m14.5 4-5 16"></path>
+                  </svg>
+                  <span>Development stack</span>
+                </h3>
                 <div class="tech-stack-tags">
                   <span class="tech-stack-tag">Python</span>
                   <span class="tech-stack-tag">TypeScript</span>
