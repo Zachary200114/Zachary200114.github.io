@@ -1252,6 +1252,156 @@
         color: var(--text-color);
       }
 
+      .tech-stack-launcher {
+        display: flex;
+        justify-content: center;
+        margin-top: 0.25rem;
+      }
+
+      .tech-stack-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.65rem;
+        min-width: 180px;
+        min-height: 46px;
+        padding: 0.7rem 1.15rem;
+        border: 1px solid var(--accent-color);
+        border-radius: 999px;
+        background: transparent;
+        color: var(--accent-color);
+        cursor: pointer;
+        font: inherit;
+        font-size: 0.95rem;
+        font-weight: 700;
+        transition:
+          background-color 0.2s ease,
+          border-color 0.2s ease,
+          color 0.2s ease,
+          transform 0.2s ease;
+      }
+
+      .tech-stack-toggle:hover {
+        background: var(--accent-color);
+        color: var(--accent-text-on);
+        transform: translateY(-2px);
+      }
+
+      .tech-stack-toggle-icon {
+        font-size: 1.15rem;
+        font-weight: 500;
+        line-height: 1;
+        transition: transform 0.25s ease;
+      }
+
+      .tech-stack-toggle[aria-expanded="true"] .tech-stack-toggle-icon {
+        transform: rotate(45deg);
+      }
+
+      .tech-stack-panel {
+        display: grid;
+        grid-template-rows: 0fr;
+        max-width: 920px;
+        margin: 0 auto;
+        opacity: 0;
+        transition:
+          grid-template-rows 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+          margin-top 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+          opacity 0.25s ease;
+      }
+
+      .tech-stack-panel.is-open {
+        grid-template-rows: 1fr;
+        margin-top: 1.5rem;
+        opacity: 1;
+      }
+
+      .tech-stack-panel-inner {
+        min-height: 0;
+        overflow: hidden;
+      }
+
+      .tech-stack-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        border: 1px solid var(--card-border);
+        background: var(--card-bg);
+      }
+
+      .tech-stack-category {
+        min-width: 0;
+        padding: 1.25rem;
+        border-right: 1px solid var(--card-border);
+        border-bottom: 1px solid var(--card-border);
+      }
+
+      .tech-stack-category:nth-child(2n) {
+        border-right: 0;
+      }
+
+      .tech-stack-category--wide {
+        grid-column: 1 / -1;
+        border-right: 0;
+        border-bottom: 0;
+      }
+
+      .tech-stack-category h3 {
+        margin: 0 0 0.85rem;
+        color: var(--accent-color);
+        font-family: "Montserrat", sans-serif;
+        font-size: 1rem;
+        line-height: 1.35;
+      }
+
+      .tech-stack-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      .tech-stack-tag {
+        display: inline-flex;
+        align-items: center;
+        min-height: 32px;
+        padding: 0.28rem 0.7rem;
+        border: 1px solid var(--card-border);
+        border-radius: 999px;
+        background: var(--section-bg);
+        color: var(--muted-text);
+        font-size: 0.8rem;
+        font-weight: 500;
+        line-height: 1.3;
+      }
+
+      body:not(.dark) .tech-stack-toggle:hover {
+        border-color: var(--moss-accent);
+        background: var(--moss-accent);
+        color: var(--pine-ink);
+      }
+
+      body:not(.dark) .tech-stack-tag {
+        border-color: var(--sage);
+        background: color-mix(
+          in srgb,
+          var(--sage) 11%,
+          var(--paper-white)
+        );
+      }
+
+      body.dark .tech-stack-toggle {
+        border-color: var(--accent-color);
+        color: var(--accent-color);
+      }
+
+      body.dark .tech-stack-toggle:hover {
+        background: var(--accent-color);
+        color: var(--accent-text-on);
+      }
+
+      body.dark .tech-stack-tag {
+        background: var(--bg-color);
+      }
+
       @media (max-width: 1024px) {
         #skills .skills {
           grid-template-columns: repeat(6, minmax(0, 1fr));
@@ -1261,6 +1411,23 @@
       @media (max-width: 768px) {
         #skills .skills {
           grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .tech-stack-grid {
+          grid-template-columns: minmax(0, 1fr);
+        }
+
+        .tech-stack-category,
+        .tech-stack-category:nth-child(2n),
+        .tech-stack-category--wide {
+          grid-column: auto;
+          padding: 1rem;
+          border-right: 0;
+          border-bottom: 1px solid var(--card-border);
+        }
+
+        .tech-stack-category:last-child {
+          border-bottom: 0;
         }
       }
 
@@ -2498,6 +2665,87 @@
             <small>Governance &amp; Risk</small>
           </div>
         </div>
+
+        <div class="tech-stack-launcher">
+          <button
+            id="tech-stack-toggle"
+            class="tech-stack-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="tech-stack-panel"
+          >
+            <span>Tech Stack</span>
+            <span class="tech-stack-toggle-icon" aria-hidden="true">+</span>
+          </button>
+        </div>
+
+        <div
+          id="tech-stack-panel"
+          class="tech-stack-panel"
+          aria-hidden="true"
+          hidden
+          inert
+        >
+          <div class="tech-stack-panel-inner">
+            <div class="tech-stack-grid">
+              <section class="tech-stack-category" aria-labelledby="stack-security-operations">
+                <h3 id="stack-security-operations">Security operations</h3>
+                <div class="tech-stack-tags">
+                  <span class="tech-stack-tag">Microsoft Defender</span>
+                  <span class="tech-stack-tag">CrowdStrike</span>
+                  <span class="tech-stack-tag">Cisco Umbrella</span>
+                </div>
+              </section>
+
+              <section class="tech-stack-category" aria-labelledby="stack-vulnerability-network">
+                <h3 id="stack-vulnerability-network">
+                  Vulnerability &amp; network analysis
+                </h3>
+                <div class="tech-stack-tags">
+                  <span class="tech-stack-tag">Rapid7</span>
+                  <span class="tech-stack-tag">Wireshark</span>
+                  <span class="tech-stack-tag">Nmap</span>
+                </div>
+              </section>
+
+              <section class="tech-stack-category" aria-labelledby="stack-cloud-operations">
+                <h3 id="stack-cloud-operations">Cloud &amp; IT operations</h3>
+                <div class="tech-stack-tags">
+                  <span class="tech-stack-tag">Microsoft Azure</span>
+                  <span class="tech-stack-tag">Freshservice</span>
+                </div>
+              </section>
+
+              <section class="tech-stack-category" aria-labelledby="stack-security-practices">
+                <h3 id="stack-security-practices">Security practices</h3>
+                <div class="tech-stack-tags">
+                  <span class="tech-stack-tag">Vulnerability management</span>
+                  <span class="tech-stack-tag">Security ticket triage</span>
+                  <span class="tech-stack-tag">Domain risk assessment</span>
+                  <span class="tech-stack-tag">Third-party risk management</span>
+                </div>
+              </section>
+
+              <section
+                class="tech-stack-category tech-stack-category--wide"
+                aria-labelledby="stack-development"
+              >
+                <h3 id="stack-development">Development stack</h3>
+                <div class="tech-stack-tags">
+                  <span class="tech-stack-tag">Python</span>
+                  <span class="tech-stack-tag">TypeScript</span>
+                  <span class="tech-stack-tag">Java</span>
+                  <span class="tech-stack-tag">SQL / SQLite</span>
+                  <span class="tech-stack-tag">React</span>
+                  <span class="tech-stack-tag">Next.js</span>
+                  <span class="tech-stack-tag">FastAPI</span>
+                  <span class="tech-stack-tag">Flask</span>
+                  <span class="tech-stack-tag">Java Swing</span>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
       </section>
 
       <!-- EXPERIENCE -->
@@ -3250,6 +3498,66 @@
             setProjectDetails(details, shouldOpen);
           });
         });
+
+        /* Optional tech-stack panel below Skills. */
+        const techStackToggle = document.getElementById("tech-stack-toggle");
+        const techStackPanel = document.getElementById("tech-stack-panel");
+        let techStackTimer = null;
+        let techStackFrame = null;
+
+        function setTechStackPanel(open) {
+          if (!techStackToggle || !techStackPanel) return;
+
+          if (techStackTimer !== null) {
+            window.clearTimeout(techStackTimer);
+            techStackTimer = null;
+          }
+
+          if (techStackFrame !== null) {
+            window.cancelAnimationFrame(techStackFrame);
+            techStackFrame = null;
+          }
+
+          techStackToggle.setAttribute("aria-expanded", String(open));
+          techStackPanel.setAttribute("aria-hidden", String(!open));
+
+          if (open) {
+            techStackPanel.hidden = false;
+            techStackPanel.removeAttribute("inert");
+
+            if (reducedMotion) {
+              techStackPanel.classList.add("is-open");
+            } else {
+              techStackFrame = window.requestAnimationFrame(() => {
+                techStackPanel.classList.add("is-open");
+                techStackFrame = null;
+              });
+            }
+            return;
+          }
+
+          techStackPanel.setAttribute("inert", "");
+          techStackPanel.classList.remove("is-open");
+
+          if (reducedMotion) {
+            techStackPanel.hidden = true;
+          } else {
+            techStackTimer = window.setTimeout(() => {
+              if (techStackToggle.getAttribute("aria-expanded") === "false") {
+                techStackPanel.hidden = true;
+              }
+              techStackTimer = null;
+            }, 400);
+          }
+        }
+
+        if (techStackToggle && techStackPanel) {
+          techStackToggle.addEventListener("click", () => {
+            const shouldOpen =
+              techStackToggle.getAttribute("aria-expanded") !== "true";
+            setTechStackPanel(shouldOpen);
+          });
+        }
 
         /* Citation controls use fixed text only and keep feedback scoped to the active button. */
         const citationStatus = document.getElementById("citation-status");
