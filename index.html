@@ -1686,11 +1686,7 @@
         box-shadow: inset 0 0 0 1px var(--card-border);
       }
 
-      body.dark
-        .toggle-switch
-        input:checked
-        + .toggle-track
-        .toggle-thumb {
+      body.dark .toggle-switch input:checked + .toggle-track .toggle-thumb {
         box-shadow: 0 0 0 1px var(--accent-text-on);
       }
 
@@ -2283,7 +2279,6 @@
     </header>
 
     <main id="main-content" class="container" tabindex="-1">
-
       <!-- EDUCATION -->
       <section id="education" class="section reveal reveal-left">
         <h2>Education</h2>
@@ -3216,9 +3211,7 @@
             },
             {
               duration: shouldOpen ? 380 : 300,
-              easing: shouldOpen
-                ? "cubic-bezier(0.22, 1, 0.36, 1)"
-                : "ease",
+              easing: shouldOpen ? "cubic-bezier(0.22, 1, 0.36, 1)" : "ease",
             },
           );
 
@@ -3471,7 +3464,7 @@
         });
 
         const experienceLog = [
-          "Brixmor: Triaged security tickets across a 500+ user enterprise using Freshservice, CrowdStrike, Rapid7, Cisco Umbrella, and Microsoft Defender.",
+          "Brixmor: Triaged security tickets across a 500+ user enterprise using enterprise security tools.",
           "Brixmor: Supported Rapid7 vulnerability management on 25+ high-risk assets, documenting CVEs and remediation.",
           "Brixmor: Assessed 100+ domains in Cisco Umbrella and made block/allow recommendations.",
           "Brixmor: Assisted with TPRM policy development for vendor onboarding, security reviews, control assessment, risk acceptance, and compliance.",
