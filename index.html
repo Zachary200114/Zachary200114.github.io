@@ -1349,6 +1349,13 @@
       .tech-stack-category--wide {
         grid-column: 1 / -1;
         border-right: 0;
+      }
+
+      .tech-stack-category:nth-last-child(-n + 2) {
+        border-bottom: 0;
+      }
+
+      .tech-stack-category:last-child {
         border-bottom: 0;
       }
 
@@ -1436,7 +1443,8 @@
 
         .tech-stack-category,
         .tech-stack-category:nth-child(2n),
-        .tech-stack-category--wide {
+        .tech-stack-category--wide,
+        .tech-stack-category:nth-last-child(-n + 2) {
           grid-column: auto;
           padding: 1rem;
           border-right: 0;
@@ -2714,9 +2722,9 @@
             <div class="tech-stack-grid">
               <section
                 class="tech-stack-category"
-                aria-labelledby="stack-security-operations"
+                aria-labelledby="stack-security-tools"
               >
-                <h3 id="stack-security-operations">
+                <h3 id="stack-security-tools">
                   <svg
                     class="tech-stack-heading-icon"
                     viewBox="0 0 24 24"
@@ -2727,98 +2735,25 @@
                     ></path>
                     <path d="m9 12 2 2 4-4"></path>
                   </svg>
-                  <span>Security operations</span>
+                  <span>Security tools</span>
                 </h3>
                 <div class="tech-stack-tags">
                   <span class="tech-stack-tag">Microsoft Defender</span>
                   <span class="tech-stack-tag">CrowdStrike</span>
                   <span class="tech-stack-tag">Cisco Umbrella</span>
-                  <span class="tech-stack-tag">Alert triage</span>
-                  <span class="tech-stack-tag"
-                    >Security incident investigation</span
-                  >
-                </div>
-              </section>
-
-              <section
-                class="tech-stack-category"
-                aria-labelledby="stack-security-practices"
-              >
-                <h3 id="stack-security-practices">
-                  <svg
-                    class="tech-stack-heading-icon"
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                  >
-                    <rect x="5" y="4" width="14" height="17"></rect>
-                    <path d="M9 4V2h6v2"></path>
-                    <path d="m9 13 2 2 4-4"></path>
-                  </svg>
-                  <span>Security practices</span>
-                </h3>
-                <div class="tech-stack-tags">
-                  <span class="tech-stack-tag">Vulnerability management</span>
-                  <span class="tech-stack-tag">Security ticket triage</span>
-                  <span class="tech-stack-tag">Domain risk assessment</span>
-                  <span class="tech-stack-tag"
-                    >Third-party risk management</span
-                  >
-                </div>
-              </section>
-
-              <section
-                class="tech-stack-category"
-                aria-labelledby="stack-cloud-operations"
-              >
-                <h3 id="stack-cloud-operations">
-                  <svg
-                    class="tech-stack-heading-icon"
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M17.5 19H6a4 4 0 0 1-.7-7.9A7 7 0 0 1 18.8 9a5 5 0 0 1-1.3 10Z"
-                    ></path>
-                  </svg>
-                  <span>Cloud &amp; IT operations</span>
-                </h3>
-                <div class="tech-stack-tags">
-                  <span class="tech-stack-tag">Microsoft Azure</span>
-                  <span class="tech-stack-tag">Freshservice</span>
-                </div>
-              </section>
-
-              <section
-                class="tech-stack-category"
-                aria-labelledby="stack-vulnerability-network"
-              >
-                <h3 id="stack-vulnerability-network">
-                  <svg
-                    class="tech-stack-heading-icon"
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                  >
-                    <path d="M3 7V3h4"></path>
-                    <path d="M17 3h4v4"></path>
-                    <path d="M21 17v4h-4"></path>
-                    <path d="M7 21H3v-4"></path>
-                    <circle cx="11" cy="11" r="4"></circle>
-                    <path d="m14 14 3 3"></path>
-                  </svg>
-                  <span>Vulnerability &amp; network analysis</span>
-                </h3>
-                <div class="tech-stack-tags">
                   <span class="tech-stack-tag">Rapid7</span>
                   <span class="tech-stack-tag">Wireshark</span>
                   <span class="tech-stack-tag">Nmap</span>
+                  <span class="tech-stack-tag">Mimecast</span>
+                  <span class="tech-stack-tag">Okta</span>
                 </div>
               </section>
 
               <section
-                class="tech-stack-category tech-stack-category--wide"
-                aria-labelledby="stack-development"
+                class="tech-stack-category"
+                aria-labelledby="stack-coding-languages"
               >
-                <h3 id="stack-development">
+                <h3 id="stack-coding-languages">
                   <svg
                     class="tech-stack-heading-icon"
                     viewBox="0 0 24 24"
@@ -2828,18 +2763,66 @@
                     <path d="m6 8-4 4 4 4"></path>
                     <path d="m14.5 4-5 16"></path>
                   </svg>
-                  <span>Development stack</span>
+                  <span>Coding languages</span>
                 </h3>
                 <div class="tech-stack-tags">
                   <span class="tech-stack-tag">Python</span>
-                  <span class="tech-stack-tag">TypeScript</span>
                   <span class="tech-stack-tag">Java</span>
-                  <span class="tech-stack-tag">SQL / SQLite</span>
+                  <span class="tech-stack-tag">TypeScript</span>
+                  <span class="tech-stack-tag">HTML</span>
+                  <span class="tech-stack-tag">CSS</span>
+                  <span class="tech-stack-tag">SQL</span>
+                </div>
+              </section>
+
+              <section
+                class="tech-stack-category"
+                aria-labelledby="stack-cloud-it-tools"
+              >
+                <h3 id="stack-cloud-it-tools">
+                  <svg
+                    class="tech-stack-heading-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M17.5 19H6a4 4 0 0 1-.7-7.9A7 7 0 0 1 18.8 9a5 5 0 0 1-1.3 10Z"
+                    ></path>
+                  </svg>
+                  <span>Cloud &amp; IT tools</span>
+                </h3>
+                <div class="tech-stack-tags">
+                  <span class="tech-stack-tag">Microsoft Azure</span>
+                  <span class="tech-stack-tag">Freshservice</span>
+                  <span class="tech-stack-tag">Git</span>
+                  <span class="tech-stack-tag">GitHub</span>
+                  <span class="tech-stack-tag">Docker</span>
+                </div>
+              </section>
+
+              <section
+                class="tech-stack-category"
+                aria-labelledby="stack-development"
+              >
+                <h3 id="stack-development">
+                  <svg
+                    class="tech-stack-heading-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path d="m12 2 8 4-8 4-8-4 8-4Z"></path>
+                    <path d="m4 12 8 4 8-4"></path>
+                    <path d="m4 18 8 4 8-4"></path>
+                  </svg>
+                  <span>Development stack</span>
+                </h3>
+                <div class="tech-stack-tags">
                   <span class="tech-stack-tag">React</span>
                   <span class="tech-stack-tag">Next.js</span>
                   <span class="tech-stack-tag">FastAPI</span>
                   <span class="tech-stack-tag">Flask</span>
                   <span class="tech-stack-tag">Java Swing</span>
+                  <span class="tech-stack-tag">SQLite</span>
                 </div>
               </section>
             </div>
