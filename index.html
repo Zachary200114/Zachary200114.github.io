@@ -2836,6 +2836,20 @@
 
         <ol class="experience-timeline" aria-label="Career timeline">
           <li class="timeline-item reveal reveal-left">
+            <p class="timeline-date" aria-label="August 2026 to present">
+              <time datetime="2026-08">Aug 2026</time>
+              <span aria-hidden="true">–</span>
+              <span>Present</span>
+            </p>
+            <span class="timeline-marker" aria-hidden="true"></span>
+            <article class="experience-card timeline-card">
+              <h3>O.F. Mossberg &amp; Sons</h3>
+              <p class="experience-role">Artificial Intelligence Intern</p>
+              <p class="experience-meta">Aug 2026 – Present · Remote</p>
+            </article>
+          </li>
+
+          <li class="timeline-item reveal reveal-left">
             <p class="timeline-date" aria-label="May 2026 to July 2026">
               <time datetime="2026-05">May 2026</time>
               <span aria-hidden="true">–</span>
@@ -4100,7 +4114,7 @@
 
         function printBrixmorExperience(numbered) {
           appendLine(
-            (numbered ? "[1] " : "") +
+            (numbered ? "[2] " : "") +
               "Brixmor Property Group — Cybersecurity Intern",
             "heading",
           );
@@ -4110,12 +4124,21 @@
 
         function printNavyExperience(numbered) {
           appendLine(
-            (numbered ? "[2] " : "") +
+            (numbered ? "[3] " : "") +
               "United States Navy — Machinist's Mate, Nuclear Reactor Department",
             "heading",
           );
           appendLine("Jul 2020–Sep 2023 · Norfolk, VA · On-site", "muted");
           appendBullets(experienceLog.slice(4).map((line) => line.slice(11)));
+        }
+
+        function printMossbergExperience(numbered) {
+          appendLine(
+            (numbered ? "[1] " : "") +
+              "O.F. Mossberg & Sons — Artificial Intelligence Intern",
+            "heading",
+          );
+          appendLine("Aug 2026–Present · Remote", "muted");
         }
 
         function findProject(query) {
@@ -4180,16 +4203,17 @@
           category: "Profile",
           usage: "experience [--latest]",
           description:
-            "Show Brixmor and U.S. Navy experience, or only the latest role.",
+            "Show Mossberg, Brixmor, and U.S. Navy experience, or only the latest role.",
           examples: ["experience", "experience --latest"],
           handler(args) {
             if (args.length === 0) {
+              printMossbergExperience(true);
               printBrixmorExperience(true);
               printNavyExperience(true);
               return;
             }
             if (args.length === 1 && args[0].toLowerCase() === "--latest") {
-              printBrixmorExperience(false);
+              printMossbergExperience(false);
               return;
             }
             showUsage(
@@ -4506,6 +4530,9 @@
             appendLine("Current status", "heading");
             appendLine(
               "B.S. Cybersecurity candidate at RMU · Graduation: Dec 2026",
+            );
+            appendLine(
+              "Mossberg artificial intelligence internship · Remote · Aug 2026–Present.",
             );
             appendLine("Brixmor cybersecurity internship completed Jul 2026.");
             appendLine(
@@ -5110,6 +5137,10 @@
                 },
                 {
                   text: "May–Jul 2026  Brixmor Property Group · Cybersecurity Intern",
+                  type: "success",
+                },
+                {
+                  text: "Aug 2026–Present  O.F. Mossberg & Sons · Artificial Intelligence Intern (Remote)",
                   type: "success",
                 },
               ],
