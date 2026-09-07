@@ -16,8 +16,7 @@ The portfolio connects my operational background in the U.S. Navy’s Nuclear Re
 - **Career timeline** — A most-recent-first timeline covers my Brixmor Property Group cybersecurity internship and U.S. Navy experience.
 - **Research** — Current work includes AI phishing evasion research and a cross-framework analysis of auditable evidence in AI cybersecurity compliance.
 - **Project showcase** — Six projects include concise summaries, expandable technical details, technology tags, repository links, and authentic previews for featured work.
-- **Interactive terminal** — A collapsed-by-default Fallout-inspired portfolio shell provides commands for exploring my background, experience, skills, projects, research, résumé, and contact information.
-- **Responsive experience** — The layout, navigation, project cards, timeline, and terminal adapt for desktop, tablet, and phone screens.
+- **Responsive experience** — The layout, navigation, project cards, and timeline adapt for desktop, tablet, and phone screens.
 - **Accessible interaction** — Semantic HTML, keyboard support, visible focus states, reduced-motion handling, descriptive labels, and safe external links are built into the page.
 
 ## Featured projects
@@ -48,22 +47,9 @@ Presented at the NEDSI Annual Conference on April 9, 2026, and published in the 
 
 Submitted to *Computers & Security* in June 2026. The research examines how governance, regulatory, and vendor frameworks define or imply the evidence needed to support cybersecurity assurance, compliance, and independent audits.
 
-## Interactive portfolio terminal
-
-The optional terminal expands from the About section and behaves like a small portfolio-focused shell. It includes:
-
-- Profile, education, experience, skills, projects, research, achievements, résumé, and contact commands
-- Shell-style navigation such as `ls`, `cd`, `cat`, `pwd`, `whoami`, `grep`, and `man zachary`
-- Command history with the arrow keys and Tab completion
-- Clickable, allowlisted links to professional profiles, repositories, publications, and the résumé
-- Clearly labeled simulated sequences for portfolio scanning, skill analysis, SOC investigation, career tracing, and résumé decryption
-- Reduced-motion-aware boot and simulation sequences
-
-The terminal is a portfolio interface only. It does not execute operating-system commands or scan a live system.
-
 ## Visual system
 
-- **Typography:** Playfair Display for the name and section headings, Montserrat for body copy and interface elements, and Share Tech Mono inside the terminal
+- **Typography:** Playfair Display for the name and section headings, Montserrat for body copy and interface elements
 - **Light mode:** Paper white and warm cream with forest, sage, and restrained moss accents
 - **Dark mode:** Deep pine surfaces, warm off-white text, muted sage metadata, and calm moss controls
 - **Theme behavior:** Light mode loads by default; visitors can switch themes during the current visit
