@@ -582,6 +582,13 @@
         text-align: left;
       }
 
+      .projects-progress-card-header {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+
       .projects-progress-card h3 {
         margin: 0 0 0.45rem;
         color: var(--accent-color);
@@ -615,6 +622,8 @@
         font-size: 0.85rem;
       }
 
+      .projects-progress-card-header .project-actions { margin: 0; }
+
       @media (max-width: 768px) {
         .projects-section-heading {
           display: flex;
@@ -626,6 +635,7 @@
         .projects-section-heading h2 { margin-bottom: 0; }
         .projects-section-heading .projects-progress-toggle { margin-top: 1.5rem; }
         .projects-progress-card { padding: 1rem; }
+        .projects-progress-card-header { flex-wrap: wrap; }
         .projects-progress-copy { grid-template-columns: minmax(0, 1fr); gap: 0.75rem; }
       }
 
@@ -2933,7 +2943,18 @@
         >
           <div class="projects-progress-inner">
             <article class="projects-progress-card">
-              <h3 id="projects-progress-title">ReactorBench-LM</h3>
+              <div class="projects-progress-card-header">
+                <h3 id="projects-progress-title">ReactorBench-LM</h3>
+                <div class="project-actions">
+                  <a
+                    href="https://github.com/Zachary200114/reactorbench-lm"
+                    class="button"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >View Code</a
+                  >
+                </div>
+              </div>
               <p class="projects-progress-subtitle">
                 Transformer from scratch &middot; Research in progress
               </p>
