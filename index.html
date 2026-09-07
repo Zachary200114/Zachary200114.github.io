@@ -676,6 +676,108 @@
       }
 
       /* PROJECTS */
+      .projects-section-heading {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+        align-items: center;
+        gap: 1.25rem;
+      }
+
+      .projects-section-heading h2 { grid-column: 2; }
+
+      .projects-section-heading .projects-progress-toggle {
+        grid-column: 3;
+        justify-self: start;
+        min-width: 0;
+        white-space: nowrap;
+      }
+
+      .projects-progress-toggle:focus-visible {
+        outline: 2px solid var(--accent-color);
+        outline-offset: 4px;
+      }
+
+      .projects-progress-panel {
+        display: grid;
+        grid-template-rows: 0fr;
+        margin-bottom: 0;
+        opacity: 0;
+        visibility: hidden;
+        transition:
+          grid-template-rows 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+          margin-bottom 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+          opacity 0.25s ease,
+          visibility 0s 0.38s;
+      }
+
+      .projects-progress-panel.is-open {
+        grid-template-rows: 1fr;
+        margin-bottom: 1rem;
+        opacity: 1;
+        visibility: visible;
+        transition-delay: 0s;
+      }
+
+      .projects-progress-inner { min-height: 0; overflow: hidden; }
+
+      .projects-progress-card {
+        padding: 1.5rem;
+        border: 1px solid var(--card-border);
+        background: var(--card-bg);
+        text-align: left;
+      }
+
+      .projects-progress-card h3 {
+        margin: 0 0 0.45rem;
+        color: var(--accent-color);
+        font-size: 1.25rem;
+      }
+
+      .projects-progress-subtitle {
+        margin: 0 0 1.25rem;
+        color: var(--muted-text);
+        font-size: 0.9rem;
+      }
+
+      .projects-progress-copy {
+        display: grid;
+        grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+        gap: 1.75rem;
+      }
+
+      .projects-progress-copy p { margin: 0 0 0.85rem; }
+      .projects-progress-copy h4 {
+        margin: 0 0 0.6rem;
+        color: var(--accent-color);
+        font-size: 1rem;
+      }
+      .projects-progress-copy ul { margin: 0; padding-left: 1.2rem; }
+      .projects-progress-copy li + li { margin-top: 0.4rem; }
+
+      .projects-progress-note {
+        margin: 1rem 0 0;
+        color: var(--muted-text);
+        font-size: 0.85rem;
+      }
+
+      @media (max-width: 768px) {
+        .projects-section-heading {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 0.5rem 1rem;
+          margin-bottom: 1.5rem;
+        }
+        .projects-section-heading h2 { margin-bottom: 0; }
+        .projects-section-heading .projects-progress-toggle { margin-top: 1.5rem; }
+        .projects-progress-card { padding: 1rem; }
+        .projects-progress-copy { grid-template-columns: minmax(0, 1fr); gap: 0.75rem; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .projects-progress-panel { transition: none; }
+      }
+
       .projects {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -3019,7 +3121,67 @@
       </section>
       <!-- PROJECTS -->
       <section id="projects" class="section reveal reveal-left">
-        <h2>Projects</h2>
+        <div class="projects-section-heading">
+          <h2>Projects</h2>
+          <button
+            id="projects-progress-toggle"
+            class="tech-stack-toggle projects-progress-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="projects-progress-panel"
+          >
+            <span>In Progress</span>
+            <span class="tech-stack-toggle-icon" aria-hidden="true">+</span>
+          </button>
+        </div>
+        <div
+          id="projects-progress-panel"
+          class="projects-progress-panel"
+          role="region"
+          aria-labelledby="projects-progress-title"
+          aria-hidden="true"
+          inert
+        >
+          <div class="projects-progress-inner">
+            <article class="projects-progress-card">
+              <h3 id="projects-progress-title">ReactorBench-LM</h3>
+              <p class="projects-progress-subtitle">
+                Transformer from scratch &middot; Research in progress
+              </p>
+              <div class="projects-progress-copy">
+                <div>
+                  <p>
+                    I&rsquo;m building a small decoder-only Transformer from
+                    random weights to study how it learns from event narratives
+                    in Aster Station, a fictional synthetic environment.
+                  </p>
+                  <p>
+                    The project covers data generation, a project-trained
+                    tokenizer, model training, and evaluation&mdash;without
+                    pretrained weights or hosted LLMs.
+                  </p>
+                </div>
+                <div>
+                  <h4>What I&rsquo;m working on</h4>
+                  <ul>
+                    <li>Improving structured predictions and generalization.</li>
+                    <li>Testing balanced sampling and task-weighted training.</li>
+                    <li>Preserving failed experiments and reproducible results.</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="project-tech-tags" aria-label="Technologies used">
+                <span>Python</span><span>PyTorch</span><span>SentencePiece</span>
+                <span>Pydantic</span><span>Safetensors</span>
+              </div>
+              <p class="projects-progress-note">
+                Model-quality checks are still in progress; this is not a
+                deployment-ready model. All training scenarios are fictional,
+                with no real plant records or Navy material.
+              </p>
+            </article>
+          </div>
+        </div>
 
         <div class="projects">
           <article class="project-box reveal reveal-scale">
@@ -3605,6 +3767,26 @@
             setProjectDetails(details, shouldOpen);
           });
         });
+
+        /* Independent, full-width overview for work in progress. */
+        const progressToggle = document.getElementById("projects-progress-toggle");
+        const progressPanel = document.getElementById("projects-progress-panel");
+
+        if (progressToggle && progressPanel) {
+          progressToggle.addEventListener("click", () => {
+            const open = progressToggle.getAttribute("aria-expanded") !== "true";
+            progressToggle.setAttribute("aria-expanded", String(open));
+            progressPanel.setAttribute("aria-hidden", String(!open));
+            progressPanel.toggleAttribute("inert", !open);
+            progressPanel.classList.toggle("is-open", open);
+          });
+          progressPanel.addEventListener("keydown", (event) => {
+            if (event.key === "Escape" && progressToggle.getAttribute("aria-expanded") === "true") {
+              progressToggle.click();
+              progressToggle.focus();
+            }
+          });
+        }
 
         /* Optional tech-stack panel below Skills. */
         const techStackToggle = document.getElementById("tech-stack-toggle");
