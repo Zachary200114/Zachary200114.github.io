@@ -360,6 +360,93 @@
         font-family: "Playfair Display", serif;
       }
 
+      /* ACHIEVEMENTS */
+      .achievement-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem;
+        max-width: 900px;
+        margin: 2rem auto 0;
+      }
+
+      .achievement-card {
+        display: flex;
+        flex-direction: column;
+        padding: 1.35rem 1.5rem;
+        border: 1px solid var(--card-border);
+        border-radius: 0;
+        background-color: var(--card-bg);
+      }
+
+      .achievement-card-heading {
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+        margin-bottom: 1rem;
+        color: var(--accent-color);
+      }
+
+      .achievement-card-heading h3 {
+        margin: 0;
+        font-size: 1.1rem;
+        line-height: 1.35;
+      }
+
+      .achievement-card-icon {
+        flex: 0 0 auto;
+        width: 24px;
+        height: 24px;
+        background-color: currentColor;
+        -webkit-mask: var(--achievement-icon) center / contain no-repeat;
+        mask: var(--achievement-icon) center / contain no-repeat;
+      }
+
+      .achievement-card-icon-award {
+        --achievement-icon: url("https://cdn.jsdelivr.net/npm/lucide-static@1.27.0/icons/award.svg");
+      }
+
+      .achievement-card-icon-activity {
+        --achievement-icon: url("https://cdn.jsdelivr.net/npm/lucide-static@1.27.0/icons/users.svg");
+      }
+
+      .achievement-list {
+        display: grid;
+        flex: 1;
+        align-content: space-between;
+        gap: 0.7rem;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .achievement-list li {
+        position: relative;
+        margin: 0;
+        padding-left: 1rem;
+        line-height: 1.5;
+      }
+
+      .achievement-list li::before {
+        content: "";
+        position: absolute;
+        top: 0.67em;
+        left: 0;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background-color: var(--sage);
+      }
+
+      @media (max-width: 768px) {
+        .achievement-grid {
+          grid-template-columns: minmax(0, 1fr);
+        }
+
+        .achievement-card {
+          padding: 1.15rem 1.2rem;
+        }
+      }
+
       /* ABOUT */
       .profile img {
         width: 200px;
@@ -1326,6 +1413,12 @@
         transition: transform 0.3s ease;
       }
 
+      #contact .skill-logo {
+        width: 64px;
+        height: 64px;
+        object-fit: contain;
+      }
+
       #skills .skill-item {
         position: relative;
         display: flex;
@@ -2203,8 +2296,8 @@
       body.dark #contact .skill-item a {
         position: relative;
         display: grid;
-        width: 64px;
-        height: 64px;
+        width: 72px;
+        height: 72px;
         margin: 0 auto;
         place-items: center;
         box-sizing: border-box;
@@ -2220,16 +2313,16 @@
       body.dark #contact .skill-item a::after {
         content: "";
         position: absolute;
-        width: 29px;
-        height: 29px;
+        width: 34px;
+        height: 34px;
         background-color: var(--accent-text-on);
         -webkit-mask: var(--dark-contact-icon) center / contain no-repeat;
         mask: var(--dark-contact-icon) center / contain no-repeat;
       }
 
       body.dark #contact .skill-logo {
-        width: 64px;
-        height: 64px;
+        width: 72px;
+        height: 72px;
         opacity: 0;
       }
 
@@ -3440,13 +3533,37 @@
       <!-- ACHIEVEMENTS -->
       <section id="achievements" class="section reveal reveal-scale">
         <h2>Achievements &amp; Activities</h2>
-        <ul>
-          <li>Google Cybersecurity Professional Certificate</li>
-          <li>Member of RMU Top Secret Colonials</li>
-          <li>Participant in RMU CTF</li>
-          <li>Dean’s List (RMU) &amp; President’s List (CCBC)</li>
-          <li>RMU Merit Scholarship Recipient</li>
-        </ul>
+        <div class="achievement-grid">
+          <article class="achievement-card">
+            <div class="achievement-card-heading">
+              <span
+                class="achievement-card-icon achievement-card-icon-award"
+                aria-hidden="true"
+              ></span>
+              <h3>Credentials &amp; Honors</h3>
+            </div>
+            <ul class="achievement-list">
+              <li>Google Cybersecurity Professional Certificate</li>
+              <li>Dean’s List (RMU) &amp; President’s List (CCBC)</li>
+              <li>RMU Merit Scholarship Recipient</li>
+            </ul>
+          </article>
+
+          <article class="achievement-card">
+            <div class="achievement-card-heading">
+              <span
+                class="achievement-card-icon achievement-card-icon-activity"
+                aria-hidden="true"
+              ></span>
+              <h3>Campus &amp; Competition</h3>
+            </div>
+            <ul class="achievement-list">
+              <li>Member of RMU Top Secret Colonials</li>
+              <li>Participant in RMU CTF</li>
+              <li>Member of CS3</li>
+            </ul>
+          </article>
+        </div>
       </section>
 
       <!-- CONTACT -->
