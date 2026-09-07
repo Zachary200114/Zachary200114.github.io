@@ -1413,10 +1413,30 @@
         transition: transform 0.3s ease;
       }
 
+      #contact {
+        --contact-target-size: 96px;
+        --contact-logo-size: 88px;
+        --contact-email-logo-size: 118px;
+        --contact-glyph-size: 44px;
+      }
+
+      #contact .skill-item a {
+        display: grid;
+        width: var(--contact-target-size);
+        height: var(--contact-target-size);
+        margin: 0 auto;
+        place-items: center;
+      }
+
       #contact .skill-logo {
-        width: 64px;
-        height: 64px;
+        width: var(--contact-logo-size);
+        height: var(--contact-logo-size);
         object-fit: contain;
+      }
+
+      body:not(.dark) #contact .skill-item:nth-child(3) .skill-logo {
+        width: var(--contact-email-logo-size);
+        height: var(--contact-email-logo-size);
       }
 
       #skills .skill-item {
@@ -2296,8 +2316,8 @@
       body.dark #contact .skill-item a {
         position: relative;
         display: grid;
-        width: 72px;
-        height: 72px;
+        width: var(--contact-target-size);
+        height: var(--contact-target-size);
         margin: 0 auto;
         place-items: center;
         box-sizing: border-box;
@@ -2313,16 +2333,16 @@
       body.dark #contact .skill-item a::after {
         content: "";
         position: absolute;
-        width: 34px;
-        height: 34px;
+        width: var(--contact-glyph-size);
+        height: var(--contact-glyph-size);
         background-color: var(--accent-text-on);
         -webkit-mask: var(--dark-contact-icon) center / contain no-repeat;
         mask: var(--dark-contact-icon) center / contain no-repeat;
       }
 
       body.dark #contact .skill-logo {
-        width: 72px;
-        height: 72px;
+        width: var(--contact-target-size);
+        height: var(--contact-target-size);
         opacity: 0;
       }
 
@@ -2342,6 +2362,15 @@
 
       body.dark #contact .skill-item:nth-child(3) {
         --dark-contact-icon: url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/icons/envelope-fill.svg");
+      }
+
+      @media (max-width: 480px) {
+        #contact {
+          --contact-target-size: 80px;
+          --contact-logo-size: 74px;
+          --contact-email-logo-size: 100px;
+          --contact-glyph-size: 38px;
+        }
       }
 
       /* Layered botanical palette accents for light mode only. */
