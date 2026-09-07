@@ -1700,11 +1700,15 @@
       }
 
       .citation-actions {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: start;
         gap: 0.75rem;
         margin-top: 1.25rem;
+      }
+
+      @media (max-width: 560px) {
+        .citation-actions { grid-template-columns: minmax(0, 1fr); }
       }
 
       .citation-details summary {
