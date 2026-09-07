@@ -538,7 +538,9 @@
         gap: 1.25rem;
       }
 
-      .projects-section-heading h2 { grid-column: 2; }
+      .projects-section-heading h2 {
+        grid-column: 2;
+      }
 
       .projects-section-heading .projects-progress-toggle {
         grid-column: 3;
@@ -573,7 +575,10 @@
         transition-delay: 0s;
       }
 
-      .projects-progress-inner { min-height: 0; overflow: hidden; }
+      .projects-progress-inner {
+        min-height: 0;
+        overflow: hidden;
+      }
 
       .projects-progress-card {
         padding: 1.5rem;
@@ -607,14 +612,21 @@
         gap: 1.75rem;
       }
 
-      .projects-progress-copy p { margin: 0 0 0.85rem; }
+      .projects-progress-copy p {
+        margin: 0 0 0.85rem;
+      }
       .projects-progress-copy h4 {
         margin: 0 0 0.6rem;
         color: var(--accent-color);
         font-size: 1rem;
       }
-      .projects-progress-copy ul { margin: 0; padding-left: 1.2rem; }
-      .projects-progress-copy li + li { margin-top: 0.4rem; }
+      .projects-progress-copy ul {
+        margin: 0;
+        padding-left: 1.2rem;
+      }
+      .projects-progress-copy li + li {
+        margin-top: 0.4rem;
+      }
 
       .projects-progress-note {
         margin: 1rem 0 0;
@@ -622,7 +634,9 @@
         font-size: 0.85rem;
       }
 
-      .projects-progress-card-header .project-actions { margin: 0; }
+      .projects-progress-card-header .project-actions {
+        margin: 0;
+      }
 
       @media (max-width: 768px) {
         .projects-section-heading {
@@ -632,15 +646,28 @@
           gap: 0.5rem 1rem;
           margin-bottom: 1.5rem;
         }
-        .projects-section-heading h2 { margin-bottom: 0; }
-        .projects-section-heading .projects-progress-toggle { margin-top: 1.5rem; }
-        .projects-progress-card { padding: 1rem; }
-        .projects-progress-card-header { flex-wrap: wrap; }
-        .projects-progress-copy { grid-template-columns: minmax(0, 1fr); gap: 0.75rem; }
+        .projects-section-heading h2 {
+          margin-bottom: 0;
+        }
+        .projects-section-heading .projects-progress-toggle {
+          margin-top: 1.5rem;
+        }
+        .projects-progress-card {
+          padding: 1rem;
+        }
+        .projects-progress-card-header {
+          flex-wrap: wrap;
+        }
+        .projects-progress-copy {
+          grid-template-columns: minmax(0, 1fr);
+          gap: 0.75rem;
+        }
       }
 
       @media (prefers-reduced-motion: reduce) {
-        .projects-progress-panel { transition: none; }
+        .projects-progress-panel {
+          transition: none;
+        }
       }
 
       .projects {
@@ -1127,7 +1154,6 @@
           justify-content: center;
           box-sizing: border-box;
         }
-
       }
 
       /* SKILLS */
@@ -1739,7 +1765,9 @@
       }
 
       @media (max-width: 560px) {
-        .citation-details summary { padding-right: 0; }
+        .citation-details summary {
+          padding-right: 0;
+        }
         .citation-copy {
           position: static;
           margin-top: 0.75rem;
@@ -2372,24 +2400,23 @@
           </p>
           <p class="about-me-para">
             Since starting college, I’ve been building experience across
-            cybersecurity, risk, and artificial intelligence. During my
-            internship at Brixmor Property Group, I gained hands-on experience
-            with security ticket triage, vulnerability management, domain
-            assessments, third-party risk, and AI policy alignment using the
-            NIST AI RMF. I’m currently an Artificial Intelligence Intern at O.F.
-            Mossberg & Sons, where I’m continuing to develop my understanding of
-            practical AI work.
+            cybersecurity and artificial intelligence. During my internship at
+            Brixmor Property Group as a Cybersecurity Intern, I gained hands-on
+            experience with security ticket triage, vulnerability management,
+            domain assessments, and AI policy alignment using the NIST AI RMF.
+            I’m currently an Artificial Intelligence Intern at O.F. Mossberg &
+            Sons, where I’m contributing to applied AI initiatives and building
+            practical experience.
           </p>
           <p class="about-me-para">
             Outside of internships, I build security tools and research projects
             to understand systems by working with them directly. My current
             ReactorBench-LM project explores how a small Transformer trained
             from scratch learns from a fictional event environment. I’m
-            especially interested in the space where technical systems,
-            security controls, and responsible AI decisions meet.
+            especially interested in the space where technical systems, security
+            controls, and responsible AI decisions meet.
           </p>
         </div>
-
       </div>
     </header>
 
@@ -2873,7 +2900,9 @@
             </div>
           </div>
 
-          <div class="publication-card citation-publication-card reveal reveal-left">
+          <div
+            class="publication-card citation-publication-card reveal reveal-left"
+          >
             <h3>
               Evaluating AI vs Human Phishing Evasion Across Emulated Email
               Security Filters and SpamAssassin
@@ -2989,15 +3018,22 @@
                 <div>
                   <h4>What I&rsquo;m working on</h4>
                   <ul>
-                    <li>Improving structured predictions and generalization.</li>
-                    <li>Testing balanced sampling and task-weighted training.</li>
-                    <li>Preserving failed experiments and reproducible results.</li>
+                    <li>
+                      Improving structured predictions and generalization.
+                    </li>
+                    <li>
+                      Testing balanced sampling and task-weighted training.
+                    </li>
+                    <li>
+                      Preserving failed experiments and reproducible results.
+                    </li>
                   </ul>
                 </div>
               </div>
               <div class="project-tech-tags" aria-label="Technologies used">
-                <span>Python</span><span>PyTorch</span><span>SentencePiece</span>
-                <span>Pydantic</span><span>Safetensors</span>
+                <span>Python</span><span>PyTorch</span
+                ><span>SentencePiece</span> <span>Pydantic</span
+                ><span>Safetensors</span>
               </div>
               <p class="projects-progress-note">
                 Model-quality checks are still in progress; this is not a
@@ -3618,19 +3654,27 @@
         });
 
         /* Independent, full-width overview for work in progress. */
-        const progressToggle = document.getElementById("projects-progress-toggle");
-        const progressPanel = document.getElementById("projects-progress-panel");
+        const progressToggle = document.getElementById(
+          "projects-progress-toggle",
+        );
+        const progressPanel = document.getElementById(
+          "projects-progress-panel",
+        );
 
         if (progressToggle && progressPanel) {
           progressToggle.addEventListener("click", () => {
-            const open = progressToggle.getAttribute("aria-expanded") !== "true";
+            const open =
+              progressToggle.getAttribute("aria-expanded") !== "true";
             progressToggle.setAttribute("aria-expanded", String(open));
             progressPanel.setAttribute("aria-hidden", String(!open));
             progressPanel.toggleAttribute("inert", !open);
             progressPanel.classList.toggle("is-open", open);
           });
           progressPanel.addEventListener("keydown", (event) => {
-            if (event.key === "Escape" && progressToggle.getAttribute("aria-expanded") === "true") {
+            if (
+              event.key === "Escape" &&
+              progressToggle.getAttribute("aria-expanded") === "true"
+            ) {
               progressToggle.click();
               progressToggle.focus();
             }
@@ -3777,7 +3821,6 @@
               : "Citation could not be copied.",
           );
         });
-
       });
     </script>
   </body>
