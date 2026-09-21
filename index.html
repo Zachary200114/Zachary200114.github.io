@@ -1504,6 +1504,7 @@
       .education-highlights {
         margin-top: 0.75rem;
         padding-left: 1.2rem;
+        list-style-type: disc;
         line-height: 1.8;
         font-size: 0.96rem;
       }
@@ -1612,6 +1613,7 @@
       .experience-card ul {
         margin-top: 0.75rem;
         padding-left: 1.2rem;
+        list-style-type: disc;
         line-height: 1.8;
       }
 
@@ -3639,6 +3641,58 @@
             .filter(Boolean);
         }
 
+        /* Keep matching bullets aligned even when neighboring text wraps. */
+        function alignProjectRowBullets(rowDetails) {
+          const lists = rowDetails.map((details) =>
+            Array.from(details.querySelectorAll(":scope > ul > li")),
+          );
+          lists.flat().forEach((item) => {
+            item.style.minHeight = "";
+          });
+          if (rowDetails.length < 2) return;
+
+          const openStates = rowDetails.map((details) => details.open);
+          rowDetails.forEach((details) => {
+            details.open = true;
+          });
+
+          const heights = Array.from(
+            { length: Math.max(0, ...lists.map((list) => list.length)) },
+            (_, index) =>
+              Math.max(...lists.map((list) => list[index]?.offsetHeight || 0)),
+          );
+          lists.forEach((list) => {
+            list.forEach((item, index) => {
+              item.style.minHeight = `${heights[index]}px`;
+            });
+          });
+          rowDetails.forEach((details, index) => {
+            details.open = openStates[index];
+          });
+        }
+
+        function alignProjectBullets() {
+          document.querySelectorAll(".projects").forEach((grid) => {
+            const aligned = new Set();
+            grid.querySelectorAll(":scope > .project-box").forEach((card) => {
+              const details = card.querySelector(".project-details");
+              if (!details || aligned.has(details)) return;
+              const rowDetails = getProjectRowDetails(grid, card);
+              alignProjectRowBullets(rowDetails);
+              rowDetails.forEach((item) => aligned.add(item));
+            });
+          });
+        }
+
+        let projectAlignmentFrame = null;
+        window.addEventListener("resize", () => {
+          window.cancelAnimationFrame(projectAlignmentFrame);
+          projectAlignmentFrame = window.requestAnimationFrame(
+            alignProjectBullets,
+          );
+        });
+        if (document.fonts) document.fonts.ready.then(alignProjectBullets);
+
         document.querySelectorAll(".project-details").forEach((details) => {
           const summary = details.querySelector("summary");
           if (!summary) return;
@@ -3664,6 +3718,7 @@
                     }
                   });
 
+                alignProjectRowBullets(rowDetails);
                 rowDetails.forEach((rowDetail) => {
                   setProjectDetails(rowDetail, true);
                 });
