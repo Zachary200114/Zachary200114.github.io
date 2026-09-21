@@ -629,9 +629,6 @@
         margin: 0;
         padding-left: 1.2rem;
       }
-      .projects-progress-copy li + li {
-        margin-top: 0.4rem;
-      }
 
       .projects-progress-note {
         margin: 1rem 0 0;
@@ -1707,6 +1704,16 @@
         line-height: 1.8;
       }
 
+      /* Consistent breathing room between accomplishment bullets site-wide. */
+      .education-highlights > li + li,
+      .experience-card ul > li + li,
+      .publication-card ul > li + li,
+      .projects-progress-copy ul > li + li,
+      .project-details ul > li + li,
+      .achievement-list > li + li {
+        margin-top: 1.2rem;
+      }
+
       .publication-footer {
         margin-top: 1.5rem;
         padding-top: 1rem;
@@ -2397,30 +2404,27 @@
         <h2 class="hero-about-heading">About Me</h2>
         <div class="hero-about-copy">
           <p class="about-me-para">
-            I’m a U.S. Navy veteran and cybersecurity student at Robert Morris
-            University. My time in the Navy’s Nuclear Reactor Department taught
-            me to work carefully, troubleshoot under pressure, and treat
-            documentation, procedures, and accountability as part of the job.
-            Those habits continue to shape how I approach technical and security
-            problems.
+            I’m a cybersecurity student at Robert Morris University, a U.S. Navy
+            veteran, and an Artificial Intelligence Intern at O.F. Mossberg &amp;
+            Sons. My experience spans enterprise security operations, applied AI,
+            and cybersecurity research.
           </p>
           <p class="about-me-para">
-            Since starting college, I’ve been building experience across
-            cybersecurity and artificial intelligence. During my internship at
-            Brixmor Property Group as a Cybersecurity Intern, I gained hands-on
-            experience with security ticket triage, vulnerability management,
-            domain assessments, and AI policy alignment using the NIST AI RMF.
-            I’m currently an Artificial Intelligence Intern at O.F. Mossberg &
-            Sons, where I’m contributing to applied AI initiatives and building
-            practical experience.
+            My background in the Navy’s Nuclear Reactor Department shaped my
+            approach to technical work: understand the system, troubleshoot
+            carefully, and document decisions clearly. I carry that approach into
+            cybersecurity and AI, where getting an output is only part of the job.
+            Understanding its limitations, testing assumptions, and knowing when
+            to question a result matter just as much.
           </p>
           <p class="about-me-para">
-            Outside of internships, I build security tools and research projects
-            to understand systems by working with them directly. My current
-            ReactorBench-LM project explores how a small Transformer trained
-            from scratch learns from a fictional event environment. I’m
-            especially interested in the space where technical systems, security
-            controls, and responsible AI decisions meet.
+            Beyond my internships, I build security tools and investigate the
+            systems behind them. My work includes phishing research, a co-authored
+            paper submitted on auditable evidence in AI cybersecurity compliance,
+            and ReactorBench-LM, an ongoing project building and training a
+            Transformer from scratch. I’m especially interested in evaluating
+            security controls, understanding system behavior, and producing
+            evidence that supports sound technical decisions.
           </p>
         </div>
       </div>
