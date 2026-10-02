@@ -70,6 +70,7 @@
         --moss-accent: #a9c46c;
         --warm-cream: #f3e7d3;
         --paper-white: #faf7f2;
+        --floral-white: #fffaf0;
         --charcoal-ink: #2b2a25;
         --bg-color: var(--paper-white);
         --text-color: var(--charcoal-ink);
@@ -2191,6 +2192,12 @@
       }
 
       /* Layered botanical palette accents for light mode only. */
+      body:not(.dark) #skills,
+      body:not(.dark) #publications,
+      body:not(.dark) #achievements {
+        background-color: var(--floral-white);
+      }
+
       body:not(.dark) nav a:hover {
         background-color: var(--moss-accent);
         color: var(--pine-ink);
